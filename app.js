@@ -344,7 +344,7 @@
   }
 
   /* --------------------------------------------------------------------------
-   * 3. SPARKLE CURSOR TRAIL (Lightweight HTML5 Canvas)
+   * 3. SPARKLE CURSOR TRAIL (Lightweight Micro-Stardust Canvas Overlay)
    * -------------------------------------------------------------------------- */
   class SparkleCursorTrail {
     constructor() {
@@ -353,7 +353,8 @@
       this.ctx = this.canvas.getContext('2d');
       this.particles = [];
       this.maxParticles = 65;
-      this.colors = ['#ffd166', '#a78bfa', '#38bdf8', '#f472b6', '#ffffff'];
+      this.symbols = ['★', '✦', '✧'];
+      this.colors = ['#f7d794', '#b388ff', '#c8d6e5', '#ffffff'];
       this.lastSpawnTime = 0;
       this.isRunning = false;
 
@@ -371,21 +372,25 @@
     bindEvents() {
       window.addEventListener('resize', () => this.resize(), { passive: true });
 
-      const addPoint = (x, y) => {
+      const handleMove = (x, y) => {
         const now = performance.now();
-        if (now - this.lastSpawnTime > 18) {
+        if (now - this.lastSpawnTime > 22) {
           this.lastSpawnTime = now;
-          this.spawnParticle(x, y);
+          // Emit 2–3 micro stardust stars
+          const count = Math.floor(Math.random() * 2) + 2;
+          for (let i = 0; i < count; i++) {
+            this.spawnParticle(x, y);
+          }
         }
       };
 
-      window.addEventListener('mousemove', (e) => {
-        addPoint(e.clientX, e.clientY);
+      window.addEventListener('pointermove', (e) => {
+        handleMove(e.clientX, e.clientY);
       }, { passive: true });
 
       window.addEventListener('touchmove', (e) => {
         if (e.touches && e.touches[0]) {
-          addPoint(e.touches[0].clientX, e.touches[0].clientY);
+          handleMove(e.touches[0].clientX, e.touches[0].clientY);
         }
       }, { passive: true });
     }
@@ -395,17 +400,23 @@
         this.particles.shift();
       }
 
+      const glyph = this.symbols[Math.floor(Math.random() * this.symbols.length)];
+      const color = this.colors[Math.floor(Math.random() * this.colors.length)];
+      const duration = 600; // Shimmer & fade out over 600ms
+      const startTime = performance.now();
+
       this.particles.push({
-        x: x + (Math.random() - 0.5) * 8,
-        y: y + (Math.random() - 0.5) * 8,
-        vx: (Math.random() - 0.5) * 1.6,
-        vy: (Math.random() - 0.5) * 1.6 + 0.4,
-        size: Math.random() * 4 + 2.5,
-        color: this.colors[Math.floor(Math.random() * this.colors.length)],
-        life: 1.0,
-        decay: Math.random() * 0.025 + 0.018,
-        rotation: Math.random() * Math.PI,
-        rotSpeed: (Math.random() - 0.5) * 0.1
+        x: x + (Math.random() - 0.5) * 16,
+        y: y + (Math.random() - 0.5) * 16,
+        vx: (Math.random() - 0.5) * 1.4,
+        vy: (Math.random() - 0.5) * 1.2 - 0.3,
+        gravity: 0.045, // Downward drift with slight gravity
+        glyph,
+        color,
+        size: Math.floor(Math.random() * 6) + 11,
+        startTime,
+        duration,
+        rotation: (Math.random() - 0.5) * 0.4
       });
 
       if (!this.isRunning) {
@@ -414,55 +425,37 @@
       }
     }
 
-    drawStar(cx, cy, spikes, outerRadius, innerRadius, color, alpha, rot) {
-      const ctx = this.ctx;
-      ctx.save();
-      ctx.beginPath();
-      ctx.translate(cx, cy);
-      ctx.rotate(rot);
-      ctx.globalAlpha = Math.max(0, alpha);
-      ctx.fillStyle = color;
-
-      let rotAngle = (Math.PI / 2) * 3;
-      let x = 0;
-      let y = 0;
-      const step = Math.PI / spikes;
-
-      ctx.moveTo(0, -outerRadius);
-      for (let i = 0; i < spikes; i++) {
-        x = Math.cos(rotAngle) * outerRadius;
-        y = Math.sin(rotAngle) * outerRadius;
-        ctx.lineTo(x, y);
-        rotAngle += step;
-
-        x = Math.cos(rotAngle) * innerRadius;
-        y = Math.sin(rotAngle) * innerRadius;
-        ctx.lineTo(x, y);
-        rotAngle += step;
-      }
-      ctx.lineTo(0, -outerRadius);
-      ctx.closePath();
-      ctx.fill();
-      ctx.restore();
-    }
-
     loop() {
       this.ctx.clearRect(0, 0, this.width, this.height);
+      const now = performance.now();
 
       for (let i = this.particles.length - 1; i >= 0; i--) {
         const p = this.particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-        p.rotation += p.rotSpeed;
-        p.life -= p.decay;
+        const elapsed = now - p.startTime;
 
-        if (p.life <= 0) {
+        if (elapsed >= p.duration) {
           this.particles.splice(i, 1);
           continue;
         }
 
-        const currentSize = p.size * p.life;
-        this.drawStar(p.x, p.y, 4, currentSize, currentSize * 0.4, p.color, p.life, p.rotation);
+        const progress = elapsed / p.duration;
+        const alpha = Math.max(0, 1 - progress);
+
+        // Drift downward with slight gravity
+        p.vy += p.gravity;
+        p.x += p.vx;
+        p.y += p.vy;
+
+        this.ctx.save();
+        this.ctx.globalAlpha = alpha;
+        this.ctx.fillStyle = p.color;
+        this.ctx.shadowColor = p.color;
+        this.ctx.shadowBlur = 8;
+        this.ctx.font = `${p.size}px "Plus Jakarta Sans", sans-serif`;
+        this.ctx.textAlign = 'center';
+        this.ctx.textBaseline = 'middle';
+        this.ctx.fillText(p.glyph, p.x, p.y);
+        this.ctx.restore();
       }
 
       if (this.particles.length > 0) {
@@ -474,79 +467,93 @@
   }
 
   /* --------------------------------------------------------------------------
-   * 4. PIP 3D TILT & POINTER TRACKER
+   * 4. PIP 3D TILT & POINTER TRACKER (Tier 1 Cursor Reaction)
    * -------------------------------------------------------------------------- */
   class PipTiltTracker {
     constructor() {
+      this.hero = document.getElementById('hero');
       this.zone = document.getElementById('hero-avatar-zone');
       this.cardInner = document.getElementById('avatar-card-inner');
       this.aura = document.getElementById('avatar-aura');
-      if (!this.zone || !this.cardInner) return;
+      if (!this.cardInner) return;
 
-      this.currentX = 0;
-      this.currentY = 0;
-      this.targetX = 0;
-      this.targetY = 0;
-      this.isHovering = false;
+      this.currentTiltX = 0;
+      this.currentTiltY = 0;
+      this.targetTiltX = 0;
+      this.targetTiltY = 0;
+      this.isInteracting = false;
+      this.maxTilt = 14; // Clamp maximum tilt angle between -14deg and +14deg
 
       this.bindEvents();
       this.render();
     }
 
     bindEvents() {
-      const handleMove = (clientX, clientY) => {
-        const rect = this.zone.getBoundingClientRect();
+      const handlePointer = (clientX, clientY) => {
+        const anchor = this.zone || this.cardInner;
+        const rect = anchor.getBoundingClientRect();
         const centerX = rect.left + rect.width / 2;
         const centerY = rect.top + rect.height / 2;
 
-        const deltaX = (clientX - centerX) / (rect.width / 2);
-        const deltaY = (clientY - centerY) / (rect.height / 2);
+        const maxRangeX = Math.max(window.innerWidth / 2, 350);
+        const maxRangeY = Math.max(window.innerHeight / 2, 350);
 
-        // Clamped tilt values (-1 to 1)
-        this.targetX = Math.max(-1, Math.min(1, deltaX));
-        this.targetY = Math.max(-1, Math.min(1, deltaY));
-        this.isHovering = true;
+        const deltaX = (clientX - centerX) / maxRangeX;
+        const deltaY = (clientY - centerY) / maxRangeY;
+
+        // Calculate 3D tilt clamped between -14deg and +14deg
+        const rawTiltX = deltaX * this.maxTilt;
+        const rawTiltY = -deltaY * this.maxTilt;
+
+        this.targetTiltX = Math.max(-this.maxTilt, Math.min(this.maxTilt, rawTiltX));
+        this.targetTiltY = Math.max(-this.maxTilt, Math.min(this.maxTilt, rawTiltY));
+        this.isInteracting = true;
       };
 
-      this.zone.addEventListener('mousemove', (e) => {
-        handleMove(e.clientX, e.clientY);
+      const heroEl = this.hero || document.body;
+
+      // Pointermove listener on hero section
+      heroEl.addEventListener('pointermove', (e) => {
+        handlePointer(e.clientX, e.clientY);
       });
 
-      this.zone.addEventListener('mouseleave', () => {
-        this.isHovering = false;
-        this.targetX = 0;
-        this.targetY = 0;
+      heroEl.addEventListener('pointerleave', () => {
+        this.isInteracting = false;
+        this.targetTiltX = 0;
+        this.targetTiltY = 0;
       });
 
-      // Touch screen support
-      this.zone.addEventListener('touchmove', (e) => {
+      // Touchmove fallback for mobile so dragging a finger across the hero makes Pip gently lean
+      heroEl.addEventListener('touchmove', (e) => {
         if (e.touches && e.touches[0]) {
-          handleMove(e.touches[0].clientX, e.touches[0].clientY);
+          handlePointer(e.touches[0].clientX, e.touches[0].clientY);
         }
       }, { passive: true });
 
-      this.zone.addEventListener('touchend', () => {
-        this.isHovering = false;
-        this.targetX = 0;
-        this.targetY = 0;
+      heroEl.addEventListener('touchend', () => {
+        this.isInteracting = false;
+        this.targetTiltX = 0;
+        this.targetTiltY = 0;
       });
     }
 
     render() {
-      // Smooth lerp interpolation
-      const ease = 0.08;
-      this.currentX += (this.targetX - this.currentX) * ease;
-      this.currentY += (this.targetY - this.currentY) * ease;
+      // Smooth lerp interpolation for buttery transition
+      const lerp = 0.08;
+      this.currentTiltX += (this.targetTiltX - this.currentTiltX) * lerp;
+      this.currentTiltY += (this.targetTiltY - this.currentTiltY) * lerp;
 
-      const rotateY = this.currentX * 18; // Max 18deg tilt horizontally
-      const rotateX = -this.currentY * 18; // Max 18deg tilt vertically
+      const tiltX = this.currentTiltX.toFixed(2);
+      const tiltY = this.currentTiltY.toFixed(2);
+      const scale = this.isInteracting ? 'scale3d(1.02, 1.02, 1.02)' : 'scale3d(1, 1, 1)';
 
-      this.cardInner.style.transform = `rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`;
+      // 3D tilt formula: perspective(800px) rotateY(${tiltX}deg) rotateX(${tiltY}deg) scale3d(1.02, 1.02, 1.02)
+      this.cardInner.style.transform = `perspective(800px) rotateY(${tiltX}deg) rotateX(${tiltY}deg) ${scale}`;
 
       if (this.aura) {
-        const auraX = this.currentX * 20;
-        const auraY = this.currentY * 20;
-        this.aura.style.transform = `translate(${auraX.toFixed(1)}px, ${auraY.toFixed(1)}px)`;
+        const auraX = (this.currentTiltX * 1.5).toFixed(1);
+        const auraY = (-this.currentTiltY * 1.5).toFixed(1);
+        this.aura.style.transform = `translate(${auraX}px, ${auraY}px)`;
       }
 
       requestAnimationFrame(() => this.render());
@@ -636,11 +643,14 @@
       if (this.isPlayingMelody) return;
       this.isPlayingMelody = true;
 
-      if (this.visualizer) this.visualizer.classList.add('playing');
       if (this.feedback) this.feedback.textContent = 'Sequencing: C5 → E5 → G5 → B5 → C6...';
 
+      // Initial flourish burst of floating musical stardust symbols
+      this.spawnNoteParticle();
+      setTimeout(() => this.spawnNoteParticle(), 150);
+      setTimeout(() => this.spawnNoteParticle(), 300);
+
       this.audio.playDreamArpeggio(() => {
-        if (this.visualizer) this.visualizer.classList.remove('playing');
         if (this.feedback) this.feedback.textContent = 'Melody complete · Ready to chime';
         this.isPlayingMelody = false;
       }, (noteName, freq) => {
@@ -662,18 +672,24 @@
       }
     }
 
-    spawnNoteParticle(text) {
+    spawnNoteParticle(noteName = '') {
       if (!this.notesBurst) return;
+      const symbols = ['♪', '♫', '✦', '★', '✧'];
+      const symbol = symbols[Math.floor(Math.random() * symbols.length)];
+
       const note = document.createElement('span');
       note.className = 'floating-note';
-      note.textContent = text;
+      note.textContent = noteName ? `${symbol} ${noteName}` : symbol;
 
-      const randomX = Math.floor(Math.random() * 180) + 40;
-      const offsetX = (Math.random() - 0.5) * 60;
-      const rot = (Math.random() - 0.5) * 50;
+      const randomX = Math.floor(Math.random() * 200) + 30;
+      const offsetX = (Math.random() - 0.5) * 70;
+      const rot = (Math.random() - 0.5) * 40;
+      const colors = ['#f7d794', '#b388ff', '#70a1ff', '#ffffff'];
+      const color = colors[Math.floor(Math.random() * colors.length)];
 
       note.style.left = `${randomX}px`;
-      note.style.bottom = '40px';
+      note.style.bottom = '30px';
+      note.style.color = color;
       note.style.setProperty('--offset-x', `${offsetX}px`);
       note.style.setProperty('--rot', `${rot}deg`);
 
@@ -759,7 +775,8 @@
 
       this.activeRoute = 'a';
       this.progress = 0;
-      this.speeds = { a: 0.0018, b: 0.0014, c: 0.0022 };
+      this.direction = 1; // 1 = forward (Cribs Hub -> Lighthouse), -1 = return (Lighthouse -> Cribs Hub)
+      this.speeds = { a: 0.002, b: 0.0016, c: 0.0025 };
       this.statusMessages = {
         a: 'Estimated Flight Time: 4.2 sleep cycles (Express)',
         b: 'Estimated Flight Time: 6.8 sleep cycles (Scenic Detour)',
@@ -785,13 +802,32 @@
         }
       };
 
+      this.initSkylineGradient();
       this.bindEvents();
+      // Select initial signature waypoint with active radar ping ring
+      this.selectWaypoint('Teddy');
       this.animateDrone();
+    }
+
+    initSkylineGradient() {
+      // Ensure smooth vertical gradient (#090d1a to #1a223f) is present in SVG defs
+      const defs = document.querySelector('#routes-svg-map defs');
+      if (defs && !document.getElementById('skylineGrad')) {
+        const grad = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+        grad.id = 'skylineGrad';
+        grad.setAttribute('x1', '0%');
+        grad.setAttribute('y1', '100%');
+        grad.setAttribute('x2', '0%');
+        grad.setAttribute('y2', '0%');
+        grad.innerHTML = '<stop offset="0%" stop-color="#090d1a" /><stop offset="100%" stop-color="#1a223f" />';
+        defs.appendChild(grad);
+      }
     }
 
     bindEvents() {
       this.routeBtns.forEach((btn) => {
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
           const route = btn.getAttribute('data-route');
           this.switchRoute(route);
         });
@@ -800,14 +836,26 @@
       // Waypoint clicks and hovers
       this.waypoints.forEach((wp) => {
         const station = wp.getAttribute('data-station');
-        const show = () => this.showStationInfo(station);
-
-        wp.addEventListener('mouseenter', show);
+        wp.addEventListener('mouseenter', () => {
+          this.showStationInfo(station);
+        });
         wp.addEventListener('click', () => {
-          show();
-          this.audio.playTone(880, 0.2, 'sine', 0, 0.15);
+          this.selectWaypoint(station);
+          if (this.audio) {
+            this.audio.playTone(880, 0.2, 'sine', 0, 0.15);
+          }
         });
       });
+    }
+
+    selectWaypoint(stationKey) {
+      if (!stationKey) return;
+      this.waypoints.forEach((wp) => {
+        const match = wp.getAttribute('data-station') === stationKey;
+        wp.classList.toggle('selected', match);
+        wp.classList.toggle('active', match);
+      });
+      this.showStationInfo(stationKey);
     }
 
     switchRoute(routeKey) {
@@ -828,13 +876,22 @@
         }
       });
 
-      // Update status
+      // Update status text
       if (this.statusText) {
         this.statusText.textContent = this.statusMessages[routeKey];
       }
 
-      this.progress = 0; // Reset drone to start of new path
-      this.audio.playTone(659.25, 0.3, 'sine', 0, 0.15);
+      // Automatically focus and ping the signature waypoint for this route
+      const routeWaypoints = {
+        a: 'Lighthouse',
+        b: 'Cloud9',
+        c: 'Teddy'
+      };
+      this.selectWaypoint(routeWaypoints[routeKey] || 'Cloud9');
+
+      if (this.audio) {
+        this.audio.playTone(659.25, 0.25, 'sine', 0, 0.15);
+      }
     }
 
     showStationInfo(stationKey) {
@@ -846,15 +903,31 @@
 
     animateDrone() {
       const path = this.paths[this.activeRoute];
-      if (path && this.drone && path.getTotalLength) {
-        const totalLen = path.getTotalLength();
-        this.progress += this.speeds[this.activeRoute] || 0.0018;
-        if (this.progress > 1) this.progress = 0;
+      if (path && this.drone) {
+        try {
+          if (typeof path.getTotalLength === 'function') {
+            const totalLen = path.getTotalLength();
+            if (totalLen > 0) {
+              const speed = this.speeds[this.activeRoute] || 0.002;
+              this.progress += speed * (this.direction || 1);
 
-        const currentLen = totalLen * this.progress;
-        const pt = path.getPointAtLength(currentLen);
+              // Smoothly glide from Cribs Hub to Lighthouse and back
+              if (this.progress >= 1) {
+                this.progress = 1;
+                this.direction = -1; // Smooth return flight back to Cribs Hub
+              } else if (this.progress <= 0) {
+                this.progress = 0;
+                this.direction = 1; // Smooth forward flight to Lighthouse
+              }
 
-        this.drone.setAttribute('transform', `translate(${pt.x.toFixed(1)}, ${pt.y.toFixed(1)})`);
+              const currentLen = totalLen * this.progress;
+              const pt = path.getPointAtLength(currentLen);
+              this.drone.setAttribute('transform', `translate(${pt.x.toFixed(1)}, ${pt.y.toFixed(1)})`);
+            }
+          }
+        } catch (err) {
+          // Graceful fallback if SVG path not yet computed
+        }
       }
 
       requestAnimationFrame(() => this.animateDrone());
@@ -862,33 +935,53 @@
   }
 
   /* --------------------------------------------------------------------------
-   * 8. STORY SECTION (Scroll Reveal via IntersectionObserver)
+   * 8. STORY & COMPONENT SCROLL REVEAL (IntersectionObserver)
    * -------------------------------------------------------------------------- */
   class StoryScrollReveal {
     constructor() {
-      this.cards = document.querySelectorAll('.story-card');
+      this.elements = document.querySelectorAll('.scroll-reveal, .story-card, .project-card, .gear-card, #wishes .wish-card');
       this.initObserver();
     }
 
     initObserver() {
+      // Ensure elements have scroll-reveal class for CSS transitions
+      this.elements.forEach((el) => {
+        if (!el.classList.contains('scroll-reveal')) {
+          el.classList.add('scroll-reveal');
+        }
+      });
+
       if (!('IntersectionObserver' in window)) {
-        this.cards.forEach((c) => c.classList.add('revealed'));
+        this.elements.forEach((c) => c.classList.add('revealed'));
         return;
       }
 
-      const observer = new IntersectionObserver((entries, obs) => {
+      const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('revealed');
-            obs.unobserve(entry.target);
+          } else {
+            // Remove class when scrolled out of view so it animates again on return
+            entry.target.classList.remove('revealed');
           }
         });
       }, {
-        threshold: 0.25,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.15,
+        rootMargin: '0px 0px -40px 0px'
       });
 
-      this.cards.forEach((card) => observer.observe(card));
+      this.elements.forEach((el) => revealObserver.observe(el));
+      this.observer = revealObserver;
+    }
+
+    observeNew(element) {
+      if (!element) return;
+      element.classList.add('scroll-reveal');
+      if (this.observer) {
+        this.observer.observe(element);
+      } else {
+        element.classList.add('revealed');
+      }
     }
   }
 
@@ -1217,11 +1310,26 @@
         this.modalClaim.addEventListener('click', () => this.closeModal());
       }
 
+      const extraCloseBtn = document.getElementById('easter-egg-close-btn');
+      if (extraCloseBtn) {
+        extraCloseBtn.addEventListener('click', () => this.closeModal());
+      }
+
+      // Ensure clicking the overlay background (outside the modal box) closes the modal
       if (this.modal) {
         this.modal.addEventListener('click', (e) => {
-          if (e.target === this.modal) this.closeModal();
+          if (e.target === this.modal || !e.target.closest('.secret-modal-card')) {
+            this.closeModal();
+          }
         });
       }
+
+      // Keydown listener for the 'Escape' key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          this.closeModal();
+        }
+      });
     }
 
     handleNightcapClick() {

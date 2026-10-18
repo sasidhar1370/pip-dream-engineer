@@ -23,60 +23,62 @@
   --transition-spring: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 
   /* Common Accents */
-  --color-gold: #ffd166;
-  --color-gold-hover: #ffbe0b;
-  --color-lavender: #c084fc;
-  --color-cyan: #38bdf8;
-  --color-rose: #f472b6;
-  --color-mint: #34d399;
+  /* Common Accents */
+  --color-gold: #f7d794;
+  --color-gold-hover: #fae1af;
+  --color-lavender: #b388ff;
+  --color-lavender-soft: #c8d6e5;
+  --color-cyan: #70a1ff;
+  --color-rose: #ff9ff3;
+  --color-mint: #7bed9f;
 }
 
-/* --- THEME 1: MIDNIGHT NURSERY (Default Starry Navy) --- */
+/* --- THEME 1: MIDNIGHT NURSERY (Luxury Midnight Ink) --- */
 :root[data-theme="midnight"] {
-  --bg-primary: #0a0e1c;
-  --bg-secondary: #0f162e;
-  --bg-tertiary: #16203d;
+  --bg-primary: #090d1a;
+  --bg-secondary: #0f1426;
+  --bg-tertiary: #131a33;
 
-  /* Frosted Glass Surfaces */
-  --surface-card: rgba(18, 27, 54, 0.68);
-  --surface-card-hover: rgba(26, 38, 74, 0.82);
-  --surface-glass: rgba(255, 255, 255, 0.05);
-  --surface-glass-border: rgba(167, 139, 250, 0.2);
+  /* Ultra-Refined Frosted Glass Surfaces */
+  --surface-card: rgba(255, 255, 255, 0.03);
+  --surface-card-hover: rgba(255, 255, 255, 0.055);
+  --surface-glass: rgba(255, 255, 255, 0.03);
+  --surface-glass-border: rgba(255, 255, 255, 0.08);
 
   --text-primary: #f8fafc;
   --text-secondary: #cbd5e1;
-  --text-muted: #94a3b8;
-  --text-accent: #c084fc;
+  --text-muted: #a4b0be;
+  --text-accent: #b388ff;
 
-  --border-subtle: rgba(167, 139, 250, 0.18);
-  --border-glow: rgba(255, 209, 102, 0.35);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-glow: rgba(247, 215, 148, 0.25);
 
-  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.25);
-  --shadow-float: 0 18px 45px rgba(0, 0, 0, 0.38);
-  --shadow-glow-gold: 0 0 24px rgba(255, 209, 102, 0.4);
+  --shadow-soft: 0 12px 32px rgba(0, 0, 0, 0.45);
+  --shadow-float: 0 20px 48px rgba(0, 0, 0, 0.55);
+  --shadow-glow-gold: 0 0 24px rgba(247, 215, 148, 0.25);
 
-  --sky-gradient: radial-gradient(circle at 50% 15%, #182654 0%, #0a0e1c 70%, #040711 100%);
-  --sky-nebula: radial-gradient(ellipse at 80% 12%, rgba(168, 85, 247, 0.16) 0%, transparent 60%);
-  --cloud-tint: rgba(148, 163, 184, 0.12);
+  --sky-gradient: radial-gradient(circle at 50% 12%, #141c38 0%, #090d1a 70%, #05070f 100%);
+  --sky-nebula: radial-gradient(ellipse at 80% 12%, rgba(179, 136, 255, 0.12) 0%, transparent 60%);
+  --cloud-tint: rgba(164, 176, 190, 0.08);
 
-  --ticker-bg: rgba(15, 23, 46, 0.55);
-  --ticker-border: rgba(167, 139, 250, 0.14);
+  --ticker-bg: rgba(15, 20, 38, 0.65);
+  --ticker-border: rgba(255, 255, 255, 0.08);
 
-  --paper-slip-bg: rgba(20, 29, 58, 0.88);
-  --paper-slip-border: rgba(167, 139, 250, 0.28);
-  --paper-slip-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2);
+  --paper-slip-bg: rgba(255, 255, 255, 0.035);
+  --paper-slip-border: rgba(247, 215, 148, 0.2);
+  --paper-slip-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
 
-  --svg-roof-fill: #131d38;
-  --svg-roof-trim: #24345d;
-  --svg-chimney: #1e2c4d;
+  --svg-roof-fill: #11172e;
+  --svg-roof-trim: #1f2a4f;
+  --svg-chimney: #192242;
 
-  --lantern-soft-glow: rgba(255, 179, 71, 0.42);
-  --lantern-starry-glow: rgba(56, 189, 248, 0.45);
-  --lantern-sleep-glow: rgba(168, 85, 247, 0.42);
+  --lantern-soft-glow: rgba(247, 215, 148, 0.38);
+  --lantern-starry-glow: rgba(112, 161, 255, 0.4);
+  --lantern-sleep-glow: rgba(179, 136, 255, 0.38);
 
-  --odometer-bg: #070a14;
-  --odometer-tumbler-bg: #111827;
-  --odometer-text: #ffd166;
+  --odometer-bg: #060913;
+  --odometer-tumbler-bg: #0e1424;
+  --odometer-text: #f7d794;
 }
 
 /* --- THEME 2: DAY NURSERY (Clean Warm Pastel & Morning Glow) --- */
@@ -251,7 +253,8 @@ a {
   background: var(--sky-nebula);
   opacity: 0.85;
   mix-blend-mode: screen;
-  animation: auroraBreathe 18s ease-in-out infinite alternate;
+  animation: auroraBreathe 14s ease-in-out infinite alternate;
+  will-change: transform, opacity, filter;
 }
 
 [data-theme="day"] .sky-nebula {
@@ -266,14 +269,14 @@ a {
     opacity: 0.75;
   }
   50% {
-    transform: scale(1.08) translate(-15px, -10px);
-    filter: hue-rotate(25deg) brightness(1.15);
-    opacity: 0.92;
+    transform: scale(1.06) translate(-10px, -8px);
+    filter: hue-rotate(22deg) brightness(1.12);
+    opacity: 0.9;
   }
   100% {
-    transform: scale(1.04) translate(15px, 10px);
-    filter: hue-rotate(-20deg) brightness(0.95);
-    opacity: 0.72;
+    transform: scale(1.03) translate(10px, 8px);
+    filter: hue-rotate(-15deg) brightness(0.98);
+    opacity: 0.8;
   }
 }
 
@@ -400,22 +403,36 @@ body.lantern-beam-on .hidden-constellations-layer {
   letter-spacing: 0.5px;
 }
 
-/* --- 4. TOP SCROLLING TICKER (Sleek Frosted-Glass Strip) --- */
+/* --- 4. TOP SCROLLING TICKER (Sleek Single-Line Ticker Strip) --- */
 .retro-ticker-bar {
-  background: var(--ticker-bg);
+  height: 32px;
+  overflow: hidden;
+  white-space: nowrap;
+  background: rgba(13, 17, 38, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.78rem;
+  display: flex;
+  align-items: center;
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--ticker-border);
-  padding: 6px 0;
-  overflow: hidden;
+  padding: 0;
   z-index: 101;
   position: relative;
+  box-sizing: border-box;
+}
+
+[data-theme="day"] .retro-ticker-bar {
+  background: rgba(248, 246, 255, 0.95);
+  border-bottom: 1px solid rgba(124, 58, 237, 0.12);
 }
 
 .ticker-marquee-wrapper {
   overflow: hidden;
   white-space: nowrap;
   display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 .ticker-content {
@@ -433,7 +450,7 @@ body.lantern-beam-on .hidden-constellations-layer {
 
 .ticker-item {
   font-family: var(--font-body);
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   font-weight: 500;
   letter-spacing: 0.35px;
   color: var(--text-secondary);
@@ -445,7 +462,7 @@ body.lantern-beam-on .hidden-constellations-layer {
 
 .ticker-glyph {
   color: var(--color-gold);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
 }
 
 .ticker-sep {
@@ -484,15 +501,16 @@ body.lantern-beam-on .hidden-constellations-layer {
   box-shadow: 0 4px 20px rgba(168, 85, 247, 0.06);
 }
 
-.header-container {
+.header-container,
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 24px;
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 12px 24px;
-  box-sizing: border-box;
   overflow-x: hidden;
   gap: 1.25rem;
 }
@@ -615,7 +633,14 @@ body.lantern-beam-on .hidden-constellations-layer {
   gap: 8px;
   align-items: center;
   flex-shrink: 0;
+  margin-right: 0;
   white-space: nowrap;
+}
+
+.sound-pill {
+  flex-shrink: 0;
+  white-space: nowrap;
+  margin-right: 0;
 }
 
 .action-pill {
@@ -798,16 +823,23 @@ body.lantern-beam-on .hidden-constellations-layer {
 
 .section-eyebrow {
   display: inline-block;
-  font-family: var(--font-ticker);
-  font-size: 1.15rem;
-  letter-spacing: 1.5px;
-  color: var(--color-gold);
-  background: rgba(255, 209, 102, 0.1);
-  border: 1px solid rgba(255, 209, 102, 0.25);
-  padding: 3px 14px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a4b0be;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 4px 14px;
   border-radius: var(--radius-pill);
   margin-bottom: 0.85rem;
-  text-transform: uppercase;
+}
+
+[data-theme="day"] .section-eyebrow {
+  background: rgba(124, 58, 237, 0.05);
+  border: 1px solid rgba(124, 58, 237, 0.14);
+  color: #6b7280;
 }
 
 .section-title {
@@ -815,20 +847,48 @@ body.lantern-beam-on .hidden-constellations-layer {
   font-size: clamp(2.2rem, 4.2vw, 3rem);
   font-weight: 700;
   line-height: 1.2;
-  color: var(--text-primary);
+  background: linear-gradient(135deg, #ffffff 60%, #f7d794 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin-bottom: 0.85rem;
 }
 
+[data-theme="day"] .section-title {
+  background: linear-gradient(135deg, #1e1b4b 60%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .section-lead {
-  font-size: 1.12rem;
+  font-size: 1.1rem;
   color: var(--text-secondary);
   max-width: 640px;
   margin: 0 auto;
   line-height: 1.7;
 }
 
-/* Button Variants */
-.btn {
+/* Smooth Scroll-In Fade & Float */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Button Variants & Tactile Spring */
+.btn,
+.hero-cta,
+.chime-btn,
+.game-btn,
+.toy-launch-btn,
+.lullaby-loop-btn,
+.action-pill,
+.modal-close-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -839,55 +899,123 @@ body.lantern-beam-on .hidden-constellations-layer {
   font-weight: 600;
   border-radius: var(--radius-pill);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
-  transition: all var(--transition-fast);
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease !important;
   text-decoration: none;
   cursor: pointer;
   white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:hover,
+.hero-cta:hover,
+.chime-btn:hover,
+.game-btn:hover,
+.toy-launch-btn:hover,
+.lullaby-loop-btn:hover,
+.action-pill:hover,
+.modal-close-btn:hover {
+  transform: translateY(-3px) scale(1.02) !important;
+  box-shadow: 0 10px 24px rgba(247, 215, 148, 0.35);
+}
+
+.btn:active,
+.hero-cta:active,
+.chime-btn:active,
+.game-btn:active,
+.toy-launch-btn:active,
+.lullaby-loop-btn:active,
+.action-pill:active,
+.modal-close-btn:active {
+  transform: translateY(1px) scale(0.98) !important;
 }
 
 .btn-primary,
+.hero-btn-primary,
 #hero-cta-projects,
 #start-stardust-btn,
-.toy-launch-btn {
-  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-  color: #1a1a2e;
+.toy-launch-btn,
+#easter-modal-claim-btn,
+#easter-egg-close-btn {
+  background: linear-gradient(135deg, #f7d794 0%, #e6be6a 100%);
+  color: #090d1a;
   font-weight: 700;
   border: none;
-  box-shadow: 0 4px 15px rgba(253, 160, 133, 0.4);
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, filter 0.2s ease;
+  box-shadow: 0 4px 16px rgba(247, 215, 148, 0.22);
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-primary:hover,
+.hero-btn-primary:hover,
 #hero-cta-projects:hover,
 #start-stardust-btn:hover,
-.toy-launch-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(253, 160, 133, 0.55);
-  filter: brightness(1.05);
+.toy-launch-btn:hover,
+#easter-modal-claim-btn:hover,
+#easter-egg-close-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(247, 215, 148, 0.35);
+  filter: brightness(1.04);
+}
+
+/* Starlight Sheen Highlight Pass Across Action Buttons */
+.hero-btn-primary::after,
+.btn-primary::after,
+#hero-cta-projects::after,
+#start-stardust-btn::after,
+.toy-launch-btn::after,
+#easter-modal-claim-btn::after,
+#easter-egg-close-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: rotate(30deg);
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+
+.hero-btn-primary:hover::after,
+.btn-primary:hover::after,
+#hero-cta-projects:hover::after,
+#start-stardust-btn:hover::after,
+.toy-launch-btn:hover::after,
+#easter-modal-claim-btn:hover::after,
+#easter-egg-close-btn:hover::after {
+  left: 140%;
 }
 
 .btn-secondary {
-  background: var(--surface-card);
-  color: var(--text-primary);
-  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.04);
+  color: #f8fafc;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
 }
 
 .btn-secondary:hover {
-  transform: translateY(-2px);
-  border-color: var(--color-lavender);
-  background: var(--surface-card-hover);
+  transform: translateY(-2px) scale(1.02);
+  border-color: rgba(247, 215, 148, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+  color: #f7d794;
 }
 
 .btn-glass {
-  background: var(--surface-glass);
+  background: rgba(255, 255, 255, 0.03);
   color: var(--text-primary);
-  border: 1px solid var(--surface-glass-border);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .btn-glass:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(247, 215, 148, 0.3);
+  color: #f7d794;
   transform: translateY(-2px);
 }
 
@@ -908,7 +1036,7 @@ body.lantern-beam-on .hidden-constellations-layer {
 /* --- 7. HERO SECTION (2-Column Desktop Viewport Fit) --- */
 .hero-section {
   position: relative;
-  min-height: 80vh;
+  min-height: 82vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -922,7 +1050,7 @@ body.lantern-beam-on .hidden-constellations-layer {
   align-items: center;
   max-width: 1160px;
   margin: 0 auto;
-  min-height: 80vh;
+  min-height: 82vh;
   padding: 20px 24px;
   box-sizing: border-box;
   width: 100%;
@@ -932,20 +1060,24 @@ body.lantern-beam-on .hidden-constellations-layer {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  text-align: left;
   gap: 18px;
+  width: 100%;
 }
 
 .hero-pill-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  padding: 0.35rem 0.95rem;
-  background: var(--surface-glass);
-  border: 1px solid var(--border-subtle);
+  padding: 4px 14px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-pill);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 600;
-  color: var(--text-secondary);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a4b0be;
   backdrop-filter: blur(12px);
   align-self: flex-start;
   margin: 0;
@@ -971,8 +1103,16 @@ body.lantern-beam-on .hidden-constellations-layer {
   font-size: clamp(2.2rem, 3.8vw, 3.4rem);
   font-weight: 700;
   line-height: 1.15;
-  color: var(--text-primary);
+  background: linear-gradient(135deg, #ffffff 60%, #f7d794 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin: 0;
+}
+
+[data-theme="day"] .hero-title {
+  background: linear-gradient(135deg, #1e1b4b 60%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .highlight-pip {
@@ -988,7 +1128,7 @@ body.lantern-beam-on .hidden-constellations-layer {
   font-style: italic;
   font-weight: 500;
   color: var(--color-gold);
-  text-shadow: 0 0 20px rgba(255, 209, 102, 0.35);
+  text-shadow: 0 0 20px rgba(247, 215, 148, 0.35);
   margin: 0;
   line-height: 1.35;
 }
@@ -1043,20 +1183,29 @@ body.lantern-beam-on .hidden-constellations-layer {
   align-items: center;
 }
 
-/* Softened Hero Avatar Image Wrapper with Stardust Aura */
+/* Softened Hero Avatar Image Wrapper with Circular Celestial Starlight Aura */
 .hero-avatar-wrapper,
 #hero-avatar-container,
 #pip-hero-avatar,
 .pip-avatar-wrapper,
 .avatar-img-container {
   position: relative;
-  border-radius: 28px;
-  border: 2px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 0 35px rgba(168, 85, 247, 0.25);
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 0 50px rgba(168, 85, 247, 0.35), inset 0 0 25px rgba(13, 17, 38, 0.5);
   overflow: hidden;
-  animation: gentleFloat 4s ease-in-out infinite;
+  animation: celestialBob 5s ease-in-out infinite !important;
+  will-change: transform;
   transform-style: preserve-3d;
   background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, black 72%, transparent 98%);
+  mask-image: radial-gradient(circle at 50% 50%, black 72%, transparent 98%);
 }
 
 [data-theme="day"] .hero-avatar-wrapper,
@@ -1064,8 +1213,8 @@ body.lantern-beam-on .hidden-constellations-layer {
 [data-theme="day"] #pip-hero-avatar,
 [data-theme="day"] .pip-avatar-wrapper,
 [data-theme="day"] .avatar-img-container {
-  border: 2px solid rgba(168, 85, 247, 0.2);
-  box-shadow: 0 0 35px rgba(168, 85, 247, 0.18);
+  border: 2px solid rgba(179, 136, 255, 0.3);
+  box-shadow: 0 0 50px rgba(168, 85, 247, 0.25), inset 0 0 25px rgba(255, 255, 255, 0.7);
 }
 
 #pip-avatar-img,
@@ -1076,8 +1225,8 @@ body.lantern-beam-on .hidden-constellations-layer {
   height: auto;
   display: block;
   mix-blend-mode: screen;
-  -webkit-mask-image: radial-gradient(circle at 50% 50%, black 70%, transparent 100%);
-  mask-image: radial-gradient(circle at 50% 50%, black 70%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, black 72%, transparent 98%);
+  mask-image: radial-gradient(circle at 50% 50%, black 72%, transparent 98%);
   filter: drop-shadow(0 15px 30px rgba(168, 85, 247, 0.4));
   user-select: none;
   pointer-events: none;
@@ -1088,6 +1237,12 @@ body.lantern-beam-on .hidden-constellations-layer {
 [data-theme="day"] .pip-avatar-img,
 [data-theme="day"] .hero-avatar-img {
   mix-blend-mode: multiply;
+}
+
+@keyframes celestialBob {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-7px) rotate(-0.8deg); }
+  66% { transform: translateY(-3px) rotate(0.8deg); }
 }
 
 @keyframes gentleFloat {
@@ -1101,10 +1256,11 @@ body.lantern-beam-on .hidden-constellations-layer {
 
 @media (min-width: 900px) {
   .hero-section {
-    min-height: 80vh;
+    min-height: 82vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
   }
 
   .hero-grid {
@@ -1114,8 +1270,11 @@ body.lantern-beam-on .hidden-constellations-layer {
     align-items: center;
     max-width: 1160px;
     margin: 0 auto;
-    min-height: 80vh;
-    padding: 20px 24px;
+    min-height: 82vh;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 24px;
+    padding-right: 24px;
     box-sizing: border-box;
     width: 100%;
   }
@@ -1242,7 +1401,7 @@ body.lantern-beam-on .hidden-constellations-layer {
   font-weight: 600;
   color: var(--text-secondary);
   box-shadow: var(--shadow-soft);
-  margin-top: 14px;
+  margin-top: 12px;
   text-align: center;
   max-width: 340px;
   transition: all var(--transition-fast);
@@ -1276,20 +1435,26 @@ body.lantern-beam-on .hidden-constellations-layer {
 /* Tier 2 Mini-Toy: Pip's Stardust Catcher */
 .stardust-toy-card {
   margin-top: 0.25rem;
-  padding: 0.85rem 1.15rem;
-  background: var(--surface-card);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-soft);
+  padding: 1.1rem 1.35rem;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
   max-width: 490px;
   transition: all var(--transition-normal);
 }
 
 .stardust-toy-card:hover {
-  border-color: rgba(255, 209, 102, 0.4);
-  box-shadow: var(--shadow-float);
+  border-color: rgba(247, 215, 148, 0.35);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 20px rgba(247, 215, 148, 0.1);
+}
+
+[data-theme="day"] .stardust-toy-card {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(124, 58, 237, 0.16);
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.06);
 }
 
 .toy-card-header {
@@ -1471,7 +1636,7 @@ body.lantern-beam-on .hidden-constellations-layer {
 .character-dossier {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
-  gap: 40px;
+  gap: 36px;
   align-items: start;
   max-width: 1100px;
   margin: 0 auto;
@@ -1487,7 +1652,7 @@ body.lantern-beam-on .hidden-constellations-layer {
   .character-dossier {
     display: grid;
     grid-template-columns: 0.9fr 1.1fr;
-    gap: 40px;
+    gap: 36px;
     align-items: start;
     max-width: 1100px;
     margin: 0 auto;
@@ -1522,8 +1687,8 @@ body.lantern-beam-on .hidden-constellations-layer {
   background: transparent;
   border-radius: 28px;
   overflow: hidden;
-  border: 2px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 0 35px rgba(168, 85, 247, 0.25);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 35px rgba(179, 136, 255, 0.2), 0 12px 32px rgba(0, 0, 0, 0.45);
   animation: gentleFloat 4s ease-in-out infinite;
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, border-color 0.3s ease;
   width: 100%;
@@ -1531,13 +1696,13 @@ body.lantern-beam-on .hidden-constellations-layer {
 
 .portrait-frame:hover {
   transform: translateY(-6px);
-  border-color: rgba(255, 209, 102, 0.45);
-  box-shadow: 0 0 45px rgba(168, 85, 247, 0.35);
+  border-color: rgba(247, 215, 148, 0.4);
+  box-shadow: 0 0 45px rgba(179, 136, 255, 0.3), 0 16px 40px rgba(0, 0, 0, 0.55);
 }
 
 [data-theme="day"] .portrait-frame {
-  border: 2px solid rgba(168, 85, 247, 0.2);
-  box-shadow: 0 0 35px rgba(168, 85, 247, 0.18);
+  border: 1.5px solid rgba(124, 58, 237, 0.2);
+  box-shadow: 0 0 35px rgba(124, 58, 237, 0.14);
 }
 
 .portrait-img {
@@ -1557,30 +1722,30 @@ body.lantern-beam-on .hidden-constellations-layer {
   justify-content: center;
   gap: 0.45rem;
   padding: 0.4rem 0.95rem;
-  background: rgba(10, 14, 28, 0.85);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(9, 13, 26, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--color-gold);
   border-radius: var(--radius-pill);
   font-family: var(--font-ticker);
   font-size: 1.05rem;
   color: var(--color-gold);
   text-align: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
 [data-theme="day"] .portrait-badge {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.92);
   color: var(--text-primary);
-  border-color: rgba(168, 85, 247, 0.4);
+  border-color: rgba(124, 58, 237, 0.4);
 }
 
 .secret-badge-slot {
   background: var(--surface-card);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px dashed var(--border-subtle);
-  border-radius: var(--radius-md);
+  border-radius: 18px;
   padding: 1.1rem;
   transition: all var(--transition-normal);
 }
@@ -1590,7 +1755,7 @@ body.lantern-beam-on .hidden-constellations-layer {
 }
 
 .secret-badge-slot.unlocked {
-  background: linear-gradient(135deg, rgba(255, 209, 102, 0.15), rgba(167, 139, 250, 0.2));
+  background: linear-gradient(135deg, rgba(247, 215, 148, 0.12), rgba(179, 136, 255, 0.15));
   border: 1.5px solid var(--color-gold);
   box-shadow: var(--shadow-glow-gold);
   opacity: 1;
@@ -1633,26 +1798,26 @@ body.lantern-beam-on .hidden-constellations-layer {
 }
 
 .bio-narrative-card {
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(168, 85, 247, 0.2);
-  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
   padding: 1.5rem;
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .bio-narrative-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(255, 230, 109, 0.4);
-  box-shadow: 0 10px 25px rgba(168, 85, 247, 0.15);
+  border-color: rgba(247, 215, 148, 0.35);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 20px rgba(247, 215, 148, 0.1);
 }
 
 [data-theme="day"] .bio-narrative-card {
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(168, 85, 247, 0.18);
-  box-shadow: 0 10px 25px rgba(168, 85, 247, 0.06);
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(124, 58, 237, 0.16);
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.06);
 }
 
 .bio-card-header {
@@ -1711,28 +1876,29 @@ body.lantern-beam-on .hidden-constellations-layer {
 /* Storybook Glassmorphism Cards */
 .recipe-card,
 .recipe-container {
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(168, 85, 247, 0.2);
-  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
   padding: 1.4rem;
   margin-bottom: 0;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .recipe-card:hover,
 .recipe-container:hover {
   transform: translateY(-3px);
-  border-color: rgba(255, 230, 109, 0.4);
-  box-shadow: 0 10px 25px rgba(168, 85, 247, 0.15);
+  border-color: rgba(247, 215, 148, 0.35);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 20px rgba(247, 215, 148, 0.1);
 }
 
 [data-theme="day"] .recipe-card,
 [data-theme="day"] .recipe-container {
-  background: rgba(255, 255, 255, 0.75);
-  border: 1px solid rgba(168, 85, 247, 0.18);
-  box-shadow: 0 10px 25px rgba(168, 85, 247, 0.06);
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(124, 58, 237, 0.16);
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.06);
 }
 
 .recipe-title {
@@ -1769,27 +1935,28 @@ body.lantern-beam-on .hidden-constellations-layer {
 }
 
 .recipe-bar-track {
-  height: 10px;
+  height: 8px;
+  border-radius: 9999px;
   background: rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-pill);
   overflow: hidden;
+  margin-top: 6px;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 [data-theme="day"] .recipe-bar-track {
-  background: rgba(168, 85, 247, 0.12);
+  background: rgba(124, 58, 237, 0.12);
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
-.recipe-bar-fill {
+.recipe-bar-fill,
+.recipe-bar-fill.fill-moonbeam,
+.recipe-bar-fill.fill-mist,
+.recipe-bar-fill.fill-lavender {
   height: 100%;
-  border-radius: var(--radius-pill);
-  transition: width 1s ease-out;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #ffe66d, #fca311);
+  transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
-.fill-moonbeam { background: linear-gradient(90deg, #ffd166, #ffbe0b); }
-.fill-mist { background: linear-gradient(90deg, #38bdf8, #818cf8); }
-.fill-lavender { background: linear-gradient(90deg, #c084fc, #f472b6); }
 
 .gear-cards-grid,
 .toolkit-grid {
@@ -1810,30 +1977,31 @@ body.lantern-beam-on .hidden-constellations-layer {
 
 .gear-card,
 .tool-chip {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(168, 85, 247, 0.2);
-  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
   padding: 12px;
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .gear-card:hover,
 .tool-chip:hover {
   transform: translateY(-3px);
-  border-color: rgba(255, 230, 109, 0.4);
-  box-shadow: 0 10px 25px rgba(168, 85, 247, 0.15);
+  border-color: rgba(247, 215, 148, 0.35);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45), 0 0 16px rgba(247, 215, 148, 0.1);
 }
 
 [data-theme="day"] .gear-card,
 [data-theme="day"] .tool-chip {
-  background: rgba(255, 255, 255, 0.75);
-  border: 1px solid rgba(168, 85, 247, 0.18);
-  box-shadow: 0 6px 18px rgba(168, 85, 247, 0.06);
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(124, 58, 237, 0.16);
+  box-shadow: 0 6px 18px rgba(124, 58, 237, 0.06);
 }
 
 .tool-gem {
@@ -1868,28 +2036,29 @@ body.lantern-beam-on .hidden-constellations-layer {
   padding: 1.1rem 1.4rem;
   margin: 0;
   line-height: 1.6;
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(168, 85, 247, 0.2);
-  border-left: 4px solid var(--color-gold);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 3px solid var(--color-gold);
   border-radius: 18px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .quote-card:hover,
 .bio-quote:hover {
   transform: translateY(-3px);
-  border-color: rgba(255, 230, 109, 0.4);
-  box-shadow: 0 10px 25px rgba(168, 85, 247, 0.15);
+  border-color: rgba(247, 215, 148, 0.35);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 20px rgba(247, 215, 148, 0.1);
 }
 
 [data-theme="day"] .quote-card,
 [data-theme="day"] .bio-quote {
-  background: rgba(255, 255, 255, 0.75);
-  border: 1px solid rgba(168, 85, 247, 0.18);
-  border-left: 4px solid var(--color-gold);
-  box-shadow: 0 10px 25px rgba(168, 85, 247, 0.06);
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(124, 58, 237, 0.16);
+  border-left: 3px solid var(--color-gold);
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.06);
 }
 
 /* --- 9. SHOWCASE PROJECTS GALLERY (#projects) --- */
@@ -1900,12 +2069,12 @@ body.lantern-beam-on .hidden-constellations-layer {
 }
 
 .project-card {
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(168, 85, 247, 0.2);
-  border-radius: 18px;
-  box-shadow: var(--shadow-soft);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -1915,14 +2084,14 @@ body.lantern-beam-on .hidden-constellations-layer {
 
 .project-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(255, 230, 109, 0.4);
-  box-shadow: 0 10px 25px rgba(168, 85, 247, 0.15);
+  border-color: rgba(247, 215, 148, 0.35);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 20px rgba(247, 215, 148, 0.1);
 }
 
 [data-theme="day"] .project-card {
-  background: rgba(255, 255, 255, 0.75);
-  border: 1px solid rgba(168, 85, 247, 0.18);
-  box-shadow: 0 10px 25px rgba(168, 85, 247, 0.06);
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(124, 58, 237, 0.16);
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.06);
 }
 
 .card-glass-header {
@@ -1951,19 +2120,32 @@ body.lantern-beam-on .hidden-constellations-layer {
 
 .project-visual-wrapper {
   position: relative;
-  background: var(--bg-secondary);
-  height: 235px;
+  background: transparent;
+  min-height: 260px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 18px 16px 0;
+}
+
+.routes-map-stage {
+  padding: 0;
+  min-height: 260px;
+  background: var(--bg-secondary);
 }
 
 .project-body {
-  padding: 1.75rem;
+  padding: 28px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  box-sizing: border-box;
+}
+
+.lullaby-card .project-body,
+.lantern-card .project-body {
+  padding: 28px;
 }
 
 .project-title {
@@ -1981,6 +2163,37 @@ body.lantern-beam-on .hidden-constellations-layer {
   margin-bottom: 1.4rem;
 }
 
+/* --- STUDIO SHOWCASE PORTAL FOR PROJECT IMAGES --- */
+.project-img,
+.project-card img,
+.lullaby-img,
+.lantern-img {
+  height: 240px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  background: #fdfbf7; /* Clean warm base that matches the asset background */
+  display: block;
+  margin: 0 auto 16px auto;
+  max-width: 90%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover img,
+.project-card:hover .project-img {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 14px 30px rgba(168, 85, 247, 0.2);
+}
+
+/* Hide unstyled broken carousel dots under the music box */
+.carousel-dots,
+div:has(> .dot) {
+  display: none !important;
+}
+
 /* --- PROJECT 1: THE LULLABY LAB (Toy Xylophone Chimes) --- */
 .lullaby-box-interactive {
   position: relative;
@@ -1989,29 +2202,24 @@ body.lantern-beam-on .hidden-constellations-layer {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100%;
   transition: transform var(--transition-fast);
 }
 
 .lullaby-box-interactive:hover {
-  transform: scale(1.04);
+  transform: scale(1.02);
 }
 
 .lullaby-box-interactive:active {
   transform: scale(0.98);
 }
 
-.lullaby-img {
-  max-height: 195px;
-  width: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.35));
-  transition: filter var(--transition-fast);
-}
-
 .interactive-overlay {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 5%;
+  right: 5%;
+  height: 240px;
+  border-radius: 20px;
   background: rgba(10, 14, 28, 0.45);
   backdrop-filter: blur(3px);
   display: flex;
@@ -2020,7 +2228,9 @@ body.lantern-beam-on .hidden-constellations-layer {
   justify-content: center;
   gap: 0.5rem;
   opacity: 0;
+  margin: 0 auto 16px auto;
   transition: opacity var(--transition-fast);
+  pointer-events: none;
 }
 
 .lullaby-box-interactive:hover .interactive-overlay,
@@ -2069,44 +2279,14 @@ body.lantern-beam-on .hidden-constellations-layer {
   }
 }
 
+/* Hide unstyled broken dot element under the music box */
+.carousel-dots,
+.carousel-indicators,
+.project-dots,
+.dots-container,
+div:has(> .dot),
 .audio-visualizer-bar {
-  position: absolute;
-  bottom: 12px;
-  display: flex;
-  align-items: flex-end;
-  gap: 3px;
-  height: 24px;
-  padding: 0 12px;
-  background: rgba(10, 14, 28, 0.7);
-  backdrop-filter: blur(8px);
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--border-subtle);
-}
-
-.vis-bar {
-  width: 3px;
-  height: 4px;
-  background: var(--color-gold);
-  border-radius: 2px;
-  transition: height 0.1s ease;
-}
-
-.audio-visualizer-bar.playing .vis-bar:nth-child(odd) {
-  animation: vis-wave-1 0.6s ease-in-out infinite alternate;
-}
-
-.audio-visualizer-bar.playing .vis-bar:nth-child(even) {
-  animation: vis-wave-2 0.7s ease-in-out infinite alternate 0.2s;
-}
-
-@keyframes vis-wave-1 {
-  0% { height: 4px; }
-  100% { height: 22px; }
-}
-
-@keyframes vis-wave-2 {
-  0% { height: 6px; }
-  100% { height: 18px; }
+  display: none !important;
 }
 
 /* Glowing Rounded Pastel Xylophone Chime Bars */
@@ -2270,18 +2450,18 @@ body.lantern-beam-on .hidden-constellations-layer {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
 .lantern-img {
-  max-height: 195px;
-  width: auto;
-  object-fit: contain;
   filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.4));
-  transition: all var(--transition-normal);
 }
 
 .lantern-core-bulb {
   position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -2416,52 +2596,256 @@ body.lantern-beam-on .hidden-constellations-layer {
   padding-top: 0.85rem;
 }
 
-/* --- PROJECT 3: DREAM DELIVERY ROUTES --- */
-.routes-map-stage {
+/* --- PROJECT 3: DREAM DELIVERY ROUTES (Living Radar Mission Control) --- */
+.routes-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.routes-card .card-glass-header {
+  order: 1;
+}
+
+.routes-card .project-body {
+  order: 2;
+  padding: 24px 28px 16px 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+.routes-card .routes-map-stage {
+  order: 3;
   position: relative;
-  background: #090e1a;
-  padding: 0.5rem;
+  background: radial-gradient(ellipse at 50% 60%, #101633 0%, #080c18 100%);
+  border-radius: 18px;
+  margin: 0 24px 24px 24px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.65), 0 10px 30px rgba(0, 0, 0, 0.35);
+  min-height: 280px;
+}
+
+/* Subtle Radar Rings Sweep Overlay */
+.routes-map-stage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-radial-gradient(
+    circle at 50% 85%,
+    transparent 0,
+    transparent 58px,
+    rgba(56, 189, 248, 0.04) 59px,
+    transparent 60px
+  );
+  opacity: 0.8;
+  z-index: 1;
 }
 
 .routes-svg {
   width: 100%;
   height: 100%;
   display: block;
+  position: relative;
+  z-index: 2;
 }
 
+/* 1. Interactive Route Buttons (Clearly visible above the map) */
+.routes-control-container {
+  margin-top: 10px;
+  margin-bottom: 12px;
+}
+
+.routes-control-title {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.35rem;
+}
+
+.routes-btn-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 16px 0;
+}
+
+.route-tab-btn {
+  padding: 8px 16px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.route-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 230, 109, 0.4);
+  transform: translateY(-2px);
+}
+
+.route-tab-btn.active {
+  background: linear-gradient(135deg, #ffe66d, #fca311);
+  color: #0d1126;
+  font-weight: 700;
+  border-color: transparent;
+  box-shadow: 0 0 15px rgba(255, 230, 109, 0.4);
+}
+
+[data-theme="day"] .route-tab-btn {
+  background: rgba(15, 23, 42, 0.06);
+  border-color: rgba(15, 23, 42, 0.15);
+  color: #1e293b;
+}
+
+[data-theme="day"] .route-tab-btn.active {
+  background: linear-gradient(135deg, #ffe66d, #fca311);
+  color: #0d1126;
+}
+
+/* 2. Living Flight Path & Gliding Dream Packet Animation */
+.flight-path-line,
 .flight-route-path {
+  stroke-dasharray: 8 8;
+  animation: pathDash 2s linear infinite;
   transition: opacity var(--transition-normal);
+}
+
+@keyframes pathDash {
+  to {
+    stroke-dashoffset: -32;
+  }
 }
 
 .flight-route-path.route-active {
   opacity: 1 !important;
-  animation: dash-flow 20s linear infinite;
+  stroke-dasharray: 8 8;
+  animation: pathDash 2s linear infinite !important;
+  filter: drop-shadow(0 0 8px rgba(255, 209, 102, 0.6));
 }
 
-@keyframes dash-flow {
-  0% { stroke-dashoffset: 0; }
-  100% { stroke-dashoffset: -400; }
+#flying-pip-drone {
+  transition: transform 0.05s linear;
+  filter: drop-shadow(0 0 14px rgba(255, 230, 109, 0.85));
+  pointer-events: none;
 }
 
+/* 3. Refine the Skyline Aesthetics */
+/* Building Silhouettes */
+.nursery-skyline rect[rx="4"] {
+  fill: #090d1a;
+  fill: url(#skylineGrad);
+}
+
+.nursery-skyline polygon {
+  fill: #1a223f;
+  fill: url(#skylineGrad);
+}
+
+/* Windows: Warm flickering amber glow */
+.nursery-skyline rect[rx="2"] {
+  box-shadow: 0 0 8px rgba(255, 230, 109, 0.6);
+  filter: drop-shadow(0 0 8px rgba(255, 230, 109, 0.6));
+  animation: windowFlicker 3s infinite alternate ease-in-out;
+}
+
+.nursery-skyline rect[rx="2"]:nth-child(even) {
+  animation-duration: 4.2s;
+  animation-delay: 0.6s;
+}
+
+.nursery-skyline rect[rx="2"]:nth-child(3n) {
+  animation-duration: 2.8s;
+  animation-delay: 1.2s;
+}
+
+@keyframes windowFlicker {
+  0% {
+    opacity: 0.55;
+    filter: drop-shadow(0 0 4px rgba(255, 230, 109, 0.4));
+  }
+  50% {
+    opacity: 0.95;
+    filter: drop-shadow(0 0 10px rgba(255, 230, 109, 0.8));
+  }
+  100% {
+    opacity: 0.7;
+    filter: drop-shadow(0 0 6px rgba(255, 230, 109, 0.5));
+  }
+}
+
+/* Waypoints & Radar Ping Rings */
 .map-waypoint {
   cursor: pointer;
   outline: none;
   transition: transform var(--transition-fast);
 }
 
-.map-waypoint:hover, .map-waypoint:focus-visible {
-  transform: scale(1.3);
-  filter: drop-shadow(0 0 10px rgba(255, 209, 102, 0.7));
+.map-waypoint:hover,
+.map-waypoint:focus-visible {
+  transform: scale(1.25);
+  filter: drop-shadow(0 0 12px rgba(255, 209, 102, 0.8));
 }
 
 .pulse-ring {
-  animation: pulse-ring-anim 2s infinite ease-out;
+  transform-box: fill-box;
   transform-origin: center;
+  animation: pulse-ring-anim 2.4s infinite ease-out;
 }
 
 @keyframes pulse-ring-anim {
-  0% { transform: scale(0.8); opacity: 0.9; }
-  100% { transform: scale(2.2); opacity: 0; }
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+/* Subtle pulsing radar ping ring on currently selected waypoint circle */
+.map-waypoint.selected .pulse-ring,
+.map-waypoint.active .pulse-ring {
+  animation: radarPing 1.8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite !important;
+  stroke: rgba(255, 230, 109, 0.9);
+  stroke-width: 1.5;
+}
+
+@keyframes radarPing {
+  0% {
+    transform: scale(0.6);
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.45;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+.map-waypoint.selected circle:nth-of-type(2),
+.map-waypoint.active circle:nth-of-type(2) {
+  filter: drop-shadow(0 0 12px rgba(255, 230, 109, 0.9)) !important;
+  stroke: #ffffff;
+  stroke-width: 2.5;
+}
+
+.map-waypoint.selected .waypoint-label,
+.map-waypoint.active .waypoint-label {
+  fill: #ffe66d !important;
+  font-weight: 800;
+  filter: drop-shadow(0 0 6px rgba(255, 230, 109, 0.7));
 }
 
 .waypoint-label {
@@ -2470,12 +2854,6 @@ body.lantern-beam-on .hidden-constellations-layer {
   fill: #f8fafc;
   pointer-events: none;
   font-weight: bold;
-}
-
-#flying-pip-drone {
-  transition: transform 0.05s linear;
-  filter: drop-shadow(0 4px 10px rgba(255, 209, 102, 0.6));
-  pointer-events: none;
 }
 
 .svg-smoke {
@@ -2514,50 +2892,6 @@ body.lantern-beam-on .hidden-constellations-layer {
 .tooltip-desc {
   display: block;
   font-size: 0.75rem;
-}
-
-.routes-control-container {
-  margin-top: auto;
-  margin-bottom: 1.4rem;
-}
-
-.routes-control-title {
-  display: block;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 0.65rem;
-}
-
-.routes-btn-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
-}
-
-.route-tab-btn {
-  padding: 0.65rem 1rem;
-  background: var(--surface-glass);
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  text-align: left;
-  font-family: var(--font-display);
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  transition: all var(--transition-fast);
-}
-
-.route-tab-btn:hover {
-  background: var(--surface-card-hover);
-  color: var(--text-primary);
-}
-
-.route-tab-btn.active {
-  background: rgba(56, 189, 248, 0.15);
-  border-color: var(--color-cyan);
-  color: var(--color-cyan);
-  box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
 }
 
 .flight-live-status {
@@ -2606,17 +2940,17 @@ body.lantern-beam-on .hidden-constellations-layer {
 
 .story-card {
   position: relative;
-  background: var(--surface-card);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(168, 85, 247, 0.2);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 20px;
   padding: 2.25rem 2.5rem 2rem 5.5rem;
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
   line-height: 1.8;
   opacity: 0;
   transform: translateY(40px);
-  transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), border-color var(--transition-fast);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .story-card.revealed {
@@ -2625,25 +2959,38 @@ body.lantern-beam-on .hidden-constellations-layer {
 }
 
 .story-card:hover {
-  border-color: var(--color-gold);
-  box-shadow: var(--shadow-float);
+  border-color: rgba(247, 215, 148, 0.35);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 20px rgba(247, 215, 148, 0.1);
+}
+
+[data-theme="day"] .story-card {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(124, 58, 237, 0.16);
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.06);
 }
 
 .story-stamp {
   position: absolute;
   top: 1.5rem;
   right: 1.75rem;
-  background: rgba(255, 230, 109, 0.15);
-  color: #ffe66d;
-  border: 1px solid rgba(255, 230, 109, 0.3);
+  background: rgba(247, 215, 148, 0.08);
+  color: var(--color-gold);
+  border: 1px solid rgba(247, 215, 148, 0.25);
   border-radius: 9999px;
-  padding: 4px 12px;
+  padding: 4px 14px;
   font-family: var(--font-display);
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   font-weight: 600;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   transform: none;
   opacity: 1;
+}
+
+[data-theme="day"] .story-stamp {
+  background: rgba(124, 58, 237, 0.08);
+  color: #7c3aed;
+  border-color: rgba(124, 58, 237, 0.25);
 }
 
 .story-icon-badge {
@@ -2654,8 +3001,8 @@ body.lantern-beam-on .hidden-constellations-layer {
   height: 40px;
   border-radius: 50%;
   background: var(--bg-primary);
-  border: 2px solid var(--color-gold);
-  box-shadow: 0 0 15px rgba(255, 209, 102, 0.35);
+  border: 1.5px solid rgba(247, 215, 148, 0.4);
+  box-shadow: 0 0 16px rgba(247, 215, 148, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2669,7 +3016,16 @@ body.lantern-beam-on .hidden-constellations-layer {
   font-size: 1.55rem;
   font-weight: 700;
   color: var(--text-primary);
+  background: linear-gradient(135deg, #ffffff 70%, #f7d794 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin-bottom: 0.85rem;
+}
+
+[data-theme="day"] .story-card-title {
+  background: linear-gradient(135deg, #1e1b4b 70%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .story-card-body {
@@ -2704,13 +3060,19 @@ body.lantern-beam-on .hidden-constellations-layer {
 }
 
 .wish-form-card {
-  background: var(--surface-card);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid var(--surface-glass-border);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 20px;
   padding: 2.25rem;
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="day"] .wish-form-card {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(124, 58, 237, 0.16);
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.06);
 }
 
 .card-pill {
@@ -2748,20 +3110,29 @@ body.lantern-beam-on .hidden-constellations-layer {
 
 .form-input, .form-select, .form-textarea {
   width: 100%;
-  padding: 0.8rem 1.1rem;
-  background: var(--surface-glass);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-  color: var(--text-primary);
-  font-size: 0.96rem;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: #fff;
+  font-size: 0.95rem;
+  box-sizing: border-box;
   transition: all var(--transition-fast);
 }
 
 .form-input:focus, .form-select:focus, .form-textarea:focus {
   outline: none;
-  border-color: var(--color-gold);
-  box-shadow: 0 0 14px rgba(255, 209, 102, 0.25);
-  background: var(--surface-card-hover);
+  border-color: rgba(247, 215, 148, 0.45);
+  box-shadow: 0 0 16px rgba(247, 215, 148, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="day"] .form-input,
+[data-theme="day"] .form-select,
+[data-theme="day"] .form-textarea {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  color: #1e1b4b;
 }
 
 .form-select option {
@@ -2793,11 +3164,19 @@ body.lantern-beam-on .hidden-constellations-layer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--surface-card);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--border-subtle);
-  border-radius: 16px;
-  padding: 0.95rem 1.4rem;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 1rem 1.4rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="day"] .wishes-board-header {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(124, 58, 237, 0.16);
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.06);
 }
 
 .board-title {
@@ -2811,9 +3190,9 @@ body.lantern-beam-on .hidden-constellations-layer {
   font-family: var(--font-ticker);
   font-size: 1.15rem;
   color: var(--color-gold);
-  background: rgba(255, 209, 102, 0.15);
-  border: 1px solid var(--color-gold);
-  padding: 2px 9px;
+  background: rgba(247, 215, 148, 0.12);
+  border: 1px solid rgba(247, 215, 148, 0.35);
+  padding: 2px 10px;
   border-radius: var(--radius-pill);
   margin-left: 0.5rem;
 }
@@ -2844,12 +3223,13 @@ body.lantern-beam-on .hidden-constellations-layer {
 /* Cozy Floating Paper Sleep-Slips Pinned under the Stars */
 .wish-card {
   position: relative;
-  background: var(--paper-slip-bg);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--paper-slip-border);
-  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(247, 215, 148, 0.2);
+  border-radius: 18px;
   padding: 1.4rem 1.25rem 1.1rem;
-  box-shadow: var(--paper-slip-shadow);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -2866,9 +3246,15 @@ body.lantern-beam-on .hidden-constellations-layer {
 
 .wish-card:hover {
   transform: translateY(-5px) rotate(0deg) scale(1.02);
-  border-color: var(--color-gold);
-  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.22);
+  border-color: rgba(247, 215, 148, 0.45);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(247, 215, 148, 0.15);
   z-index: 5;
+}
+
+[data-theme="day"] .wish-card {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.08);
 }
 
 /* Golden Star Pin */
@@ -2877,17 +3263,24 @@ body.lantern-beam-on .hidden-constellations-layer {
   top: -9px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   color: var(--color-gold);
-  background: var(--bg-primary);
-  width: 20px;
-  height: 20px;
+  background: #090d1a;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 10px rgba(255, 209, 102, 0.6);
-  border: 1px solid var(--color-gold);
+  box-shadow: 0 0 12px rgba(247, 215, 148, 0.4);
+  border: 1.5px solid rgba(247, 215, 148, 0.6);
+}
+
+[data-theme="day"] .wish-pin {
+  background: #ffffff;
+  border-color: rgba(124, 58, 237, 0.6);
+  color: #7c3aed;
+  box-shadow: 0 0 10px rgba(124, 58, 237, 0.35);
 }
 
 .wish-card-header {
@@ -2950,20 +3343,29 @@ body.lantern-beam-on .hidden-constellations-layer {
 }
 
 /* --- 12. EASTER EGG SECRET MODAL & STAR RAIN --- */
-.secret-modal-backdrop {
+.secret-modal-backdrop,
+#easter-modal,
+#easter-egg-modal,
+.easter-egg-modal {
   position: fixed;
   inset: 0;
-  background: rgba(10, 14, 28, 0.88);
-  backdrop-filter: blur(14px);
-  z-index: 10000;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
+  background: rgba(10, 15, 30, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 10000;
+  overflow-y: auto;
+  padding: 20px;
+  box-sizing: border-box;
   animation: modal-fade 0.3s ease-out;
 }
 
-.secret-modal-backdrop[hidden] {
+.secret-modal-backdrop[hidden],
+#easter-modal[hidden],
+#easter-egg-modal[hidden],
+.easter-egg-modal[hidden] {
   display: none !important;
 }
 
@@ -2972,16 +3374,19 @@ body.lantern-beam-on .hidden-constellations-layer {
   100% { opacity: 1; }
 }
 
-.secret-modal-card {
+.secret-modal-card,
+.modal-content {
   position: relative;
-  background: linear-gradient(135deg, #161e38 0%, #0a0e1c 100%);
-  border: 2px solid var(--color-gold);
-  border-radius: 24px;
+  width: 90%;
   max-width: 480px;
-  width: 100%;
-  padding: 3rem 2.25rem 2.5rem;
+  margin: auto;
+  padding: 32px 24px;
+  border-radius: 28px;
+  background: linear-gradient(145deg, #10162f 0%, #090d1a 100%);
+  border: 1.5px solid rgba(247, 215, 148, 0.35);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.8), 0 0 35px rgba(247, 215, 148, 0.15);
   text-align: center;
-  box-shadow: 0 0 60px rgba(255, 209, 102, 0.4);
+  box-sizing: border-box;
   animation: modal-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   overflow: hidden;
 }
@@ -2991,88 +3396,176 @@ body.lantern-beam-on .hidden-constellations-layer {
   100% { transform: scale(1) translateY(0); opacity: 1; }
 }
 
-.modal-close-btn {
+/* Top corner 'X' */
+.modal-close-x,
+#easter-modal-close {
   position: absolute;
-  top: 1.1rem;
-  right: 1.35rem;
-  font-size: 1.6rem;
-  color: var(--text-muted);
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all var(--transition-fast);
+  top: 16px;
+  right: 16px;
+  font-size: 1.5rem;
+  color: #a4b0be;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  line-height: 1;
+  padding: 4px;
+  transition: transform var(--transition-fast), color var(--transition-fast);
+  z-index: 10;
 }
 
-.modal-close-btn:hover {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.1);
+.modal-close-x:hover,
+#easter-modal-close:hover {
+  color: var(--color-gold);
+  transform: scale(1.15);
 }
 
 .easter-badge-emblem {
   position: relative;
-  width: 85px;
-  height: 85px;
-  margin: 0 auto 1.35rem;
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 12px;
   border-radius: 50%;
-  background: radial-gradient(circle, #ffd166 0%, #f59e0b 80%);
+  background: radial-gradient(circle, #f7d794 0%, #d4a34b 80%);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 35px var(--color-gold);
+  box-shadow: 0 0 30px rgba(247, 215, 148, 0.4);
 }
 
 .badge-crest-glyph {
-  font-size: 2.5rem;
-  color: #1e1b4b;
+  font-size: 2.3rem;
+  color: #090d1a;
 }
 
 .easter-subtitle {
   font-family: var(--font-ticker);
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   color: var(--color-gold);
   letter-spacing: 1px;
+  display: inline-block;
 }
 
-.easter-title {
+.easter-title,
+#easter-modal-title {
   font-family: var(--font-display);
-  font-size: 1.75rem;
+  font-size: 1.6rem;
+  line-height: 1.3;
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  background: linear-gradient(135deg, #ffffff 60%, #f7d794 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 12px 0;
   font-weight: 700;
-  color: #ffffff;
-  margin: 0.4rem 0 1rem;
 }
 
 .easter-text {
-  font-size: 1rem;
+  font-size: 0.96rem;
   color: var(--text-secondary);
   line-height: 1.65;
-  margin-bottom: 1.5rem;
+  margin: 0 0 12px;
+  white-space: normal;
+  word-break: normal;
 }
 
 .easter-perk-box {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px;
+  border-radius: 16px;
+  margin: 16px 0;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
-  align-items: center;
-  gap: 0.95rem;
-  background: rgba(255, 209, 102, 0.12);
-  border: 1px solid rgba(255, 209, 102, 0.3);
-  border-radius: var(--radius-md);
-  padding: 0.95rem 1.1rem;
+  align-items: flex-start;
+  gap: 12px;
   text-align: left;
-  margin-bottom: 1.85rem;
-  font-size: 0.85rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
   color: var(--text-secondary);
+  white-space: normal;
+  word-break: normal;
 }
 
 .perk-glyph {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   color: var(--color-gold);
+  flex-shrink: 0;
+  line-height: 1.2;
 }
 
 .easter-perk-box strong {
   display: block;
   color: var(--color-gold);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.easter-perk-box span {
+  display: block;
+  line-height: 1.5;
+  white-space: normal;
+  word-break: normal;
+}
+
+/* Unmissable Close Button */
+.modal-close-btn,
+#easter-egg-close-btn,
+#easter-modal-claim-btn,
+.easter-modal-claim-btn {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  padding: 14px 24px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #f7d794 0%, #e6be6a 100%);
+  color: #090d1a;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  text-align: center;
+  box-shadow: 0 4px 18px rgba(247, 215, 148, 0.25);
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease !important;
+}
+
+.modal-close-btn:hover,
+#easter-egg-close-btn:hover,
+#easter-modal-claim-btn:hover,
+.easter-modal-claim-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(247, 215, 148, 0.35);
+  filter: brightness(1.04);
+}
+
+.modal-close-btn:active,
+#easter-egg-close-btn:active,
+#easter-modal-claim-btn:active,
+.easter-modal-claim-btn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+[data-theme="day"] .secret-modal-card {
+  background: linear-gradient(145deg, #ffffff 0%, #f7f3ff 100%);
+  border: 2px solid rgba(217, 119, 6, 0.45);
+  box-shadow: 0 20px 60px rgba(168, 85, 247, 0.2), 0 0 30px rgba(251, 191, 36, 0.2);
+}
+
+[data-theme="day"] .easter-title {
+  color: #7c3aed;
+}
+
+[data-theme="day"] .easter-perk-box {
+  background: rgba(168, 85, 247, 0.06);
+  border: 1px solid rgba(168, 85, 247, 0.18);
+  color: var(--text-primary);
+}
+
+[data-theme="day"] .easter-perk-box strong {
+  color: #7c3aed;
 }
 
 .star-drop-particle {
@@ -3116,23 +3609,26 @@ body.lantern-beam-on .hidden-constellations-layer {
 }
 
 .retro-odometer-box {
-  background: var(--odometer-bg);
-  border: 2px solid #374151;
-  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
   padding: 1.4rem 2.25rem;
-  box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.8), 0 8px 24px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45), inset 0 2px 6px rgba(0, 0, 0, 0.4);
   display: inline-flex;
   flex-direction: column;
   align-items: center;
   gap: 0.75rem;
   cursor: pointer;
   user-select: none;
-  transition: transform var(--transition-fast), border-color var(--transition-fast);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .retro-odometer-box:hover {
   transform: translateY(-2px);
-  border-color: var(--color-gold);
+  border-color: rgba(247, 215, 148, 0.35);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 20px rgba(247, 215, 148, 0.12);
 }
 
 .odometer-header {

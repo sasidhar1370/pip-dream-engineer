@@ -1,0 +1,18 @@
+{
+  "name": "pip-dream-engineer",
+  "version": "1.0.0",
+  "description": "Portfolio website for Pip, Junior Dream Engineer at Midnight Nursery",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "pip",
+    "dream-engineer",
+    "portfolio",
+    "hax-baby",
+    "vanilla-js"
+  ],
+  "author": "Pip",
+  "license": "MIT"
+}

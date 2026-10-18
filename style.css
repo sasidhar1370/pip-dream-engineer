@@ -100,8 +100,8 @@
   --border-glow: rgba(217, 119, 6, 0.3);
 
   /* Ultra-Soft Diffused Ambient Glow - Clean & No Muddy Blacks */
-  --shadow-soft: 0 12px 32px rgba(147, 112, 219, 0.08);
-  --shadow-float: 0 18px 40px rgba(147, 112, 219, 0.12);
+  --shadow-soft: 0 10px 25px rgba(168, 85, 247, 0.08);
+  --shadow-float: 0 16px 36px rgba(168, 85, 247, 0.12);
   --shadow-glow-gold: 0 0 20px rgba(217, 119, 6, 0.25);
 
   --sky-gradient: radial-gradient(circle at 50% 12%, #ffffff 0%, #f7f3ff 55%, #ede6ff 100%);
@@ -113,7 +113,7 @@
 
   --paper-slip-bg: #ffffff;
   --paper-slip-border: rgba(196, 181, 253, 0.45);
-  --paper-slip-shadow: 0 10px 28px rgba(147, 112, 219, 0.09), 0 2px 6px rgba(147, 112, 219, 0.05);
+  --paper-slip-shadow: 0 10px 25px rgba(168, 85, 247, 0.08);
 
   --svg-roof-fill: #c7d2fe;
   --svg-roof-trim: #818cf8;
@@ -281,6 +281,65 @@ a {
 @keyframes cloud-float-right {
   0% { transform: translateX(0) translateY(0); }
   100% { transform: translateX(-80px) translateY(20px); }
+}
+
+/* --- 3B. LANTERN BEAM CURSOR GLOW & HIDDEN CONSTELLATIONS LAYER (Tier 2 Feature) --- */
+#lantern-cursor-glow {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 4;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  background: radial-gradient(circle 180px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.15) 0%, rgba(255, 209, 102, 0.1) 40%, transparent 80%);
+}
+
+body.lantern-beam-on #lantern-cursor-glow {
+  opacity: 1;
+}
+
+.hidden-constellations-layer {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  -webkit-mask-image: radial-gradient(circle 240px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 30%, transparent 100%);
+  mask-image: radial-gradient(circle 240px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 30%, transparent 100%);
+}
+
+body.lantern-beam-on .hidden-constellations-layer {
+  opacity: 1;
+}
+
+.constellations-svg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.constellation .star-node {
+  animation: star-glow-pulse 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes star-glow-pulse {
+  0% { filter: drop-shadow(0 0 2px #ffd166); transform: scale(0.9); }
+  100% { filter: drop-shadow(0 0 8px #ffd166) drop-shadow(0 0 16px #38bdf8); transform: scale(1.15); }
+}
+
+.constellation-label {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  fill: #ffd166;
+  letter-spacing: 0.5px;
 }
 
 /* --- 4. TOP SCROLLING TICKER (Sleek Frosted-Glass Strip) --- */
@@ -551,6 +610,44 @@ a {
 [data-theme="midnight"] .icon-midnight { display: inline-block; }
 [data-theme="day"] .icon-midnight { display: none; }
 [data-theme="day"] .icon-day { display: inline-block; }
+
+/* Lantern Beam Header Pill */
+.lantern-beam-pill {
+  position: relative;
+  overflow: hidden;
+}
+
+.lantern-beam-pill .beam-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lantern-beam-pill .beam-glyph {
+  color: var(--color-gold);
+  font-size: 0.95rem;
+  transition: transform var(--transition-fast);
+}
+
+.lantern-beam-pill:hover .beam-glyph {
+  transform: rotate(25deg) scale(1.15);
+}
+
+.lantern-beam-pill.active {
+  background: rgba(255, 209, 102, 0.16);
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+  box-shadow: 0 0 16px rgba(255, 209, 102, 0.35);
+}
+
+.lantern-beam-pill.active .beam-glyph {
+  animation: beam-spin 4s linear infinite;
+}
+
+@keyframes beam-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
 .mobile-menu-btn {
   display: none;
@@ -966,6 +1063,193 @@ a {
 .gesture-icon {
   color: var(--color-gold);
   font-size: 0.85rem;
+}
+
+/* Tier 3: Returning Visitor Memory Speech Bubble Badge */
+.avatar-gesture-pill.returning-visitor {
+  background: rgba(255, 209, 102, 0.14);
+  border-color: rgba(255, 209, 102, 0.5);
+  color: #ffd166;
+  box-shadow: 0 0 20px rgba(255, 209, 102, 0.25);
+  animation: returning-glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes returning-glow {
+  0% { box-shadow: 0 0 12px rgba(255, 209, 102, 0.2); }
+  100% { box-shadow: 0 0 24px rgba(255, 209, 102, 0.45); }
+}
+
+/* Tier 2 Mini-Toy: Pip's Stardust Catcher */
+.stardust-toy-card {
+  margin-top: 1.5rem;
+  padding: 1.15rem 1.35rem;
+  background: var(--surface-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  max-width: 490px;
+  transition: all var(--transition-normal);
+}
+
+.stardust-toy-card:hover {
+  border-color: rgba(255, 209, 102, 0.4);
+  box-shadow: var(--shadow-float);
+}
+
+.toy-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.4rem;
+}
+
+.toy-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.toy-icon {
+  color: var(--color-gold);
+  font-size: 1rem;
+}
+
+.toy-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.toy-status-pill {
+  font-family: var(--font-ticker);
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  color: var(--color-lavender);
+  background: rgba(192, 132, 252, 0.12);
+  border: 1px solid rgba(192, 132, 252, 0.25);
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+}
+
+.toy-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 0.85rem;
+}
+
+.toy-action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.toy-launch-btn {
+  padding: 0.45rem 1.1rem;
+  font-size: 0.88rem;
+}
+
+.toy-score {
+  font-family: var(--font-ticker);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-gold);
+  letter-spacing: 0.5px;
+}
+
+/* Drifting Falling Stardust Particles */
+.falling-star-spark {
+  position: fixed;
+  z-index: 9999;
+  cursor: pointer;
+  user-select: none;
+  font-size: 1.85rem;
+  color: #ffd166;
+  text-shadow: 0 0 14px rgba(255, 209, 102, 0.95), 0 0 24px rgba(168, 85, 247, 0.6);
+  pointer-events: auto;
+  transition: transform 0.1s ease;
+  animation: star-drift-down var(--fall-duration, 7s) linear forwards, star-wobble 2.4s ease-in-out infinite alternate;
+}
+
+.falling-star-spark:hover {
+  transform: scale(1.35);
+  filter: brightness(1.3);
+}
+
+@keyframes star-drift-down {
+  0% {
+    top: -50px;
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    top: 105vh;
+    opacity: 0;
+  }
+}
+
+@keyframes star-wobble {
+  0% {
+    margin-left: -18px;
+    transform: rotate(-15deg);
+  }
+  100% {
+    margin-left: 18px;
+    transform: rotate(15deg);
+  }
+}
+
+.caught-star-pop {
+  position: fixed;
+  z-index: 10000;
+  pointer-events: none;
+  color: #ffd166;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-shadow: 0 0 12px rgba(255, 209, 102, 0.9);
+  animation: star-pop-fade 0.8s ease-out forwards;
+}
+
+@keyframes star-pop-fade {
+  0% {
+    transform: translateY(0) scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-40px) scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* Day Mode Card Shadow Polish */
+[data-theme="day"] .project-card,
+[data-theme="day"] .bio-card-portrait,
+[data-theme="day"] .bio-card-narrative,
+[data-theme="day"] .story-card,
+[data-theme="day"] .wish-card,
+[data-theme="day"] .wish-form-card,
+[data-theme="day"] .wishes-board-container,
+[data-theme="day"] .stardust-toy-card {
+  box-shadow: 0 10px 25px rgba(168, 85, 247, 0.08);
+}
+
+[data-theme="day"] .project-card:hover,
+[data-theme="day"] .story-card:hover,
+[data-theme="day"] .wish-card:hover,
+[data-theme="day"] .stardust-toy-card:hover {
+  box-shadow: 0 16px 35px rgba(168, 85, 247, 0.14);
 }
 
 /* --- 8. CHARACTER BIO & DOSSIER (#about) --- */

@@ -116,15 +116,16 @@
     }
 
     /**
-     * Plays the sweet dream arpeggio: C5, E5, G5, B5, C6
+     * Plays the sweet dream arpeggio: C5, E5, G5, B5, C6 cleanly with 250ms spacing
      */
-    playDreamArpeggio(callback) {
+    playDreamArpeggio(callback, onNoteStep) {
       if (this.isMuted) {
         if (callback) callback();
         return;
       }
       this.initContext();
 
+      const noteNames = ['C5', 'E5', 'G5', 'B5', 'C6'];
       const notes = [
         this.frequencies.C5,
         this.frequencies.E5,
@@ -134,11 +135,17 @@
       ];
 
       notes.forEach((freq, index) => {
-        this.playTone(freq, 1.2, 'sine', index * 0.16, 0.28);
+        const timeDelay = index * 0.25;
+        this.playTone(freq, 1.2, 'sine', timeDelay, 0.28);
+        if (onNoteStep) {
+          setTimeout(() => {
+            onNoteStep(noteNames[index], freq, index);
+          }, index * 250);
+        }
       });
 
       if (callback) {
-        setTimeout(callback, notes.length * 160 + 400);
+        setTimeout(callback, notes.length * 250 + 400);
       }
     }
 
@@ -504,18 +511,27 @@
     }
 
     playMelody() {
-      if (this.visualizer) this.visualizer.classList.add('playing');
-      if (this.feedback) this.feedback.textContent = 'Playing: C5 → E5 → G5 → B5 → C6';
+      if (this.isPlayingMelody) return;
+      this.isPlayingMelody = true;
 
-      // Burst of floating notes
-      const symbols = ['♪', '♫', '♬', '✦', '★'];
-      symbols.forEach((sym, i) => {
-        setTimeout(() => this.spawnNoteParticle(sym), i * 160);
-      });
+      if (this.visualizer) this.visualizer.classList.add('playing');
+      if (this.feedback) this.feedback.textContent = 'Sequencing: C5 → E5 → G5 → B5 → C6...';
 
       this.audio.playDreamArpeggio(() => {
         if (this.visualizer) this.visualizer.classList.remove('playing');
         if (this.feedback) this.feedback.textContent = 'Melody complete · Ready to chime';
+        this.isPlayingMelody = false;
+      }, (noteName, freq) => {
+        // Find corresponding chime key and bob it in sync
+        const keyEl = document.querySelector(`.chime-key[data-note="${noteName}"]`);
+        if (keyEl) {
+          keyEl.classList.add('key-active');
+          setTimeout(() => keyEl.classList.remove('key-active'), 220);
+        }
+        this.spawnNoteParticle(noteName);
+        if (this.feedback) {
+          this.feedback.textContent = `Chiming: ${noteName} (${freq.toFixed(1)} Hz)`;
+        }
       });
 
       // Playing a lullaby delivers sweet dreams
@@ -1203,7 +1219,227 @@
   }
 
   /* --------------------------------------------------------------------------
-   * 13. BOOTSTRAP APPLICATION
+   * 13. DREAM LANTERN BEAM MANAGER (Tier 2 Feature)
+   * -------------------------------------------------------------------------- */
+  class DreamLanternBeam {
+    constructor(audioManager) {
+      this.audio = audioManager;
+      this.btn = document.getElementById('lantern-beam-toggle-btn');
+      this.statusText = document.getElementById('beam-status-text');
+      this.isActive = false;
+
+      this.initEvents();
+    }
+
+    initEvents() {
+      // Lightweight cursor tracker updating CSS variables for radial glow
+      window.addEventListener('mousemove', (e) => {
+        document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
+        document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
+      }, { passive: true });
+
+      if (!this.btn) return;
+
+      this.btn.addEventListener('click', () => {
+        this.toggleBeam();
+      });
+    }
+
+    toggleBeam() {
+      this.isActive = !this.isActive;
+      document.body.classList.toggle('lantern-beam-on', this.isActive);
+      this.btn.classList.toggle('active', this.isActive);
+      this.btn.setAttribute('aria-pressed', this.isActive.toString());
+
+      if (this.statusText) {
+        this.statusText.textContent = this.isActive ? 'Beam: ON' : 'Lantern Beam';
+      }
+
+      if (this.audio) {
+        const pitch = this.isActive ? 987.77 : 659.25;
+        this.audio.playTone(pitch, 0.4, 'sine', 0, 0.22);
+      }
+    }
+  }
+
+  /* --------------------------------------------------------------------------
+   * 14. STARDUST CATCHER MINI-TOY (Tier 2 Feature)
+   * -------------------------------------------------------------------------- */
+  class StardustCatcherToy {
+    constructor(audioManager, odometer) {
+      this.audio = audioManager;
+      this.odometer = odometer;
+
+      this.card = document.getElementById('stardust-toy-card');
+      this.startBtn = document.getElementById('start-stardust-btn');
+      this.statusPill = document.getElementById('stardust-status-pill');
+      this.scoreDisplay = document.getElementById('stardust-score-display');
+
+      this.caughtCount = 0;
+      this.totalStars = 5;
+      this.isRunning = false;
+      this.pentatonicFrequencies = [523.25, 587.33, 659.25, 783.99, 880.00]; // C5, D5, E5, G5, A5
+
+      this.init();
+    }
+
+    init() {
+      if (!this.startBtn) return;
+      this.startBtn.addEventListener('click', () => {
+        this.startDrift();
+      });
+    }
+
+    startDrift() {
+      if (this.isRunning) return;
+      this.isRunning = true;
+      this.caughtCount = 0;
+      this.updateScore();
+
+      if (this.statusPill) {
+        this.statusPill.textContent = 'Catch the stars!';
+      }
+
+      if (this.startBtn) {
+        this.startBtn.disabled = true;
+      }
+
+      // Spawn 5 gentle star particles descending down screen
+      for (let i = 0; i < this.totalStars; i++) {
+        setTimeout(() => {
+          this.spawnStar(i);
+        }, i * 650);
+      }
+    }
+
+    spawnStar(index) {
+      const star = document.createElement('div');
+      star.className = 'falling-star-spark';
+      star.textContent = '★';
+      star.setAttribute('aria-label', `Falling Star ${index + 1}`);
+
+      const minX = 70;
+      const maxX = Math.max(window.innerWidth - 100, 300);
+      const startX = Math.floor(Math.random() * (maxX - minX)) + minX;
+      const fallDuration = 6.0 + Math.random() * 2.5;
+
+      star.style.left = `${startX}px`;
+      star.style.setProperty('--fall-duration', `${fallDuration}s`);
+
+      const noteFreq = this.pentatonicFrequencies[index % this.pentatonicFrequencies.length];
+
+      const catchHandler = (e) => {
+        e.stopPropagation();
+        this.audio.playTone(noteFreq, 0.7, 'sine', 0, 0.32);
+        this.audio.playTone(noteFreq * 2, 0.35, 'triangle', 0.04, 0.16);
+
+        // Pop flare
+        const pop = document.createElement('div');
+        pop.className = 'caught-star-pop';
+        pop.textContent = '✦ +1 Star!';
+        pop.style.left = `${e.clientX || startX}px`;
+        pop.style.top = `${e.clientY || 150}px`;
+        document.body.appendChild(pop);
+        setTimeout(() => { if (pop.parentNode) pop.parentNode.removeChild(pop); }, 800);
+
+        if (star.parentNode) star.parentNode.removeChild(star);
+
+        this.caughtCount++;
+        this.updateScore();
+
+        if (this.caughtCount === this.totalStars) {
+          this.celebrateCompletion();
+        }
+      };
+
+      star.addEventListener('click', catchHandler);
+      star.addEventListener('touchstart', catchHandler, { passive: true });
+
+      document.body.appendChild(star);
+
+      // Clean up if not caught before reaching bottom
+      setTimeout(() => {
+        if (star.parentNode) {
+          star.parentNode.removeChild(star);
+          if (this.caughtCount < this.totalStars && !document.querySelector('.falling-star-spark')) {
+            this.finishDrift();
+          }
+        }
+      }, (fallDuration + 0.5) * 1000);
+    }
+
+    updateScore() {
+      if (this.scoreDisplay) {
+        this.scoreDisplay.textContent = `Stars Caught: ${this.caughtCount} / ${this.totalStars}`;
+      }
+    }
+
+    celebrateCompletion() {
+      if (this.statusPill) {
+        this.statusPill.textContent = '★ 5/5 Caught! +5 Delivered!';
+      }
+      if (this.scoreDisplay) {
+        this.scoreDisplay.textContent = `★ All 5 Caught! +5 Dreams Delivered!`;
+      }
+
+      // Reward +5 to the Dreams Delivered odometer
+      if (this.odometer) {
+        this.odometer.increment(5);
+      }
+
+      // Celebratory chime arpeggio
+      if (this.audio) {
+        this.pentatonicFrequencies.forEach((freq, idx) => {
+          this.audio.playTone(freq * 1.5, 0.5, 'sine', idx * 0.08, 0.25);
+        });
+      }
+
+      setTimeout(() => {
+        this.finishDrift();
+      }, 1500);
+    }
+
+    finishDrift() {
+      this.isRunning = false;
+      if (this.startBtn) {
+        this.startBtn.disabled = false;
+      }
+      if (this.statusPill && this.caughtCount < this.totalStars) {
+        this.statusPill.textContent = '5 Drift Sparks';
+      }
+    }
+  }
+
+  /* --------------------------------------------------------------------------
+   * 15. RETURNING VISITOR MEMORY (Tier 3 Feature)
+   * -------------------------------------------------------------------------- */
+  class ReturningVisitorMemory {
+    constructor() {
+      this.checkAndGreet();
+    }
+
+    checkAndGreet() {
+      try {
+        const storedCount = localStorage.getItem('pip_visit_count');
+        const visitCount = (parseInt(storedCount, 10) || 0) + 1;
+        localStorage.setItem('pip_visit_count', visitCount.toString());
+
+        if (visitCount > 1) {
+          const speechBubble = document.getElementById('avatar-gesture-pill');
+          if (speechBubble) {
+            speechBubble.classList.add('returning-visitor');
+            const textSpan = speechBubble.querySelector('.gesture-text') || speechBubble;
+            textSpan.textContent = 'Welcome back, little dreamer! Pip kept the nightlight burning for you.';
+          }
+        }
+      } catch (err) {
+        // Safe fallback if localStorage is unavailable
+      }
+    }
+  }
+
+  /* --------------------------------------------------------------------------
+   * 16. BOOTSTRAP APPLICATION
    * -------------------------------------------------------------------------- */
   document.addEventListener('DOMContentLoaded', () => {
     // 1. Core Managers
@@ -1227,6 +1463,11 @@
     // 5. Easter Egg & Navigation
     const easter = new NightcapEasterEgg(audio, odometer);
     const mobileNav = new MobileNavigation();
+
+    // 6. Tier 2 & Tier 3 Standout Features
+    const beam = new DreamLanternBeam(audio);
+    const stardust = new StardustCatcherToy(audio, odometer);
+    const memory = new ReturningVisitorMemory();
 
     // Console easter egg for curious hackathon judges
     console.log(

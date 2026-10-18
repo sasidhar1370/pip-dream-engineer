@@ -508,14 +508,14 @@
       if (this.feedback) this.feedback.textContent = 'Playing: C5 → E5 → G5 → B5 → C6';
 
       // Burst of floating notes
-      const symbols = ['♪', '♫', '♬', '✨', '⭐'];
+      const symbols = ['♪', '♫', '♬', '✦', '★'];
       symbols.forEach((sym, i) => {
         setTimeout(() => this.spawnNoteParticle(sym), i * 160);
       });
 
       this.audio.playDreamArpeggio(() => {
         if (this.visualizer) this.visualizer.classList.remove('playing');
-        if (this.feedback) this.feedback.textContent = 'Melody complete ✨ Ready to play';
+        if (this.feedback) this.feedback.textContent = 'Melody complete · Ready to chime';
       });
 
       // Playing a lullaby delivers sweet dreams
@@ -772,11 +772,11 @@
       this.resetBtn = document.getElementById('reset-wishes-btn');
 
       this.flavorEmojiMap = {
-        cloud: '☁️',
-        flight: '🌙',
-        cozy: '🧸',
-        lullaby: '🎵',
-        shield: '🛡️'
+        cloud: '✦',
+        flight: '☽',
+        cozy: '•',
+        lullaby: '♪',
+        shield: '★'
       };
 
       this.sampleWishes = [
@@ -905,17 +905,22 @@
         this.counterPill.textContent = `${this.wishes.length} ${this.wishes.length === 1 ? 'Wish' : 'Wishes'}`;
       }
 
-      this.wishes.forEach((w) => {
+      this.wishes.forEach((w, index) => {
         const card = document.createElement('article');
         card.className = 'wish-card';
         card.id = w.id;
 
-        const emoji = this.flavorEmojiMap[w.category] || '⭐';
+        // Subtle organic rotation for floating pinned paper slips
+        const rotAngles = [-1.5, 1.2, -0.8, 1.8, -1.2, 0.9];
+        const rot = rotAngles[index % rotAngles.length];
+        card.style.setProperty('--slip-rot', `${rot}deg`);
+
+        const glyph = this.flavorEmojiMap[w.category] || '✦';
 
         card.innerHTML = `
-          <span class="wish-pin" aria-hidden="true">📌</span>
+          <span class="wish-pin" aria-hidden="true">✦</span>
           <div class="wish-card-header">
-            <span class="wish-avatar-emoji" aria-hidden="true">${emoji}</span>
+            <span class="wish-avatar-emoji" aria-hidden="true">${glyph}</span>
             <div>
               <strong class="wish-author">${this.escapeHTML(w.name)}</strong>
               <div class="wish-flavor-tag">${this.formatCategory(w.category)}</div>
@@ -923,9 +928,9 @@
           </div>
           <p class="wish-text">“${this.escapeHTML(w.text)}”</p>
           <div class="wish-card-footer">
-            <span class="wish-time">🕒 ${w.timestamp}</span>
+            <span class="wish-time">• ${w.timestamp}</span>
             <button type="button" class="wish-like-btn" data-wish-id="${w.id}" aria-label="Send sweet dreams heart to ${this.escapeHTML(w.name)}">
-              <span>❤️</span>
+              <span>♥</span>
               <span class="heart-count">${w.hearts || 0}</span>
             </button>
           </div>
@@ -1134,9 +1139,9 @@
       if (!this.secretBadgeSlot) return;
       this.secretBadgeSlot.classList.remove('locked');
       this.secretBadgeSlot.classList.add('unlocked');
-      this.secretBadgeIcon.textContent = '👑';
-      this.secretBadgeTitle.textContent = '★ Master Dream Weaver ★';
-      this.secretBadgeDesc.textContent = 'Secret Unlocked: Nightcap Tickle Champion';
+      this.secretBadgeIcon.textContent = '★';
+      this.secretBadgeTitle.textContent = 'Certified Master Dream Weaver';
+      this.secretBadgeDesc.textContent = 'Secret Unlocked · Nightcap Tickle Champion';
     }
 
     closeModal() {
@@ -1146,7 +1151,7 @@
     }
 
     dropGoldStars(count = 25) {
-      const symbols = ['⭐', '✨', '🌟', '✦'];
+      const symbols = ['✦', '★', '☽', '•'];
       for (let i = 0; i < count; i++) {
         setTimeout(() => {
           const star = document.createElement('div');

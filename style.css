@@ -155,7 +155,7 @@ section,
 #projects,
 #story,
 #wishes {
-  scroll-margin-top: 80px;
+  scroll-margin-top: 90px;
 }
 
 body {
@@ -481,6 +481,7 @@ body.lantern-beam-on .hidden-constellations-layer {
   margin: 0 auto;
   padding: 12px 24px;
   box-sizing: border-box;
+  overflow: visible;
   gap: 1.25rem;
 }
 
@@ -598,19 +599,18 @@ body.lantern-beam-on .hidden-constellations-layer {
 
 /* Header Action Pills */
 .header-actions {
-  flex-shrink: 0;
   display: flex;
   gap: 8px;
   align-items: center;
+  flex-shrink: 0;
   white-space: nowrap;
-  margin-right: 12px;
 }
 
 .action-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 6px 14px;
+  gap: 0.45rem;
+  padding: 6px 12px;
   font-family: var(--font-display);
   font-size: 0.85rem;
   font-weight: 600;
@@ -752,18 +752,28 @@ body.lantern-beam-on .hidden-constellations-layer {
 
 /* --- 6. COMMON CONTAINERS, BUTTONS & TYPOGRAPHY --- */
 .container,
-.section-container {
-  max-width: 1100px;
+.section-container,
+#bio .section-container,
+#projects .section-container,
+#story .section-container,
+#wishes .section-container,
+.bio-section > .section-container,
+.projects-section > .section-container,
+.story-section > .section-container,
+.wishes-section > .section-container {
+  max-width: 1160px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 60px 24px;
+  box-sizing: border-box;
 }
 
 /* Major Section Vertical Spacing */
 .bio-section,
+.character-dossier-section,
 .projects-section,
 .story-section,
 .wishes-section {
-  padding: 80px 0;
+  padding: 0;
 }
 
 .text-center {
@@ -886,27 +896,31 @@ body.lantern-beam-on .hidden-constellations-layer {
 /* --- 7. HERO SECTION (2-Column Desktop Viewport Fit) --- */
 .hero-section {
   position: relative;
-  min-height: 85vh;
+  min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem 2rem 2rem;
+  width: 100%;
 }
 
 .hero-grid {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
+  gap: 40px;
   align-items: center;
-  gap: 2.75rem;
-  width: 100%;
-  max-width: 1100px;
+  max-width: 1160px;
   margin: 0 auto;
-  padding: 0 24px;
+  min-height: 80vh;
+  padding: 20px 24px;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .hero-content {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
 }
 
 .hero-pill-badge {
@@ -920,9 +934,9 @@ body.lantern-beam-on .hidden-constellations-layer {
   font-size: 0.82rem;
   font-weight: 600;
   color: var(--text-secondary);
-  margin-bottom: 0.75rem;
   backdrop-filter: blur(12px);
   align-self: flex-start;
+  margin: 0;
 }
 
 .badge-starlight-dot {
@@ -946,7 +960,7 @@ body.lantern-beam-on .hidden-constellations-layer {
   font-weight: 700;
   line-height: 1.15;
   color: var(--text-primary);
-  margin-bottom: 0.5rem;
+  margin: 0;
 }
 
 .highlight-pip {
@@ -963,7 +977,7 @@ body.lantern-beam-on .hidden-constellations-layer {
   font-weight: 500;
   color: var(--color-gold);
   text-shadow: 0 0 20px rgba(255, 209, 102, 0.35);
-  margin-bottom: 0.5rem;
+  margin: 0;
   line-height: 1.35;
 }
 
@@ -971,16 +985,16 @@ body.lantern-beam-on .hidden-constellations-layer {
   font-size: 0.98rem;
   color: var(--text-secondary);
   max-width: 500px;
-  margin-bottom: 1.15rem;
+  margin: 0;
   line-height: 1.6;
 }
 
 .hero-cta-group {
   display: flex;
   flex-wrap: wrap;
+  gap: 12px;
   align-items: center;
-  gap: 0.8rem;
-  margin-bottom: 1rem;
+  margin: 0;
 }
 
 /* Floating Pip Avatar Centerpiece (No Harsh Box, Pure Transparent Cloud) */
@@ -1024,10 +1038,10 @@ body.lantern-beam-on .hidden-constellations-layer {
 .pip-avatar-wrapper,
 .avatar-img-container {
   position: relative;
-  border-radius: 42px;
+  border-radius: 36px;
+  border: 2px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 0 50px rgba(168, 85, 247, 0.35), inset 0 0 30px rgba(13, 17, 38, 0.5);
   overflow: hidden;
-  border: 1.5px solid rgba(255, 255, 255, 0.16);
-  box-shadow: 0 0 45px rgba(168, 85, 247, 0.3), inset 0 0 30px rgba(13, 17, 38, 0.45);
   animation: gentleFloat 4s ease-in-out infinite;
   transform-style: preserve-3d;
   background: transparent;
@@ -1038,8 +1052,8 @@ body.lantern-beam-on .hidden-constellations-layer {
 [data-theme="day"] #pip-hero-avatar,
 [data-theme="day"] .pip-avatar-wrapper,
 [data-theme="day"] .avatar-img-container {
-  border: 1.5px solid rgba(168, 85, 247, 0.25);
-  box-shadow: 0 0 45px rgba(168, 85, 247, 0.2), inset 0 0 30px rgba(255, 255, 255, 0.6);
+  border: 2px solid rgba(168, 85, 247, 0.25);
+  box-shadow: 0 0 50px rgba(168, 85, 247, 0.2), inset 0 0 30px rgba(255, 255, 255, 0.6);
 }
 
 #pip-avatar-img,
@@ -1075,22 +1089,23 @@ body.lantern-beam-on .hidden-constellations-layer {
 
 @media (min-width: 900px) {
   .hero-section {
-    min-height: 85vh;
+    min-height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1.5rem 2rem 2rem;
   }
 
   .hero-grid {
     display: grid;
     grid-template-columns: 1.15fr 0.85fr;
+    gap: 40px;
     align-items: center;
-    gap: 2.75rem;
-    width: 100%;
-    max-width: 1100px;
+    max-width: 1160px;
     margin: 0 auto;
-    padding: 0 24px;
+    min-height: 80vh;
+    padding: 20px 24px;
+    box-sizing: border-box;
+    width: 100%;
   }
 }
 
@@ -1203,6 +1218,7 @@ body.lantern-beam-on .hidden-constellations-layer {
 .avatar-gesture-pill {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   padding: 0.45rem 1.15rem;
   background: var(--surface-card);
@@ -1214,7 +1230,9 @@ body.lantern-beam-on .hidden-constellations-layer {
   font-weight: 600;
   color: var(--text-secondary);
   box-shadow: var(--shadow-soft);
-  margin-top: 1rem;
+  margin-top: 14px;
+  text-align: center;
+  max-width: 340px;
   transition: all var(--transition-fast);
 }
 
@@ -1310,6 +1328,8 @@ body.lantern-beam-on .hidden-constellations-layer {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+  margin-top: 12px;
   gap: 1rem;
   flex-wrap: wrap;
 }
@@ -1440,9 +1460,9 @@ body.lantern-beam-on .hidden-constellations-layer {
   grid-template-columns: 1fr 1fr;
   gap: 36px;
   align-items: center;
-  max-width: 1100px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 60px 24px;
+  padding: 0;
   box-sizing: border-box;
 }
 

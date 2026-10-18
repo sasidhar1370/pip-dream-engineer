@@ -222,6 +222,128 @@
   }
 
   /* --------------------------------------------------------------------------
+   * 2.5. CELESTIAL AMBIENT STARFIELD CANVAS (Living Midnight Nursery Starfield)
+   * -------------------------------------------------------------------------- */
+  class CelestialSkyStarfield {
+    constructor() {
+      this.canvas = document.getElementById('celestial-sky-canvas');
+      if (!this.canvas) return;
+      this.ctx = this.canvas.getContext('2d');
+      this.particles = [];
+      this.particleCount = 55; // 45–60 twinkling stardust particles
+      this.colors = ['#ffd166', '#ffffff', '#c084fc', '#38bdf8', '#fed7aa'];
+      this.animationFrameId = null;
+      this.isRunning = false;
+
+      this.resize();
+      this.initParticles();
+      this.bindEvents();
+      this.start();
+    }
+
+    resize() {
+      this.width = window.innerWidth;
+      this.height = window.innerHeight;
+      this.canvas.width = this.width;
+      this.canvas.height = this.height;
+    }
+
+    initParticles() {
+      this.particles = [];
+      for (let i = 0; i < this.particleCount; i++) {
+        this.particles.push(this.createParticle(true));
+      }
+    }
+
+    createParticle(randomY = false) {
+      return {
+        x: Math.random() * (this.width || window.innerWidth),
+        y: randomY ? Math.random() * (this.height || window.innerHeight) : (this.height || window.innerHeight) + 10,
+        radius: 1 + Math.random() * 1.5, // 1px–2.5px
+        vx: (Math.random() - 0.5) * 0.25, // gentle sideways drift
+        vy: -(0.15 + Math.random() * 0.35), // gentle upward drift
+        color: this.colors[Math.floor(Math.random() * this.colors.length)],
+        baseAlpha: 0.2 + Math.random() * 0.4,
+        twinkleSpeed: 0.015 + Math.random() * 0.03,
+        twinkleOffset: Math.random() * Math.PI * 2
+      };
+    }
+
+    bindEvents() {
+      window.addEventListener('resize', () => {
+        this.resize();
+      }, { passive: true });
+
+      // Battery & CPU optimization: Pause when document is hidden
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          this.stop();
+        } else {
+          this.start();
+        }
+      });
+    }
+
+    start() {
+      if (!this.isRunning) {
+        this.isRunning = true;
+        this.loop();
+      }
+    }
+
+    stop() {
+      this.isRunning = false;
+      if (this.animationFrameId) {
+        cancelAnimationFrame(this.animationFrameId);
+        this.animationFrameId = null;
+      }
+    }
+
+    loop() {
+      if (!this.isRunning) return;
+
+      this.render();
+      this.animationFrameId = requestAnimationFrame(() => this.loop());
+    }
+
+    render() {
+      this.ctx.clearRect(0, 0, this.width, this.height);
+
+      const time = performance.now() * 0.001;
+
+      for (let i = 0; i < this.particles.length; i++) {
+        const p = this.particles[i];
+
+        // Move
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Wrap around borders
+        if (p.y < -10) {
+          this.particles[i] = this.createParticle(false);
+          continue;
+        }
+        if (p.x < -10) p.x = this.width + 10;
+        if (p.x > this.width + 10) p.x = -10;
+
+        // Shimmer / twinkle alpha pulse between 0.2 and 0.85
+        const twinkle = Math.sin(time * (p.twinkleSpeed * 60) + p.twinkleOffset);
+        const alpha = Math.min(0.85, Math.max(0.2, p.baseAlpha + twinkle * 0.3));
+
+        this.ctx.save();
+        this.ctx.globalAlpha = alpha;
+        this.ctx.fillStyle = p.color;
+        this.ctx.shadowColor = p.color;
+        this.ctx.shadowBlur = p.radius * 2;
+        this.ctx.beginPath();
+        this.ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        this.ctx.fill();
+        this.ctx.restore();
+      }
+    }
+  }
+
+  /* --------------------------------------------------------------------------
    * 3. SPARKLE CURSOR TRAIL (Lightweight HTML5 Canvas)
    * -------------------------------------------------------------------------- */
   class SparkleCursorTrail {
@@ -1445,6 +1567,7 @@
     // 1. Core Managers
     const audio = new AudioManager();
     const theme = new ThemeManager();
+    const celestialSky = new CelestialSkyStarfield();
     const sparkles = new SparkleCursorTrail();
     const tilt = new PipTiltTracker();
 

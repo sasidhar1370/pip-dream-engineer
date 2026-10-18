@@ -204,6 +204,16 @@ a {
 }
 
 /* --- 3. AMBIENT SKY & BACKGROUND DRIFT --- */
+#celestial-sky-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+}
+
 #sparkle-canvas {
   position: fixed;
   inset: 0;
@@ -218,7 +228,7 @@ a {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 0;
+  z-index: -2;
   overflow: hidden;
 }
 
@@ -235,6 +245,30 @@ a {
   background: var(--sky-nebula);
   opacity: 0.85;
   mix-blend-mode: screen;
+  animation: auroraBreathe 18s ease-in-out infinite alternate;
+}
+
+[data-theme="day"] .sky-nebula {
+  mix-blend-mode: multiply;
+  opacity: 0.65;
+}
+
+@keyframes auroraBreathe {
+  0% {
+    transform: scale(1) translate(0, 0);
+    filter: hue-rotate(0deg) brightness(1);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.08) translate(-15px, -10px);
+    filter: hue-rotate(25deg) brightness(1.15);
+    opacity: 0.92;
+  }
+  100% {
+    transform: scale(1.04) translate(15px, 10px);
+    filter: hue-rotate(-20deg) brightness(0.95);
+    opacity: 0.72;
+  }
 }
 
 .sky-stars {
@@ -569,6 +603,7 @@ body.lantern-beam-on .hidden-constellations-layer {
   gap: 8px;
   align-items: center;
   white-space: nowrap;
+  margin-right: 12px;
 }
 
 .action-pill {
@@ -989,10 +1024,10 @@ body.lantern-beam-on .hidden-constellations-layer {
 .pip-avatar-wrapper,
 .avatar-img-container {
   position: relative;
-  border-radius: 36px;
+  border-radius: 42px;
   overflow: hidden;
-  border: 2px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 0 40px rgba(168, 85, 247, 0.35), inset 0 0 25px rgba(13, 17, 38, 0.5);
+  border: 1.5px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 0 45px rgba(168, 85, 247, 0.3), inset 0 0 30px rgba(13, 17, 38, 0.45);
   animation: gentleFloat 4s ease-in-out infinite;
   transform-style: preserve-3d;
   background: transparent;
@@ -1003,8 +1038,8 @@ body.lantern-beam-on .hidden-constellations-layer {
 [data-theme="day"] #pip-hero-avatar,
 [data-theme="day"] .pip-avatar-wrapper,
 [data-theme="day"] .avatar-img-container {
-  border: 2px solid rgba(168, 85, 247, 0.25);
-  box-shadow: 0 0 40px rgba(168, 85, 247, 0.2), inset 0 0 25px rgba(255, 255, 255, 0.6);
+  border: 1.5px solid rgba(168, 85, 247, 0.25);
+  box-shadow: 0 0 45px rgba(168, 85, 247, 0.2), inset 0 0 30px rgba(255, 255, 255, 0.6);
 }
 
 #pip-avatar-img,

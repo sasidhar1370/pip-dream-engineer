@@ -5,10 +5,11 @@
 
 /* --- 1. DESIGN TOKENS & DUAL THEMES --- */
 :root {
-  /* Typography */
-  --font-display: 'Fredoka', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-ticker: 'VT323', monospace;
+  /* Typography (Cozy Storybook Design System) */
+  --font-display: 'Quicksand', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-storybook: 'Playfair Display', Georgia, serif;
+  --font-ticker: 'Quicksand', -apple-system, BlinkMacSystemFont, sans-serif;
 
   /* Rounded Curves */
   --radius-xs: 8px;
@@ -81,53 +82,53 @@
   --odometer-text: #f7d794;
 }
 
-/* --- THEME 2: DAY NURSERY (Clean Warm Pastel & Morning Glow) --- */
+/* --- THEME 2: DAY NURSERY (Soft Morning Mist Cream & Deep Twilight Slate) --- */
 :root[data-theme="day"] {
-  --bg-primary: #fdfcfb;
-  --bg-secondary: #f6f1ff;
-  --bg-tertiary: #ede5ff;
+  --bg-primary: #faf6f0;
+  --bg-secondary: #f4eee4;
+  --bg-tertiary: #ede4d5;
 
   /* Frosted Glass Surfaces */
-  --surface-card: rgba(255, 255, 255, 0.88);
-  --surface-card-hover: rgba(255, 255, 255, 0.98);
-  --surface-glass: rgba(168, 85, 247, 0.04);
-  --surface-glass-border: rgba(168, 85, 247, 0.16);
+  --surface-card: #ffffff;
+  --surface-card-hover: #ffffff;
+  --surface-glass: rgba(255, 255, 255, 0.9);
+  --surface-glass-border: #e8e1d5;
 
-  --text-primary: #1e1b4b;
-  --text-secondary: #3b357a;
-  --text-muted: #6b7280;
-  --text-accent: #7c3aed;
+  --text-primary: #1e2238;
+  --text-secondary: #333852;
+  --text-muted: #5e6482;
+  --text-accent: #4338ca;
 
-  --border-subtle: rgba(168, 85, 247, 0.15);
+  --border-subtle: #e8e1d5;
   --border-glow: rgba(217, 119, 6, 0.3);
 
-  /* Ultra-Soft Diffused Ambient Glow - Clean & No Muddy Blacks */
-  --shadow-soft: 0 10px 30px rgba(168, 85, 247, 0.08);
-  --shadow-float: 0 16px 36px rgba(168, 85, 247, 0.12);
+  /* Soft Diffused Ambient Glow */
+  --shadow-soft: 0 10px 30px rgba(45, 35, 60, 0.07);
+  --shadow-float: 0 16px 36px rgba(45, 35, 60, 0.12);
   --shadow-glow-gold: 0 0 20px rgba(217, 119, 6, 0.25);
 
-  --sky-gradient: radial-gradient(circle at 50% 12%, #ffffff 0%, #f7f3ff 55%, #ede6ff 100%);
-  --sky-nebula: radial-gradient(ellipse at 80% 15%, rgba(251, 191, 36, 0.15) 0%, transparent 60%);
-  --cloud-tint: rgba(255, 255, 255, 0.9);
+  --sky-gradient: radial-gradient(circle at 50% 12%, #ffffff 0%, #faf6f0 55%, #f4eee4 100%);
+  --sky-nebula: radial-gradient(ellipse at 80% 15%, rgba(251, 191, 36, 0.12) 0%, transparent 60%);
+  --cloud-tint: rgba(255, 255, 255, 0.95);
 
-  --ticker-bg: rgba(255, 255, 255, 0.7);
-  --ticker-border: rgba(168, 85, 247, 0.12);
+  --ticker-bg: #eee7dc;
+  --ticker-border: #ddd3c4;
 
   --paper-slip-bg: #ffffff;
-  --paper-slip-border: rgba(196, 181, 253, 0.45);
-  --paper-slip-shadow: 0 10px 30px rgba(168, 85, 247, 0.08);
+  --paper-slip-border: #e8e1d5;
+  --paper-slip-shadow: 0 10px 30px rgba(45, 35, 60, 0.07);
 
-  --svg-roof-fill: #c7d2fe;
-  --svg-roof-trim: #818cf8;
-  --svg-chimney: #a5b4fc;
+  --svg-roof-fill: #1e2640;
+  --svg-roof-trim: #2a3556;
+  --svg-chimney: #192038;
 
   --lantern-soft-glow: rgba(245, 158, 11, 0.38);
   --lantern-starry-glow: rgba(14, 165, 233, 0.38);
   --lantern-sleep-glow: rgba(139, 92, 246, 0.38);
 
-  --odometer-bg: #2e1065;
-  --odometer-tumbler-bg: #4c1d95;
-  --odometer-text: #fde047;
+  --odometer-bg: #ffffff;
+  --odometer-tumbler-bg: #f5efe6;
+  --odometer-text: #8c531b;
 }
 
 /* --- 2. BASE RESET & GLOBAL STYLES --- */
@@ -176,6 +177,24 @@ body {
   overflow-x: hidden;
   max-width: 100vw;
   transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+/* Typography Hierarchy (Cozy Storybook Design System) */
+h1, h2, h3, h4, .btn, .nav-links, .nav-link, .badge, .counter-digits {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+}
+
+body, p, input, textarea, select {
+  font-family: 'Nunito', sans-serif;
+}
+
+.story-section,
+.story-timeline,
+.story-card,
+.chronicle-page,
+#story .story-content-card {
+  font-family: 'Playfair Display', Georgia, serif;
 }
 
 img {
@@ -343,39 +362,43 @@ a {
   100% { transform: translateX(-80px) translateY(20px); }
 }
 
-/* --- 3B. LANTERN BEAM CURSOR GLOW & HIDDEN CONSTELLATIONS LAYER (Tier 2 Feature) --- */
+/* --- 3B. TRUE LANTERN FLASHLIGHT BEAM MODE (Tier 2 Feature) --- */
 #lantern-cursor-glow {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 1;
+  z-index: 48;
   opacity: 0;
   transition: opacity 0.3s ease;
-  background: radial-gradient(circle 220px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 245, 200, 0.18) 0%, transparent 80%);
+  background: radial-gradient(circle 180px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 245, 200, 0.22) 0%, transparent 100%);
 }
 
 #hidden-constellations-layer,
+#lantern-constellations-canvas,
 .hidden-constellations-layer {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 0;
-  opacity: 0.1;
+  z-index: 49;
+  opacity: 0;
   transition: opacity 0.3s ease;
-  -webkit-mask-image: radial-gradient(circle 240px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 30%, transparent 100%);
-  mask-image: radial-gradient(circle 240px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 30%, transparent 100%);
+  will-change: mask-image, -webkit-mask-image;
 }
 
 body.lantern-active #lantern-cursor-glow,
 body.lantern-beam-on #lantern-cursor-glow {
-  opacity: 1;
+  opacity: 1 !important;
 }
 
 body.lantern-active #hidden-constellations-layer,
+body.lantern-active #lantern-constellations-canvas,
 body.lantern-active .hidden-constellations-layer,
 body.lantern-beam-on #hidden-constellations-layer,
+body.lantern-beam-on #lantern-constellations-canvas,
 body.lantern-beam-on .hidden-constellations-layer {
-  opacity: 0.9;
+  opacity: 1 !important;
+  -webkit-mask-image: radial-gradient(circle 180px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
+  mask-image: radial-gradient(circle 180px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
 }
 
 .constellations-svg {
@@ -403,6 +426,24 @@ body.lantern-beam-on .hidden-constellations-layer {
   letter-spacing: 0.5px;
 }
 
+.celestial-doodle {
+  filter: drop-shadow(0 0 10px rgba(255, 209, 102, 0.9)) drop-shadow(0 0 20px rgba(56, 189, 248, 0.6));
+  animation: doodle-float 3s ease-in-out infinite alternate;
+}
+
+@keyframes doodle-float {
+  0% { transform: translateY(0px) scale(0.98); }
+  100% { transform: translateY(-8px) scale(1.02); }
+}
+
+.doodle-label {
+  font-family: var(--font-ticker);
+  font-size: 13px;
+  fill: #ffd166;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
 /* --- 4. TOP SCROLLING TICKER (Sleek Single-Line Ticker Strip) --- */
 .retro-ticker-bar {
   height: 32px;
@@ -421,9 +462,18 @@ body.lantern-beam-on .hidden-constellations-layer {
   box-sizing: border-box;
 }
 
-[data-theme="day"] .retro-ticker-bar {
-  background: rgba(248, 246, 255, 0.95);
-  border-bottom: 1px solid rgba(124, 58, 237, 0.12);
+[data-theme="day"] .retro-ticker-bar,
+body.day-mode .retro-ticker-bar {
+  background: #eee7dc !important;
+  color: #332a45 !important;
+  border-bottom: 1px solid #ddd3c4 !important;
+}
+
+[data-theme="day"] .retro-ticker-bar .ticker-item,
+body.day-mode .retro-ticker-bar .ticker-item,
+[data-theme="day"] .retro-ticker-bar .ticker-tag,
+body.day-mode .retro-ticker-bar .ticker-tag {
+  color: #332a45 !important;
 }
 
 .ticker-marquee-wrapper {
@@ -836,10 +886,11 @@ body.lantern-beam-on .hidden-constellations-layer {
   margin-bottom: 0.85rem;
 }
 
-[data-theme="day"] .section-eyebrow {
-  background: rgba(124, 58, 237, 0.05);
-  border: 1px solid rgba(124, 58, 237, 0.14);
-  color: #6b7280;
+[data-theme="day"] .section-eyebrow,
+body.day-mode .section-eyebrow {
+  background: #ede6db !important;
+  border: 1px solid #dcd4c8 !important;
+  color: #78350f !important;
 }
 
 .section-title {
@@ -853,10 +904,16 @@ body.lantern-beam-on .hidden-constellations-layer {
   margin-bottom: 0.85rem;
 }
 
-[data-theme="day"] .section-title {
-  background: linear-gradient(135deg, #1e1b4b 60%, #7c3aed 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+[data-theme="day"] .section-title,
+body.day-mode .section-title {
+  color: #1e2238 !important;
+  -webkit-text-fill-color: #1e2238 !important;
+  background: none !important;
+}
+
+[data-theme="day"] .section-lead,
+body.day-mode .section-lead {
+  color: #333852 !important;
 }
 
 .section-lead {
@@ -1109,10 +1166,11 @@ body.lantern-beam-on .hidden-constellations-layer {
   margin: 0;
 }
 
-[data-theme="day"] .hero-title {
-  background: linear-gradient(135deg, #1e1b4b 60%, #7c3aed 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+[data-theme="day"] .hero-title,
+body.day-mode .hero-title {
+  color: #1e2238 !important;
+  -webkit-text-fill-color: #1e2238 !important;
+  background: none !important;
 }
 
 .highlight-pip {
@@ -1120,6 +1178,22 @@ body.lantern-beam-on .hidden-constellations-layer {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
+}
+
+[data-theme="day"] .highlight-pip,
+body.day-mode .highlight-pip {
+  color: #4338ca !important;
+  -webkit-text-fill-color: #4338ca !important;
+  background: none !important;
+}
+
+[data-theme="day"] .hero-lead,
+body.day-mode .hero-lead,
+[data-theme="day"] .hero-sub-text,
+body.day-mode .hero-sub-text,
+[data-theme="day"] .hero-tagline,
+body.day-mode .hero-tagline {
+  color: #333852 !important;
 }
 
 .hero-tagline {
@@ -1432,6 +1506,109 @@ body.lantern-beam-on .hidden-constellations-layer {
   100% { box-shadow: 0 0 24px rgba(255, 209, 102, 0.45); }
 }
 
+/* Pip's Interactive Dialogue Widget (Tier 3 Legendary: Character Chats Back) */
+.pip-dialogue-widget {
+  margin-top: 10px;
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+}
+
+.dialogue-chips-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.dialogue-chip {
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.dialogue-chip:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 230, 109, 0.5);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 4px 14px rgba(255, 230, 109, 0.25);
+  color: #ffe66d;
+}
+
+.dialogue-chip.active {
+  background: linear-gradient(135deg, #ffe66d, #fca311);
+  color: #0d1126;
+  font-weight: 700;
+  border-color: transparent;
+  box-shadow: 0 0 14px rgba(255, 230, 109, 0.45);
+  transform: scale(1.02);
+}
+
+[data-theme="day"] .avatar-gesture-pill,
+body.day-mode .avatar-gesture-pill,
+[data-theme="day"] #avatar-gesture-pill,
+body.day-mode #avatar-gesture-pill {
+  background: #ffffff !important;
+  border: 2px solid #e2d9cc !important;
+  color: #232742 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="day"] .avatar-gesture-pill .gesture-text,
+body.day-mode .avatar-gesture-pill .gesture-text,
+[data-theme="day"] .avatar-gesture-pill .gesture-icon,
+body.day-mode .avatar-gesture-pill .gesture-icon {
+  color: #1e2238 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="day"] .dialogue-chip,
+body.day-mode .dialogue-chip {
+  background: #ffffff !important;
+  border: 1.5px solid #dcd4c8 !important;
+  color: #4338ca !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+}
+
+[data-theme="day"] .dialogue-chip:hover,
+body.day-mode .dialogue-chip:hover {
+  background: #f5f3ff !important;
+  border-color: #818cf8 !important;
+  color: #3730a3 !important;
+}
+
+[data-theme="day"] .dialogue-chip.active,
+body.day-mode .dialogue-chip.active {
+  background: linear-gradient(135deg, #ffe66d, #fca311) !important;
+  color: #0d1126 !important;
+}
+
+.avatar-gesture-pill.typing {
+  border-color: var(--color-gold);
+  box-shadow: 0 0 16px rgba(255, 230, 109, 0.35);
+  animation: pulse-speech 1.2s infinite alternate;
+}
+
+@keyframes pulse-speech {
+  0% { transform: scale(0.99); }
+  100% { transform: scale(1.02); }
+}
+
 /* Tier 2 Mini-Toy: Pip's Stardust Catcher */
 .stardust-toy-card {
   margin-top: 0.25rem;
@@ -1594,30 +1771,42 @@ body.lantern-beam-on .hidden-constellations-layer {
   }
 }
 
-/* Fix Light Mode Card Shadows */
+/* Cards (Featured Dreamworks, Wish Wall, Bio, Stardust Toy, etc.) in Light Mode */
 [data-theme="day"] .project-card,
+body.day-mode .project-card,
 [data-theme="day"] .bio-card-portrait,
+body.day-mode .bio-card-portrait,
 [data-theme="day"] .bio-card-narrative,
-[data-theme="day"] .story-card,
+body.day-mode .bio-card-narrative,
+[data-theme="day"] .bio-narrative-card,
+body.day-mode .bio-narrative-card,
 [data-theme="day"] .wish-card,
+body.day-mode .wish-card,
 [data-theme="day"] .wish-form-card,
+body.day-mode .wish-form-card,
 [data-theme="day"] .wishes-board-container,
+body.day-mode .wishes-board-container,
+[data-theme="day"] .wishes-board-header,
+body.day-mode .wishes-board-header,
 [data-theme="day"] .stardust-toy-card,
-[data-theme="day"] .btn-secondary,
-[data-theme="day"] .btn-glass,
-[data-theme="day"] .action-pill {
-  box-shadow: 0 10px 30px rgba(168, 85, 247, 0.08);
-  border: 1px solid rgba(168, 85, 247, 0.15);
+body.day-mode .stardust-toy-card,
+[data-theme="day"] .retro-odometer-box,
+body.day-mode .retro-odometer-box {
+  background: #ffffff !important;
+  border: 1px solid #e8e1d5 !important;
+  box-shadow: 0 10px 30px rgba(45, 35, 60, 0.07) !important;
 }
 
 [data-theme="day"] .project-card:hover,
-[data-theme="day"] .story-card:hover,
+body.day-mode .project-card:hover,
 [data-theme="day"] .wish-card:hover,
+body.day-mode .wish-card:hover,
 [data-theme="day"] .stardust-toy-card:hover,
-[data-theme="day"] .btn-secondary:hover,
-[data-theme="day"] .action-pill:hover {
-  box-shadow: 0 16px 35px rgba(168, 85, 247, 0.14);
-  border-color: rgba(168, 85, 247, 0.3);
+body.day-mode .stardust-toy-card:hover,
+[data-theme="day"] .retro-odometer-box:hover,
+body.day-mode .retro-odometer-box:hover {
+  border-color: #d1c7b7 !important;
+  box-shadow: 0 16px 36px rgba(45, 35, 60, 0.12) !important;
 }
 
 /* --- 8. CHARACTER BIO & DOSSIER (#bio / #about) --- */
@@ -1943,8 +2132,9 @@ body.lantern-beam-on .hidden-constellations-layer {
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-[data-theme="day"] .recipe-bar-track {
-  background: rgba(124, 58, 237, 0.12);
+[data-theme="day"] .recipe-bar-track,
+body.day-mode .recipe-bar-track {
+  background: #ede6db !important;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
@@ -1956,6 +2146,25 @@ body.lantern-beam-on .hidden-constellations-layer {
   border-radius: 9999px;
   background: linear-gradient(90deg, #ffe66d, #fca311);
   transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="day"] .recipe-bar-fill,
+body.day-mode .recipe-bar-fill,
+[data-theme="day"] .recipe-bar-fill.fill-moonbeam,
+body.day-mode .recipe-bar-fill.fill-moonbeam,
+[data-theme="day"] .recipe-bar-fill.fill-mist,
+body.day-mode .recipe-bar-fill.fill-mist,
+[data-theme="day"] .recipe-bar-fill.fill-lavender,
+body.day-mode .recipe-bar-fill.fill-lavender {
+  background: linear-gradient(90deg, #f59e0b, #d97706) !important;
+}
+
+[data-theme="day"] .recipe-pct,
+body.day-mode .recipe-pct,
+[data-theme="day"] .recipe-meta,
+body.day-mode .recipe-meta {
+  color: #78350f !important;
+  font-weight: 700;
 }
 
 .gear-cards-grid,
@@ -2078,8 +2287,11 @@ body.lantern-beam-on .hidden-constellations-layer {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   position: relative;
+  box-sizing: border-box;
 }
 
 .project-card:hover {
@@ -2088,10 +2300,11 @@ body.lantern-beam-on .hidden-constellations-layer {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 20px rgba(247, 215, 148, 0.1);
 }
 
-[data-theme="day"] .project-card {
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(124, 58, 237, 0.16);
-  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.06);
+[data-theme="day"] .project-card,
+body.day-mode .project-card {
+  background: #ffffff !important;
+  border: 1px solid #e8e1d5 !important;
+  box-shadow: 0 10px 30px rgba(45, 35, 60, 0.07) !important;
 }
 
 .card-glass-header {
@@ -2600,29 +2813,34 @@ div:has(> .dot),
 .routes-card {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .routes-card .card-glass-header {
   order: 1;
 }
 
-.routes-card .project-body {
-  order: 2;
-  padding: 24px 28px 16px 28px;
-  display: flex;
-  flex-direction: column;
-}
-
 .routes-card .routes-map-stage {
-  order: 3;
+  order: 2;
   position: relative;
   background: radial-gradient(ellipse at 50% 60%, #101633 0%, #080c18 100%);
   border-radius: 18px;
-  margin: 0 24px 24px 24px;
+  margin: 12px 18px 0 18px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.65), 0 10px 30px rgba(0, 0, 0, 0.35);
-  min-height: 280px;
+  min-height: 200px;
+  max-height: 200px;
+}
+
+[data-theme="day"] .routes-card .routes-map-stage,
+body.day-mode .routes-card .routes-map-stage,
+[data-theme="day"] .routes-map-stage,
+body.day-mode .routes-map-stage {
+  background: linear-gradient(180deg, #1e2640 0%, #0f1426 100%) !important;
+  border: 2px solid #e2d9cc !important;
+  border-radius: 18px !important;
 }
 
 /* Subtle Radar Rings Sweep Overlay */
@@ -2650,34 +2868,54 @@ div:has(> .dot),
   z-index: 2;
 }
 
+.routes-card .project-body {
+  order: 3;
+  padding: 16px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.routes-card .project-title {
+  font-size: 1.35rem;
+  margin-bottom: 0.35rem;
+}
+
+.routes-card .project-desc {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+}
+
 /* 1. Interactive Route Buttons (Clearly visible above the map) */
 .routes-control-container {
-  margin-top: 10px;
-  margin-bottom: 12px;
+  margin-top: 4px;
+  margin-bottom: 6px;
 }
 
 .routes-control-title {
   display: block;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.25rem;
 }
 
 .routes-btn-group {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   flex-wrap: wrap;
-  margin: 16px 0;
+  margin: 6px 0 10px 0;
 }
 
 .route-tab-btn {
-  padding: 8px 16px;
+  padding: 5px 12px;
   border-radius: 9999px;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.15);
   color: #fff;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   cursor: pointer;
   transition: all 0.25s ease;
   font-family: inherit;
@@ -2697,16 +2935,18 @@ div:has(> .dot),
   color: #0d1126;
   font-weight: 700;
   border-color: transparent;
-  box-shadow: 0 0 15px rgba(255, 230, 109, 0.4);
+  box-shadow: 0 0 12px rgba(255, 230, 109, 0.35);
 }
 
-[data-theme="day"] .route-tab-btn {
+[data-theme="day"] .route-tab-btn,
+body.day-mode .route-tab-btn {
   background: rgba(15, 23, 42, 0.06);
   border-color: rgba(15, 23, 42, 0.15);
   color: #1e293b;
 }
 
-[data-theme="day"] .route-tab-btn.active {
+[data-theme="day"] .route-tab-btn.active,
+body.day-mode .route-tab-btn.active {
   background: linear-gradient(135deg, #ffe66d, #fca311);
   color: #0d1126;
 }
@@ -2867,19 +3107,28 @@ div:has(> .dot),
 
 .waypoint-tooltip {
   position: absolute;
-  top: 10px;
+  top: 8px;
   left: 10px;
   right: 10px;
-  background: rgba(10, 14, 28, 0.92);
+  background: rgba(10, 14, 28, 0.88);
   backdrop-filter: blur(8px);
-  border: 1px solid var(--border-subtle);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 230, 109, 0.3);
   border-radius: var(--radius-sm);
-  padding: 0.55rem 0.95rem;
-  font-size: 0.8rem;
+  padding: 0.45rem 0.8rem;
+  font-size: 0.78rem;
   color: var(--text-secondary);
   pointer-events: none;
-  transition: all var(--transition-fast);
+  transition: opacity 0.3s ease, transform 0.3s ease;
   z-index: 10;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="day"] .waypoint-tooltip,
+body.day-mode .waypoint-tooltip {
+  background: rgba(22, 28, 48, 0.92) !important;
+  border-color: rgba(255, 230, 109, 0.4) !important;
+  color: #f1f5f9 !important;
 }
 
 .tooltip-title {
@@ -2909,7 +3158,7 @@ div:has(> .dot),
   font-weight: 600;
 }
 
-/* --- 10. STORY SECTION (#story) --- */
+/* --- 10. STORY SECTION & 3D STORYBOOK (#story) --- */
 .story-section {
   position: relative;
   background: var(--surface-glass);
@@ -2917,137 +3166,273 @@ div:has(> .dot),
   border-bottom: 1px solid var(--border-subtle);
 }
 
-.story-timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 3.25rem;
-  max-width: 860px;
-  margin: 0 auto;
-  position: relative;
-}
-
-.story-timeline::before {
-  content: '';
-  position: absolute;
-  top: 30px;
-  bottom: 30px;
-  left: 36px;
-  width: 2px;
-  background: linear-gradient(180deg, var(--color-gold) 0%, var(--color-lavender) 50%, var(--color-cyan) 100%);
-  border-radius: var(--radius-pill);
-  opacity: 0.35;
-}
-
-.story-card {
-  position: relative;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
-  padding: 2.25rem 2.5rem 2rem 5.5rem;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
-  line-height: 1.8;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), border-color var(--transition-fast), box-shadow var(--transition-fast);
-}
-
-.story-card.revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.story-card:hover {
-  border-color: rgba(247, 215, 148, 0.35);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 20px rgba(247, 215, 148, 0.1);
-}
-
-[data-theme="day"] .story-card {
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(124, 58, 237, 0.16);
-  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.06);
-}
-
-.story-stamp {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.75rem;
-  background: rgba(247, 215, 148, 0.08);
-  color: var(--color-gold);
-  border: 1px solid rgba(247, 215, 148, 0.25);
-  border-radius: 9999px;
-  padding: 4px 14px;
-  font-family: var(--font-display);
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  transform: none;
-  opacity: 1;
-}
-
-[data-theme="day"] .story-stamp {
-  background: rgba(124, 58, 237, 0.08);
-  color: #7c3aed;
-  border-color: rgba(124, 58, 237, 0.25);
-}
-
-.story-icon-badge {
-  position: absolute;
-  left: 18px;
-  top: 2rem;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--bg-primary);
-  border: 1.5px solid rgba(247, 215, 148, 0.4);
-  box-shadow: 0 0 16px rgba(247, 215, 148, 0.2);
+.storybook-nav-bar {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.15rem;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+/* 3. Flip Navigation Controls (Warm moonlight buttons with golden active hover states) */
+.storybook-nav-btn,
+#story-prev-btn,
+#story-next-btn {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 230, 109, 0.4) !important;
+  border-radius: 9999px !important;
+  padding: 8px 18px !important;
+  color: #ffe66d !important;
+  transition: all 0.25s ease !important;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.storybook-nav-btn:hover:not(:disabled),
+#story-prev-btn:hover:not(:disabled),
+#story-next-btn:hover:not(:disabled) {
+  background: #ffe66d !important;
+  color: #101428 !important;
+  font-weight: 700 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 18px rgba(255, 230, 109, 0.4) !important;
+}
+
+.storybook-nav-btn:disabled,
+.storybook-nav-btn.disabled {
+  opacity: 0.35 !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.storybook-page-counter {
+  font-family: var(--font-ticker);
+  font-size: 1.05rem;
   color: var(--color-gold);
+  padding: 6px 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 230, 109, 0.35);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.story-timeline {
+  perspective: 1200px;
+  max-width: 860px;
+  margin: 0 auto;
+  position: relative;
+  min-height: 280px;
+  display: block;
+}
+
+.story-timeline::before {
+  display: none;
+}
+
+/* 1. Parchment Page Surface & Hardcover Book Finish */
+.story-card,
+.chronicle-page,
+#story .story-content-card {
+  position: relative;
+  background: linear-gradient(135deg, #fbf7ee 0%, #f4ebd0 50%, #eee1be 100%) !important;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6), inset 0 0 40px rgba(184, 150, 90, 0.25), 0 0 25px rgba(255, 230, 109, 0.2) !important;
+  border: 2px solid rgba(212, 175, 55, 0.55) !important;
+  border-radius: 20px !important;
+  padding: 44px 38px 44px 48px;
+  color: #1a1e36 !important;
+  line-height: 1.8;
+  transform-origin: left center;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s ease, box-shadow 0.6s ease;
+  will-change: transform, opacity;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  box-sizing: border-box;
+}
+
+/* Left Book-Spine Binding Crease (using ::before) */
+.story-card::before,
+.chronicle-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 28px;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.14), transparent);
+  border-top-left-radius: 18px;
+  border-bottom-left-radius: 18px;
+  pointer-events: none;
   z-index: 2;
 }
 
-.story-card-title {
-  font-family: var(--font-display);
-  font-size: 1.55rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  background: linear-gradient(135deg, #ffffff 70%, #f7d794 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 0.85rem;
+.story-card.active-page {
+  transform: rotateY(0deg) !important;
+  opacity: 1 !important;
+  position: relative;
+  z-index: 5;
+  pointer-events: auto;
 }
 
-[data-theme="day"] .story-card-title {
-  background: linear-gradient(135deg, #1e1b4b 70%, #7c3aed 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.story-card.page-flipped {
+  transform: rotateY(-180deg) !important;
+  opacity: 0 !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  pointer-events: none;
 }
 
-.story-card-body {
-  font-size: 1.05rem;
-  line-height: 1.8;
-  color: var(--text-secondary);
+.story-card.page-hidden {
+  transform: rotateY(0deg) !important;
+  opacity: 0 !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.story-card:hover {
+  border-color: rgba(212, 175, 55, 0.85) !important;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.65), inset 0 0 45px rgba(184, 150, 90, 0.3), 0 0 30px rgba(255, 230, 109, 0.3) !important;
+}
+
+[data-theme="day"] .story-card {
+  background: linear-gradient(135deg, #fbf7ee 0%, #f4ebd0 50%, #eee1be 100%) !important;
+  border: 2px solid rgba(212, 175, 55, 0.55) !important;
+  box-shadow: 0 12px 35px rgba(100, 80, 50, 0.2), inset 0 0 35px rgba(184, 150, 90, 0.2) !important;
+  color: #1a1e36 !important;
+}
+
+/* 2. Storybook Typography & Golden Accents */
+
+/* Chapter Badge ("CHAPTER I", "CHAPTER II", "CHAPTER III"): Vintage wax-seal / gold leaf stamp */
+.story-stamp,
+.story-card .story-stamp {
+  position: absolute;
+  top: 36px;
+  right: 36px;
+  background: #2a1b4e !important;
+  color: #ffe66d !important;
+  padding: 4px 14px !important;
+  border-radius: 9999px !important;
+  font-family: var(--font-display) !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  border: 1px solid #d4af37 !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
+  z-index: 3;
+}
+
+[data-theme="day"] .story-stamp,
+[data-theme="day"] .story-card .story-stamp {
+  background: #2a1b4e !important;
+  color: #ffe66d !important;
+  border: 1px solid #d4af37 !important;
+}
+
+/* Decorative Story Icon Badge (Astrolabe Charm) */
+.story-icon-badge {
+  position: absolute;
+  top: 36px;
+  right: 148px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #2a1b4e;
+  border: 1px solid #d4af37;
+  color: #ffe66d;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  z-index: 3;
+}
+
+/* Chapter Heading ("The Spark in the Stardust"): Classical storybook serif */
+.story-card-title,
+.story-card h3 {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif !important;
+  font-size: 2rem !important;
+  color: #161a30 !important;
+  margin: 12px 0 16px 0 !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: #161a30 !important;
+  padding-right: 150px;
+}
+
+[data-theme="day"] .story-card-title,
+[data-theme="day"] .story-card h3 {
+  color: #161a30 !important;
+  -webkit-text-fill-color: #161a30 !important;
+  background: none !important;
+}
+
+/* Story Body Text: Comfortable editorial serif */
+.story-card-body,
+.story-body p,
+.story-card p {
+  font-family: Georgia, 'Cambria', serif !important;
+  font-size: 1.08rem !important;
+  line-height: 1.85 !important;
+  color: #2d334a !important;
   margin-bottom: 1.5rem;
 }
 
+/* First letter drop-cap (storybook flair) */
+.story-body p::first-letter,
+.story-card p::first-letter,
+.story-card-body::first-letter {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  font-size: 2.4rem !important;
+  float: left !important;
+  line-height: 0.9 !important;
+  margin-right: 8px !important;
+  font-weight: 700 !important;
+  color: #6c5ce7 !important;
+}
+
+/* Footer metadata ("Cradle No. 1 · Year 001 · First Spark"): Faded vintage ink-stamp */
 .story-card-meta {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
   gap: 0.75rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border-subtle);
-  font-size: 0.82rem;
-  color: var(--text-muted);
+  font-family: 'Courier New', monospace !important;
+  font-size: 0.8rem !important;
+  text-transform: uppercase !important;
+  color: #7f8c8d !important;
+  letter-spacing: 0.08em !important;
+  border-top: 1px dashed rgba(184, 150, 90, 0.4) !important;
+  padding-top: 16px !important;
+  margin-top: 24px !important;
 }
 
-.meta-tag {
-  color: var(--text-accent);
+.story-card-meta .meta-tag,
+.story-card-meta .meta-date {
+  font-family: inherit !important;
+  font-size: inherit !important;
+  color: #7f8c8d !important;
+  letter-spacing: inherit !important;
+  text-transform: inherit !important;
   font-weight: 600;
 }
 
@@ -3756,6 +4141,44 @@ div:has(> .dot),
 .badge-html5 .badge-r { background: #f97316; color: #ffffff; }
 .badge-clouds .badge-r { background: #38bdf8; color: #0f172a; }
 .badge-netscape .badge-r { background: #8b5cf6; color: #ffffff; }
+
+/* Soft Pastel Vintage Nursery Badges in Light Mode */
+[data-theme="day"] .retro-badge,
+body.day-mode .retro-badge {
+  border-color: #d1c7b7 !important;
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-theme="day"] .badge-l,
+body.day-mode .badge-l {
+  background: #f5efe6 !important;
+  color: #64748b !important;
+  border-right: 1px solid #d1c7b7 !important;
+}
+
+[data-theme="day"] .badge-starlight .badge-r,
+body.day-mode .badge-starlight .badge-r {
+  background: #fef3c7 !important;
+  color: #92400e !important;
+}
+
+[data-theme="day"] .badge-html5 .badge-r,
+body.day-mode .badge-html5 .badge-r {
+  background: #ffedd5 !important;
+  color: #9a3412 !important;
+}
+
+[data-theme="day"] .badge-clouds .badge-r,
+body.day-mode .badge-clouds .badge-r {
+  background: #e0f2fe !important;
+  color: #0369a1 !important;
+}
+
+[data-theme="day"] .badge-netscape .badge-r,
+body.day-mode .badge-netscape .badge-r {
+  background: #ede9fe !important;
+  color: #5b21b6 !important;
+}
 
 .footer-credits-box {
   max-width: 680px;

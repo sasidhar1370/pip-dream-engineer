@@ -11,7 +11,7 @@
   <!-- Google Fonts: Whimsical display & sleek modern typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=VT323&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Quicksand:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
   <!-- Favicon -->
@@ -39,7 +39,31 @@
 
   <!-- Hidden Constellations & Secret Nursery Sketches Layer (Revealed by Lantern Beam) -->
   <div class="hidden-constellations-layer" id="hidden-constellations-layer" aria-hidden="true">
-    <svg class="constellations-svg" viewBox="0 0 1440 900" preserveAspectRatio="none">
+    <svg class="constellations-svg" id="lantern-constellations-canvas" viewBox="0 0 1440 900" preserveAspectRatio="none">
+      <!-- Hidden Celestial Doodle 1: Smiling Crescent Moon -->
+      <g class="celestial-doodle doodle-moon" transform="translate(560, 240)">
+        <path d="M 40,10 A 35,35 0 0,0 20,70 A 40,40 0 1,1 40,10 Z" fill="#ffd166" opacity="0.9" />
+        <circle cx="28" cy="35" r="3" fill="#0d1126" />
+        <path d="M 23,48 Q 29,54 35,48" fill="none" stroke="#0d1126" stroke-width="2.2" stroke-linecap="round" />
+        <text x="35" y="85" text-anchor="middle" class="doodle-label">✦ Dream Moon</text>
+      </g>
+
+      <!-- Hidden Celestial Doodle 2: Floating Pacifier (Left) -->
+      <g class="celestial-doodle doodle-pacifier" transform="translate(260, 360)">
+        <circle cx="30" cy="30" r="14" fill="none" stroke="#38bdf8" stroke-width="3" stroke-dasharray="3 3" />
+        <ellipse cx="30" cy="18" rx="8" ry="5" fill="#ffd166" opacity="0.9" />
+        <circle cx="30" cy="30" r="6" fill="#c084fc" />
+        <text x="30" y="60" text-anchor="middle" class="doodle-label">★ Slumber Soother</text>
+      </g>
+
+      <!-- Hidden Celestial Doodle 3: Floating Pacifier (Right) -->
+      <g class="celestial-doodle doodle-pacifier-2" transform="translate(880, 420)">
+        <circle cx="25" cy="25" r="12" fill="none" stroke="#f472b6" stroke-width="2.5" />
+        <ellipse cx="25" cy="14" rx="7" ry="4" fill="#ffd166" opacity="0.85" />
+        <circle cx="25" cy="25" r="5" fill="#38bdf8" />
+        <text x="25" y="52" text-anchor="middle" class="doodle-label">✦ Star Soother</text>
+      </g>
+
       <!-- Constellation 1: The Starlight Cradle -->
       <g class="constellation c-cradle" transform="translate(140, 180)">
         <polyline points="0,60 50,110 130,110 180,60 90,140" fill="none" stroke="rgba(255, 209, 102, 0.75)" stroke-width="1.5" stroke-dasharray="4 4" />
@@ -299,6 +323,21 @@
           <div class="avatar-gesture-pill" id="avatar-gesture-pill">
             <span class="gesture-icon">✦</span>
             <span class="gesture-text">Move pointer to tilt · Tap cap 3× for secret</span>
+          </div>
+
+          <!-- Pip's Interactive Dialogue Box (Tier 3 Legendary: Character Chats Back) -->
+          <div id="pip-chatbox" class="pip-dialogue-widget" aria-label="Ask Pip a question">
+            <div class="dialogue-chips-row" role="group" aria-label="Interactive Dialogue Prompts">
+              <button type="button" class="dialogue-chip" data-question="nightcap" aria-label="Ask why Pip wears a nightcap">
+                <span>☁ Why the nightcap?</span>
+              </button>
+              <button type="button" class="dialogue-chip" data-question="nightmares" aria-label="Ask how Pip catches nightmares">
+                <span>★ How do you catch nightmares?</span>
+              </button>
+              <button type="button" class="dialogue-chip" data-question="recipe" aria-label="Ask for Pip's secret lullaby recipe">
+                <span>♪ Secret lullaby recipe</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -850,12 +889,25 @@
         <div class="section-header text-center">
           <span class="section-eyebrow">Pip’s Chronicle</span>
           <h2 class="section-title" id="story-heading">The Making of a Dream Engineer</h2>
-          <p class="section-lead">Scroll to unveil Pip’s journey from a stray moonbeam to certified celestial craftsman.</p>
+          <p class="section-lead">Scroll or flip pages to unveil Pip’s journey from a stray moonbeam to certified celestial craftsman.</p>
         </div>
 
-        <div class="story-timeline" id="story-timeline">
+        <!-- Interactive Storybook Navigation Controls (Tier 2: Interactive Storybook) -->
+        <div class="storybook-nav-bar" id="storybook-nav-bar" role="toolbar" aria-label="Storybook Chapter Navigator">
+          <button type="button" class="btn btn-sm btn-secondary storybook-nav-btn" id="story-prev-btn" aria-label="Previous Chapter">
+            <span>◀ Previous Chapter</span>
+          </button>
+          <div class="storybook-page-counter" id="storybook-page-counter" aria-live="polite">
+            <span class="page-indicator-text">Page <strong id="story-current-page">1</strong> of <span id="story-total-pages">3</span></span>
+          </div>
+          <button type="button" class="btn btn-sm btn-primary storybook-nav-btn" id="story-next-btn" aria-label="Next Chapter">
+            <span>Next Chapter ▶</span>
+          </button>
+        </div>
+
+        <div class="story-timeline" id="story-timeline" tabindex="0" role="region" aria-label="Interactive 3D Storybook">
           <!-- CARD 1: Strictly under 150 words (77 words) -->
-          <article class="story-card" id="story-card-1" data-chapter="1">
+          <article class="story-card active-page" id="story-card-1" data-chapter="1">
             <div class="story-stamp">Chapter I</div>
             <div class="story-icon-badge">✦</div>
             <h3 class="story-card-title">The Spark in the Stardust</h3>

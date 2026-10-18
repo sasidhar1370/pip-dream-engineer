@@ -35,8 +35,9 @@
           this.ctx = new AudioCtx();
         }
       }
-      if (this.ctx && this.ctx.state === 'suspended') {
-        this.ctx.resume().catch(() => {});
+      const audioCtx = this.ctx;
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
       }
     }
 
@@ -53,6 +54,16 @@
 
       this.soundBtn.addEventListener('click', () => {
         this.toggleSound();
+      });
+
+      // Automatically resume Web Audio AudioContext on first click of any button
+      document.addEventListener('click', (e) => {
+        const audioCtx = this.ctx;
+        if (audioCtx && audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        } else if (!audioCtx && e.target.closest('button, .btn, [role="button"], a')) {
+          this.initContext();
+        }
       });
     }
 
@@ -79,6 +90,10 @@
     playTone(freq, duration = 0.8, type = 'sine', delay = 0, gainLevel = 0.25) {
       if (this.isMuted) return;
       this.initContext();
+      const audioCtx = this.ctx;
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
       if (!this.ctx) return;
 
       const startTime = this.ctx.currentTime + delay;
@@ -202,6 +217,9 @@
 
     applyTheme(theme) {
       document.documentElement.setAttribute('data-theme', theme);
+      if (document.body) {
+        document.body.classList.toggle('day-mode', theme === 'day');
+      }
       localStorage.setItem('pip-theme', theme);
       if (theme === 'day') {
         this.statusText.textContent = 'Day Nursery';
@@ -897,8 +915,14 @@
     showStationInfo(stationKey) {
       const info = this.stationLore[stationKey];
       if (!info || !this.tooltip) return;
-      this.tooltipTitle.textContent = info.title;
-      this.tooltipDesc.textContent = info.desc;
+      this.tooltip.style.opacity = '0';
+      this.tooltip.style.transform = 'translateY(-4px)';
+      setTimeout(() => {
+        this.tooltipTitle.textContent = info.title;
+        this.tooltipDesc.textContent = info.desc;
+        this.tooltip.style.opacity = '1';
+        this.tooltip.style.transform = 'translateY(0)';
+      }, 120);
     }
 
     animateDrone() {
@@ -982,6 +1006,186 @@
       } else {
         element.classList.add('revealed');
       }
+    }
+  }
+
+  /* --------------------------------------------------------------------------
+   * 8.5. INTERACTIVE STORYBOOK 3D PAGE FLIP (Tier 2 Feature)
+   * -------------------------------------------------------------------------- */
+  class InteractiveStorybook {
+    constructor(audioManager) {
+      this.audio = audioManager;
+      this.cards = Array.from(document.querySelectorAll('.story-card'));
+      this.prevBtn = document.getElementById('story-prev-btn');
+      this.nextBtn = document.getElementById('story-next-btn');
+      this.pageIndicator = document.getElementById('story-current-page');
+      this.stage = document.getElementById('story-timeline');
+
+      this.currentPage = 1;
+      this.totalPages = this.cards.length || 3;
+
+      if (this.cards.length === 0) return;
+
+      this.initPages();
+      this.bindEvents();
+    }
+
+    initPages() {
+      this.updatePageState();
+    }
+
+    bindEvents() {
+      if (this.prevBtn) {
+        this.prevBtn.addEventListener('click', () => this.prevPage());
+      }
+      if (this.nextBtn) {
+        this.nextBtn.addEventListener('click', () => this.nextPage());
+      }
+
+      // Keyboard arrow keys navigation (Left/Right)
+      window.addEventListener('keydown', (e) => {
+        const storySection = document.getElementById('story');
+        if (!storySection) return;
+        const rect = storySection.getBoundingClientRect();
+        const isInView = rect.top < window.innerHeight && rect.bottom > 0;
+
+        if (isInView || document.activeElement.closest('#story')) {
+          if (e.key === 'ArrowRight') {
+            this.nextPage();
+          } else if (e.key === 'ArrowLeft') {
+            this.prevPage();
+          }
+        }
+      });
+    }
+
+    prevPage() {
+      if (this.currentPage > 1) {
+        this.currentPage--;
+        this.updatePageState();
+        this.playPageSound(false);
+      }
+    }
+
+    nextPage() {
+      if (this.currentPage < this.totalPages) {
+        this.currentPage++;
+        this.updatePageState();
+        this.playPageSound(true);
+      }
+    }
+
+    updatePageState() {
+      this.cards.forEach((card, index) => {
+        const pageNum = index + 1;
+        card.classList.remove('page-flipped', 'active-page', 'page-hidden');
+
+        if (pageNum < this.currentPage) {
+          card.classList.add('page-flipped');
+        } else if (pageNum === this.currentPage) {
+          card.classList.add('active-page');
+        } else {
+          card.classList.add('page-hidden');
+        }
+      });
+
+      if (this.pageIndicator) {
+        this.pageIndicator.textContent = this.currentPage;
+      }
+
+      if (this.prevBtn) {
+        this.prevBtn.disabled = this.currentPage <= 1;
+        this.prevBtn.classList.toggle('disabled', this.currentPage <= 1);
+      }
+      if (this.nextBtn) {
+        this.nextBtn.disabled = this.currentPage >= this.totalPages;
+        this.nextBtn.classList.toggle('disabled', this.currentPage >= this.totalPages);
+      }
+    }
+
+    playPageSound(isNext) {
+      if (!this.audio) return;
+      const pitch = isNext ? 783.99 : 659.25;
+      this.audio.playTone(pitch, 0.35, 'triangle', 0, 0.18);
+    }
+  }
+
+  /* --------------------------------------------------------------------------
+   * 8.6. PIP'S INTERACTIVE DIALOGUE BOT (Tier 3 Legendary: Character Chats Back)
+   * -------------------------------------------------------------------------- */
+  class PipDialogueBot {
+    constructor(audioManager) {
+      this.audio = audioManager;
+      this.chips = document.querySelectorAll('.dialogue-chip');
+      this.speechPill = document.getElementById('avatar-gesture-pill');
+      this.speechText = document.querySelector('#avatar-gesture-pill .gesture-text');
+      this.typingTimer = null;
+
+      this.responses = {
+        nightcap: "The pink bow keeps my dream antennas tuned to 432 Hz so I never miss a whimpering cradle!",
+        nightmares: "With warm amber light (1800K)! Monsters are allergic to chamomile and fuzzy socks.",
+        recipe: "40% Moonbeam Yarn, 35% warm honey mist, and 25% lavender raindrops. Stir counter-clockwise!"
+      };
+
+      this.initEvents();
+    }
+
+    initEvents() {
+      this.chips.forEach((chip) => {
+        chip.addEventListener('click', (e) => {
+          e.preventDefault();
+          const q = chip.getAttribute('data-question');
+          this.respond(q, chip);
+        });
+      });
+    }
+
+    respond(questionKey, activeChip) {
+      const reply = this.responses[questionKey];
+      if (!reply || !this.speechText) return;
+
+      // Highlight active chip
+      this.chips.forEach((c) => c.classList.toggle('active', c === activeChip));
+
+      // Typewriter animation
+      if (this.typingTimer) {
+        clearInterval(this.typingTimer);
+        this.typingTimer = null;
+      }
+
+      if (this.speechPill) {
+        this.speechPill.classList.add('typing');
+      }
+
+      this.speechText.textContent = '';
+      let charIdx = 0;
+
+      // Initial chiptune chime
+      if (this.audio) {
+        this.audio.playTone(880, 0.15, 'triangle', 0, 0.15);
+      }
+
+      this.typingTimer = setInterval(() => {
+        if (charIdx < reply.length) {
+          this.speechText.textContent += reply[charIdx];
+
+          // Tiny chiptune click chime every 4 characters
+          if (charIdx % 4 === 0 && this.audio) {
+            this.audio.playTone(1200 + (charIdx % 3) * 150, 0.04, 'sine', 0, 0.06);
+          }
+          charIdx++;
+        } else {
+          clearInterval(this.typingTimer);
+          this.typingTimer = null;
+          if (this.speechPill) {
+            this.speechPill.classList.remove('typing');
+          }
+          // Final cheerful arrival chime
+          if (this.audio) {
+            this.audio.playTone(1046.50, 0.25, 'triangle', 0, 0.15);
+          }
+        }
+      }, 22);
     }
   }
 
@@ -1462,11 +1666,17 @@
     }
 
     initEvents() {
-      // Lightweight cursor tracker updating CSS variables for radial glow
-      window.addEventListener('mousemove', (e) => {
-        document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
-        document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
-      }, { passive: true });
+      // Dynamic cursor & touch tracker updating CSS variables for radial flashlight beam
+      const updateCoords = (e) => {
+        const clientX = e.clientX ?? (e.touches && e.touches[0] ? e.touches[0].clientX : window.innerWidth / 2);
+        const clientY = e.clientY ?? (e.touches && e.touches[0] ? e.touches[0].clientY : window.innerHeight / 2);
+        document.documentElement.style.setProperty('--mouse-x', `${clientX}px`);
+        document.documentElement.style.setProperty('--mouse-y', `${clientY}px`);
+      };
+
+      ['mousemove', 'pointermove', 'touchmove'].forEach((evt) => {
+        window.addEventListener(evt, updateCoords, { passive: true });
+      });
 
       if (!this.btn) return;
 
@@ -1478,6 +1688,7 @@
     toggleBeam() {
       this.isActive = !this.isActive;
       document.body.classList.toggle('lantern-beam-on', this.isActive);
+      document.body.classList.toggle('lantern-active', this.isActive);
       this.btn.classList.toggle('active', this.isActive);
       this.btn.setAttribute('aria-pressed', this.isActive.toString());
 
@@ -1689,6 +1900,7 @@
 
     // 4. Story & Wish Wall
     const story = new StoryScrollReveal();
+    const storybook = new InteractiveStorybook(audio);
     const wishes = new MidnightWishWall(audio, odometer);
 
     // 5. Easter Egg & Navigation
@@ -1697,6 +1909,7 @@
 
     // 6. Tier 2 & Tier 3 Standout Features
     const beam = new DreamLanternBeam(audio);
+    const dialogue = new PipDialogueBot(audio);
     const stardust = new StardustCatcherToy(audio, odometer);
     const memory = new ReturningVisitorMemory();
 

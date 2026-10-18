@@ -142,13 +142,20 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+section,
+.site-section,
+.bio-section,
+.character-dossier-section,
+.projects-section,
+.story-section,
+.wishes-section,
 #hero,
 #about,
 #bio,
 #projects,
 #story,
 #wishes {
-  scroll-margin-top: 100px;
+  scroll-margin-top: 80px;
 }
 
 body {
@@ -432,13 +439,15 @@ body.lantern-beam-on .hidden-constellations-layer {
 }
 
 .header-container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 10px 24px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  box-sizing: border-box;
+  gap: 1.25rem;
 }
 
 /* Storybook Brand Crest */
@@ -555,19 +564,20 @@ body.lantern-beam-on .hidden-constellations-layer {
 
 /* Header Action Pills */
 .header-actions {
+  flex-shrink: 0;
   display: flex;
+  gap: 8px;
   align-items: center;
-  gap: 10px;
   white-space: nowrap;
 }
 
 .action-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-  padding: 0.5rem 1.05rem;
+  gap: 0.5rem;
+  padding: 6px 14px;
   font-family: var(--font-display);
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   font-weight: 600;
   border-radius: var(--radius-pill);
   background: rgba(255, 255, 255, 0.06);
@@ -576,6 +586,13 @@ body.lantern-beam-on .hidden-constellations-layer {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
   user-select: none;
+  white-space: nowrap;
+}
+
+.action-pill span,
+.action-pill .beam-label,
+.action-pill .sound-label {
+  white-space: nowrap;
 }
 
 .action-pill:hover {
@@ -1371,25 +1388,35 @@ body.lantern-beam-on .hidden-constellations-layer {
   border-color: rgba(168, 85, 247, 0.3);
 }
 
-/* --- 8. CHARACTER BIO & DOSSIER (#about) --- */
-.bio-section {
+/* --- 8. CHARACTER BIO & DOSSIER (#bio / #about) --- */
+#bio,
+#about,
+.bio-section,
+.character-dossier-section {
   position: relative;
   background: var(--surface-glass);
   border-top: 1px solid var(--border-subtle);
   border-bottom: 1px solid var(--border-subtle);
 }
 
+.character-dossier-grid,
 .bio-grid {
   display: grid;
-  grid-template-columns: 340px 1fr;
-  gap: 3.5rem;
-  align-items: start;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 24px;
+  box-sizing: border-box;
 }
 
-.bio-card-portrait {
+.bio-card-portrait,
+.bio-col-left {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  width: 100%;
 }
 
 .portrait-frame {
@@ -1479,14 +1506,39 @@ body.lantern-beam-on .hidden-constellations-layer {
   color: var(--text-muted);
 }
 
-.bio-card-details {
-  background: var(--surface-card);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid var(--surface-glass-border);
-  border-radius: var(--radius-lg);
-  padding: 2.75rem;
+.bio-card-details,
+.bio-col-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+.bio-narrative-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  border-radius: 18px;
+  padding: 1.5rem;
   box-shadow: var(--shadow-soft);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.bio-narrative-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 230, 109, 0.4);
+  box-shadow: 0 10px 25px rgba(168, 85, 247, 0.15);
+}
+
+[data-theme="day"] .bio-narrative-card {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(168, 85, 247, 0.18);
+  box-shadow: 0 10px 25px rgba(168, 85, 247, 0.06);
 }
 
 .bio-card-header {
@@ -1495,21 +1547,21 @@ body.lantern-beam-on .hidden-constellations-layer {
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1.25rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
   border-bottom: 1px solid var(--border-subtle);
 }
 
 .bio-name {
   font-family: var(--font-display);
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 700;
   color: var(--text-primary);
 }
 
 .bio-role-tag {
   display: block;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   color: var(--text-accent);
   font-weight: 600;
   margin-top: 0.2rem;
@@ -1519,7 +1571,7 @@ body.lantern-beam-on .hidden-constellations-layer {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.4rem 0.9rem;
+  padding: 0.35rem 0.85rem;
   background: rgba(52, 211, 153, 0.12);
   border: 1px solid rgba(52, 211, 153, 0.3);
   border-radius: var(--radius-pill);
@@ -1536,18 +1588,37 @@ body.lantern-beam-on .hidden-constellations-layer {
 }
 
 .bio-bio-text {
-  font-size: 1.1rem;
+  font-size: 1.02rem;
   color: var(--text-secondary);
-  line-height: 1.75;
-  margin-bottom: 2rem;
+  line-height: 1.7;
+  margin-bottom: 0;
 }
 
+/* Storybook Glassmorphism Cards */
+.recipe-card,
 .recipe-container {
-  margin-bottom: 2rem;
-  background: var(--surface-glass);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  border-radius: 18px;
   padding: 1.4rem;
+  margin-bottom: 0;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.recipe-card:hover,
+.recipe-container:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 230, 109, 0.4);
+  box-shadow: 0 10px 25px rgba(168, 85, 247, 0.15);
+}
+
+[data-theme="day"] .recipe-card,
+[data-theme="day"] .recipe-container {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(168, 85, 247, 0.18);
+  box-shadow: 0 10px 25px rgba(168, 85, 247, 0.06);
 }
 
 .recipe-title {
@@ -1599,27 +1670,40 @@ body.lantern-beam-on .hidden-constellations-layer {
 .fill-mist { background: linear-gradient(90deg, #38bdf8, #818cf8); }
 .fill-lavender { background: linear-gradient(90deg, #c084fc, #f472b6); }
 
+.gear-cards-grid,
 .toolkit-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
 }
 
+.gear-card,
 .tool-chip {
   display: flex;
   align-items: center;
   gap: 0.85rem;
-  padding: 0.85rem 1.1rem;
-  background: var(--surface-glass);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  transition: all var(--transition-fast);
+  padding: 0.9rem 1.15rem;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  border-radius: 18px;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
+.gear-card:hover,
 .tool-chip:hover {
-  transform: translateY(-2px);
-  border-color: var(--color-gold);
+  transform: translateY(-3px);
+  border-color: rgba(255, 230, 109, 0.4);
+  box-shadow: 0 10px 25px rgba(168, 85, 247, 0.15);
+}
+
+[data-theme="day"] .gear-card,
+[data-theme="day"] .tool-chip {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(168, 85, 247, 0.18);
+  box-shadow: 0 10px 25px rgba(168, 85, 247, 0.06);
 }
 
 .tool-gem {
@@ -1627,25 +1711,51 @@ body.lantern-beam-on .hidden-constellations-layer {
   color: var(--color-gold);
 }
 
+.gear-card strong,
 .tool-chip strong {
   display: block;
   font-size: 0.9rem;
   color: var(--text-primary);
 }
 
+.gear-card span,
 .tool-chip span {
   display: block;
   font-size: 0.76rem;
   color: var(--text-muted);
 }
 
+.quote-card,
 .bio-quote {
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-style: italic;
   color: var(--color-gold);
-  border-left: 3px solid var(--color-gold);
-  padding-left: 1.1rem;
+  padding: 1.1rem 1.4rem;
+  margin: 0;
+  line-height: 1.6;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  border-left: 4px solid var(--color-gold);
+  border-radius: 18px;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.quote-card:hover,
+.bio-quote:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 230, 109, 0.4);
+  box-shadow: 0 10px 25px rgba(168, 85, 247, 0.15);
+}
+
+[data-theme="day"] .quote-card,
+[data-theme="day"] .bio-quote {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(168, 85, 247, 0.18);
+  border-left: 4px solid var(--color-gold);
+  box-shadow: 0 10px 25px rgba(168, 85, 247, 0.06);
 }
 
 /* --- 9. SHOWCASE PROJECTS GALLERY (#projects) --- */
@@ -1656,23 +1766,29 @@ body.lantern-beam-on .hidden-constellations-layer {
 }
 
 .project-card {
-  background: var(--surface-card);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid var(--surface-glass-border);
-  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  border-radius: 18px;
   box-shadow: var(--shadow-soft);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: all var(--transition-normal);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   position: relative;
 }
 
 .project-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-float);
-  border-color: var(--border-glow);
+  transform: translateY(-3px);
+  border-color: rgba(255, 230, 109, 0.4);
+  box-shadow: 0 10px 25px rgba(168, 85, 247, 0.15);
+}
+
+[data-theme="day"] .project-card {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(168, 85, 247, 0.18);
+  box-shadow: 0 10px 25px rgba(168, 85, 247, 0.06);
 }
 
 .card-glass-header {
@@ -3094,13 +3210,17 @@ body.lantern-beam-on .hidden-constellations-layer {
     justify-content: center;
   }
 
-  .bio-grid {
+  .bio-grid,
+  .character-dossier-grid {
     grid-template-columns: 1fr;
     max-width: 600px;
     margin: 0 auto;
+    gap: 28px;
+    padding: 40px 20px;
   }
 
-  .bio-card-portrait {
+  .bio-card-portrait,
+  .bio-col-left {
     align-items: center;
   }
 

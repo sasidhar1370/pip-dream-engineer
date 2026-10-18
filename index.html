@@ -144,7 +144,7 @@
       <!-- Clean Navigation Links -->
       <nav class="main-nav" id="main-nav" aria-label="Main Navigation">
         <ul class="nav-list">
-          <li><a href="#about" class="nav-link" id="nav-link-about">Bio</a></li>
+          <li><a href="#bio" class="nav-link" id="nav-link-about">Bio</a></li>
           <li><a href="#projects" class="nav-link" id="nav-link-projects">Projects</a></li>
           <li><a href="#story" class="nav-link" id="nav-link-story">Story</a></li>
           <li><a href="#wishes" class="nav-link" id="nav-link-wishes">Wish Wall</a></li>
@@ -301,8 +301,9 @@
       </div>
     </section>
 
-    <!-- CHARACTER BIO SECTION (#about) -->
-    <section class="bio-section" id="about" aria-labelledby="bio-heading">
+    <!-- CHARACTER BIO SECTION (#bio / #about) -->
+    <section class="bio-section character-dossier-section" id="bio" aria-labelledby="bio-heading">
+      <div id="about" style="position: absolute; top: -80px;"></div>
       <div class="section-container">
         <div class="section-header text-center">
           <span class="section-eyebrow">Character Dossier</span>
@@ -310,9 +311,9 @@
           <p class="section-lead">The smallest maker with the biggest celestial toolkit in Midnight Nursery.</p>
         </div>
 
-        <div class="bio-grid">
-          <!-- Bio Portrait Card featuring assets/pip_portrait.png -->
-          <div class="bio-card-portrait">
+        <div class="bio-grid character-dossier-grid">
+          <!-- Left Column: Portrait, Badges (#MN-042, Certified Master Dream Weaver), and Core Narrative Bio -->
+          <div class="bio-card-portrait bio-col-left">
             <div class="portrait-frame">
               <img
                 src="assets/pip_portrait.png"
@@ -339,27 +340,30 @@
                 </div>
               </div>
             </div>
+
+            <!-- Core Narrative Bio Card in Left Column -->
+            <div class="bio-narrative-card">
+              <div class="bio-card-header">
+                <div class="bio-title-wrap">
+                  <h3 class="bio-name">Pip (They / He)</h3>
+                  <span class="bio-role-tag">Junior Dream Engineer · Certified Master Dream Weaver</span>
+                </div>
+                <div class="bio-status-badge">
+                  <span class="status-indicator"></span>
+                  <span>On Stardust Duty</span>
+                </div>
+              </div>
+
+              <p class="bio-bio-text">
+                Spun from a stray moonbeam that settled into warm nursery blankets, Pip is on a quest to make bedtime the gentlest adventure in the sky. When not fluffing cloud pillows or calibrating amber nightlights, Pip weaves custom lullabies to guide restless dreamers into deep slumber.
+              </p>
+            </div>
           </div>
 
-          <!-- Bio Storybook Dossier -->
-          <div class="bio-card-details">
-            <div class="bio-card-header">
-              <div class="bio-title-wrap">
-                <h3 class="bio-name">Pip (They / He)</h3>
-                <span class="bio-role-tag">Junior Dream Engineer · 1st Class</span>
-              </div>
-              <div class="bio-status-badge">
-                <span class="status-indicator"></span>
-                <span>On Stardust Duty</span>
-              </div>
-            </div>
-
-            <p class="bio-bio-text">
-              Spun from a stray moonbeam that settled into warm nursery blankets, Pip is on a quest to make bedtime the gentlest adventure in the sky. When not fluffing cloud pillows or calibrating amber nightlights, Pip weaves custom lullabies to guide restless dreamers into deep slumber.
-            </p>
-
+          <!-- Right Column: Bedtime Recipe Meters, 3 Gear Cards, and Quote Card -->
+          <div class="bio-card-details bio-col-right">
             <!-- Pip's Bedtime Recipe -->
-            <div class="recipe-container">
+            <div class="recipe-container recipe-card">
               <h4 class="recipe-title">
                 <span class="recipe-glyph">✦</span> Pip’s Bedtime Dream Recipe
               </h4>
@@ -396,39 +400,32 @@
               </div>
             </div>
 
-            <!-- Toolkit Grid with refined storybook chips -->
-            <div class="toolkit-grid">
-              <div class="tool-chip">
-                <span class="tool-gem">✦</span>
-                <div>
-                  <strong>Stardust Wand</strong>
-                  <span>Tension: 528 Hz</span>
-                </div>
-              </div>
-              <div class="tool-chip">
+            <!-- 3 Gear Cards -->
+            <div class="toolkit-grid gear-cards-grid">
+              <div class="tool-chip gear-card">
                 <span class="tool-gem">☼</span>
                 <div>
                   <strong>Dream Lantern</strong>
-                  <span>3 Glow Modes</span>
+                  <span>3 Glow Modes · Nebula Beam</span>
                 </div>
               </div>
-              <div class="tool-chip">
+              <div class="tool-chip gear-card">
                 <span class="tool-gem">♪</span>
                 <div>
                   <strong>Lullaby Box</strong>
-                  <span>Harmonic C5–C6</span>
+                  <span>Harmonic C5–C6 Synthesizer</span>
                 </div>
               </div>
-              <div class="tool-chip">
+              <div class="tool-chip gear-card">
                 <span class="tool-gem">★</span>
                 <div>
                   <strong>Star Compass</strong>
-                  <span>Rooftop Vectors</span>
+                  <span>Rooftop Vectors · Drift Sensor</span>
                 </div>
               </div>
             </div>
 
-            <blockquote class="bio-quote">
+            <blockquote class="bio-quote quote-card">
               “Even the darkest midnight has stars waiting to tuck you in.”
             </blockquote>
           </div>

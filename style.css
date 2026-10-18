@@ -932,18 +932,17 @@ body.lantern-beam-on .hidden-constellations-layer {
 }
 
 /* Floating Pip Avatar Centerpiece (No Harsh Box, Pure Transparent Cloud) */
-#hero-avatar-container,
 #hero-avatar-zone,
-.hero-avatar-wrapper,
-.pip-avatar-wrapper,
+.hero-avatar-zone,
 .avatar-card-perspective,
 .avatar-card-inner {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
-.hero-avatar-wrapper {
+#hero-avatar-zone,
+.hero-avatar-zone {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -966,24 +965,27 @@ body.lantern-beam-on .hidden-constellations-layer {
   align-items: center;
 }
 
-.avatar-img-container,
-.pip-avatar-wrapper,
+/* Softened Hero Avatar Image Wrapper with Stardust Aura */
+.hero-avatar-wrapper,
 #hero-avatar-container,
-#pip-hero-avatar {
+#pip-hero-avatar,
+.pip-avatar-wrapper,
+.avatar-img-container {
   position: relative;
   border-radius: 36px;
+  overflow: hidden;
   border: 2px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0 0 40px rgba(168, 85, 247, 0.35), inset 0 0 25px rgba(13, 17, 38, 0.5);
-  overflow: hidden;
   animation: gentleFloat 4s ease-in-out infinite;
   transform-style: preserve-3d;
   background: transparent;
 }
 
-[data-theme="day"] .avatar-img-container,
-[data-theme="day"] .pip-avatar-wrapper,
+[data-theme="day"] .hero-avatar-wrapper,
 [data-theme="day"] #hero-avatar-container,
-[data-theme="day"] #pip-hero-avatar {
+[data-theme="day"] #pip-hero-avatar,
+[data-theme="day"] .pip-avatar-wrapper,
+[data-theme="day"] .avatar-img-container {
   border: 2px solid rgba(168, 85, 247, 0.25);
   box-shadow: 0 0 40px rgba(168, 85, 247, 0.2), inset 0 0 25px rgba(255, 255, 255, 0.6);
 }

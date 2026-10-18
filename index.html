@@ -31,6 +31,74 @@
     <div class="floating-cloud cloud-3"></div>
   </div>
 
+  <!-- Flashlight / Dream Lantern Cursor Halo Overlay -->
+  <div id="lantern-cursor-glow" aria-hidden="true"></div>
+
+  <!-- Hidden Constellations & Secret Nursery Sketches Layer (Revealed by Lantern Beam) -->
+  <div class="hidden-constellations-layer" id="hidden-constellations-layer" aria-hidden="true">
+    <svg class="constellations-svg" viewBox="0 0 1440 900" preserveAspectRatio="none">
+      <!-- Constellation 1: The Starlight Cradle -->
+      <g class="constellation c-cradle" transform="translate(140, 180)">
+        <polyline points="0,60 50,110 130,110 180,60 90,140" fill="none" stroke="rgba(255, 209, 102, 0.75)" stroke-width="1.5" stroke-dasharray="4 4" />
+        <circle cx="0" cy="60" r="3.5" fill="#ffd166" class="star-node" />
+        <circle cx="50" cy="110" r="3" fill="#ffd166" class="star-node" />
+        <circle cx="130" cy="110" r="3" fill="#ffd166" class="star-node" />
+        <circle cx="180" cy="60" r="3.5" fill="#ffd166" class="star-node" />
+        <circle cx="90" cy="140" r="4" fill="#38bdf8" class="star-node" />
+        <text x="90" y="165" text-anchor="middle" class="constellation-label">✦ The Starlight Cradle</text>
+      </g>
+
+      <!-- Constellation 2: Ursa Minor Teddy Bear -->
+      <g class="constellation c-bear" transform="translate(1040, 140)">
+        <polygon points="40,20 80,0 120,20 100,70 60,70" fill="none" stroke="rgba(192, 132, 252, 0.75)" stroke-width="1.5" stroke-dasharray="4 4" />
+        <circle cx="40" cy="20" r="3" fill="#c084fc" class="star-node" />
+        <circle cx="80" cy="0" r="4" fill="#ffd166" class="star-node" />
+        <circle cx="120" cy="20" r="3" fill="#c084fc" class="star-node" />
+        <circle cx="100" cy="70" r="3.5" fill="#ffd166" class="star-node" />
+        <circle cx="60" cy="70" r="3.5" fill="#38bdf8" class="star-node" />
+        <text x="80" y="95" text-anchor="middle" class="constellation-label">★ Ursa Minor Bear</text>
+      </g>
+
+      <!-- Constellation 3: The Moonbeam Mobile -->
+      <g class="constellation c-mobile" transform="translate(380, 520)">
+        <line x1="80" y1="0" x2="80" y2="40" stroke="rgba(255, 209, 102, 0.6)" stroke-width="1.5" stroke-dasharray="3 3" />
+        <line x1="20" y1="40" x2="140" y2="40" stroke="rgba(255, 209, 102, 0.8)" stroke-width="1.5" />
+        <polyline points="20,40 20,80 50,110" fill="none" stroke="rgba(56, 189, 248, 0.7)" stroke-width="1" stroke-dasharray="3 3" />
+        <polyline points="140,40 140,80 110,110" fill="none" stroke="rgba(192, 132, 252, 0.7)" stroke-width="1" stroke-dasharray="3 3" />
+        <circle cx="80" cy="0" r="4" fill="#ffd166" class="star-node" />
+        <circle cx="20" cy="40" r="3" fill="#ffd166" class="star-node" />
+        <circle cx="140" cy="40" r="3" fill="#ffd166" class="star-node" />
+        <circle cx="50" cy="110" r="3.5" fill="#38bdf8" class="star-node" />
+        <circle cx="110" cy="110" r="3.5" fill="#c084fc" class="star-node" />
+        <text x="80" y="135" text-anchor="middle" class="constellation-label">✦ Moonbeam Mobile</text>
+      </g>
+
+      <!-- Constellation 4: The Milky Way Bottle -->
+      <g class="constellation c-bottle" transform="translate(1080, 540)">
+        <polyline points="40,0 60,0 60,25 75,45 75,100 25,100 25,45 40,25 40,0" fill="none" stroke="rgba(255, 209, 102, 0.75)" stroke-width="1.5" stroke-dasharray="4 4" />
+        <circle cx="40" cy="0" r="2.5" fill="#ffd166" class="star-node" />
+        <circle cx="60" cy="0" r="2.5" fill="#ffd166" class="star-node" />
+        <circle cx="75" cy="45" r="3" fill="#38bdf8" class="star-node" />
+        <circle cx="75" cy="100" r="3.5" fill="#ffd166" class="star-node" />
+        <circle cx="25" cy="100" r="3.5" fill="#c084fc" class="star-node" />
+        <circle cx="25" cy="45" r="3" fill="#ffd166" class="star-node" />
+        <text x="50" y="125" text-anchor="middle" class="constellation-label">✦ Starlight Bottle</text>
+      </g>
+
+      <!-- Constellation 5: Slumber Sheep -->
+      <g class="constellation c-sheep" transform="translate(720, 680)">
+        <ellipse cx="60" cy="40" rx="45" ry="30" fill="none" stroke="rgba(192, 132, 252, 0.6)" stroke-width="1.5" stroke-dasharray="4 4" />
+        <circle cx="25" cy="30" r="3" fill="#ffd166" class="star-node" />
+        <circle cx="50" cy="15" r="3.5" fill="#38bdf8" class="star-node" />
+        <circle cx="85" cy="25" r="3" fill="#ffd166" class="star-node" />
+        <circle cx="95" cy="50" r="3.5" fill="#c084fc" class="star-node" />
+        <circle cx="60" cy="65" r="3" fill="#ffd166" class="star-node" />
+        <circle cx="30" cy="55" r="3.5" fill="#ffd166" class="star-node" />
+        <text x="60" y="90" text-anchor="middle" class="constellation-label">★ Slumber Sheep</text>
+      </g>
+    </svg>
+  </div>
+
   <!-- Ambient Nursery Broadcast Ticker (Frosted Glass Strip) -->
   <aside class="retro-ticker-bar" aria-label="Nursery bulletin">
     <div class="ticker-marquee-wrapper">
@@ -43,7 +111,7 @@
         <span class="ticker-sep">★</span>
         <span class="ticker-item">haX.baby Hackathon Special Entry (17–19 Oct 2026)</span>
         <span class="ticker-sep">★</span>
-        <span class="ticker-item">Secret: Tickle Pip’s nightcap 3 times for golden stardust</span>
+        <span class="ticker-item">Tip: Toggle [Lantern Beam] to reveal hidden constellations</span>
         <span class="ticker-sep">★</span>
         <span class="ticker-item"><span class="ticker-glyph">✦</span> Midnight Nursery · Dream Engineering Lab</span>
         <span class="ticker-sep">★</span>
@@ -53,7 +121,7 @@
         <span class="ticker-sep">★</span>
         <span class="ticker-item">haX.baby Hackathon Special Entry (17–19 Oct 2026)</span>
         <span class="ticker-sep">★</span>
-        <span class="ticker-item">Secret: Tickle Pip’s nightcap 3 times for golden stardust</span>
+        <span class="ticker-item">Tip: Toggle [Lantern Beam] to reveal hidden constellations</span>
       </div>
     </div>
   </aside>
@@ -85,6 +153,14 @@
 
       <!-- Action Controls -->
       <div class="header-actions">
+        <!-- Official Tier 2 Feature: Dream Lantern Beam Toggle -->
+        <button type="button" class="action-pill lantern-beam-pill" id="lantern-beam-toggle-btn" aria-label="Toggle Dream Lantern Beam" aria-pressed="false" title="Illuminate hidden constellations with the Dream Lantern">
+          <span class="beam-icon-wrapper" aria-hidden="true">
+            <span class="beam-glyph">☼</span>
+          </span>
+          <span class="beam-label" id="beam-status-text">Lantern Beam</span>
+        </button>
+
         <!-- Sound Toggle Pill Button -->
         <button type="button" class="action-pill sound-pill" id="sound-toggle-btn" aria-label="Toggle Sound Effects" aria-pressed="true" title="Toggle bedtime soundscape">
           <span class="sound-icon-wrapper" aria-hidden="true">
@@ -118,10 +194,10 @@
   </header>
 
   <main id="main-content">
-    <!-- STORYBOOK HERO SECTION (Balanced 2-Column Desktop Viewport Fit) -->
+    <!-- STORYBOOK HERO SECTION -->
     <section class="hero-section" id="hero" aria-labelledby="hero-title">
       <div class="section-container hero-grid">
-        <!-- Left Column: Content, Headline, Glowing Tagline, Actions -->
+        <!-- Left Column: Content, Headline, Glowing Tagline, Actions, Stardust Mini-Toy -->
         <div class="hero-content">
           <div class="hero-pill-badge">
             <span class="badge-starlight-dot"></span>
@@ -154,6 +230,25 @@
               <span class="btn-glyph">♪</span>
               <span>Play Chime</span>
             </button>
+          </div>
+
+          <!-- Official Tier 2 Mini-Toy: Catch Falling Stardust -->
+          <div class="stardust-toy-card" id="stardust-toy-card">
+            <div class="toy-card-header">
+              <div class="toy-title-wrap">
+                <span class="toy-icon">✦</span>
+                <strong class="toy-title">Pip’s Stardust Catcher</strong>
+              </div>
+              <span class="toy-status-pill" id="stardust-status-pill">5 Drift Sparks</span>
+            </div>
+            <p class="toy-desc">Catch gentle stardust drifting from the night sky to power nursery dreams.</p>
+            <div class="toy-action-row">
+              <button type="button" class="btn btn-sm btn-primary toy-launch-btn" id="start-stardust-btn">
+                <span class="btn-glyph">✦</span>
+                <span id="start-stardust-btn-label">Start Stardust Drift</span>
+              </button>
+              <span class="toy-score" id="stardust-score-display">Stars Caught: 0 / 5</span>
+            </div>
           </div>
         </div>
 
@@ -197,7 +292,7 @@
             </div>
           </div>
 
-          <!-- Cute subtle glass pill speech bubble floating beside Pip -->
+          <!-- Official Tier 3 Feature: Dynamic Returning Visitor Memory Speech Bubble -->
           <div class="avatar-gesture-pill" id="avatar-gesture-pill">
             <span class="gesture-icon">✦</span>
             <span class="gesture-text">Move pointer to tilt · Tap cap 3× for secret</span>
@@ -396,7 +491,7 @@
             <div class="project-body">
               <h3 class="project-title">The Lullaby Lab</h3>
               <p class="project-desc">
-                A hand-wound acoustic box tucked inside Pip’s satchel. Whenever bedtime anxieties stir, its stardust gears release five soothing harmonic chimes to settle racing thoughts and invite deep, peaceful dreams.
+                A hand-wound acoustic box tucked inside Pip’s satchel. Whenever bedtime anxieties stir, its stardust gears release soothing harmonic chimes to settle racing thoughts and invite deep, peaceful dreams.
               </p>
 
               <!-- Glowing Rounded Pastel Xylophone Chime Bars (C5 to C6) -->
@@ -434,9 +529,11 @@
                 </div>
               </div>
 
+              <!-- Automated Cozy 8-Note Lullaby Sequencer with Key Bobbing -->
               <div class="card-footer-actions">
-                <button type="button" class="btn btn-primary btn-sm" id="play-full-arpeggio-btn">
-                  <span>✦</span> Play Full Arpeggio
+                <button type="button" class="btn btn-primary btn-sm lullaby-loop-btn" id="play-full-arpeggio-btn">
+                  <span class="btn-glyph">♪</span>
+                  <span id="arpeggio-btn-label">✦ Play Cozy 8-Note Lullaby</span>
                 </button>
                 <span class="melody-feedback" id="melody-feedback">Ready to chime</span>
               </div>

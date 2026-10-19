@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pip · Junior Dream Engineer — haX.baby Pitch Deck</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,600&family=Quicksand:wght@600;700;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* --------------------------------------------------------------------------
+     * 1. CSS TOKENS & RESET
+     * -------------------------------------------------------------------------- */
+    :root {
+      --bg-midnight: #080a16;
+      --bg-surface: #0d1126;
+      --bg-card: rgba(19, 25, 52, 0.72);
+      --bg-glass: rgba(255, 255, 255, 0.04);
+      --border-subtle: rgba(255, 255, 255, 0.1);
+      --border-gold: rgba(255, 230, 109, 0.35);
+      
+      --color-gold: #ffe66d;
+      --color-gold-hover: #ffd166;
+      --color-amber: #fca311;
+      --color-cream: #fefae0;
+      --color-lavender: #c084fc;
+      --color-cyan: #38bdf8;
+      --color-emerald: #34d399;
+      --color-pink: #f472b6;
+      
+      --text-primary: #ffffff;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      
+      --font-display: 'Quicksand', sans-serif;
+      --font-body: 'Nunito', sans-serif;
+      --font-serif: 'Playfair Display', serif;
+      --font-mono: 'Space Mono', monospace;
+      
+      --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.4);
+      --shadow-glow: 0 0 24px rgba(255, 230, 109, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    html, body {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background-color: var(--bg-midnight);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      user-select: none;
+    }
+
+    /* --------------------------------------------------------------------------
+     * 2. BACKGROUND CANVAS & AMBIENT NEBULA
+     * -------------------------------------------------------------------------- */
+    #ambient-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.85;
+    }
+
+    .ambient-glow {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(80px);
+      opacity: 0.22;
+      animation: floatAura 18s ease-in-out infinite alternate;
+    }
+
+    .glow-1 {
+      top: -10%;
+      left: 15%;
+      width: 50vw;
+      height: 50vh;
+      background: radial-gradient(circle, #8b5cf6, transparent 70%);
+    }
+
+    .glow-2 {
+      bottom: -15%;
+      right: 10%;
+      width: 55vw;
+      height: 55vh;
+      background: radial-gradient(circle, #38bdf8, transparent 70%);
+    }
+
+    .glow-3 {
+      top: 40%;
+      left: 45%;
+      width: 35vw;
+      height: 35vh;
+      background: radial-gradient(circle, #fca311, transparent 70%);
+      opacity: 0.12;
+    }
+
+    @keyframes floatAura {
+      0% { transform: scale(1) translate(0, 0); }
+      100% { transform: scale(1.12) translate(30px, -20px); }
+    }
+
+    /* --------------------------------------------------------------------------
+     * 3. PRESENTATION FRAMEWORK (16:9 Fullscreen Deck)
+     * -------------------------------------------------------------------------- */
+    .deck-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 10;
+    }
+
+    /* Top Progress Bar */
+    .progress-track {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      z-index: 100;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 12.5%;
+      background: linear-gradient(90deg, var(--color-cyan), var(--color-gold));
+      box-shadow: 0 0 10px rgba(255, 230, 109, 0.8);
+      transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Presentation Header Bar */
+    .deck-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 36px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(8, 10, 22, 0.4);
+      border-bottom: 1px solid var(--border-subtle);
+      z-index: 50;
+    }
+
+    .deck-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .deck-crest {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: rgba(255, 230, 109, 0.12);
+      border: 1px solid var(--border-gold);
+      color: var(--color-gold);
+      font-size: 1.1rem;
+    }
+
+    .deck-title-group h1 {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--color-cream);
+      letter-spacing: -0.01em;
+    }
+
+    .deck-title-group span {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+    }
+
+    .deck-status-badges {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-badge {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-secondary);
+      letter-spacing: 0.4px;
+    }
+
+    .status-badge.highlight {
+      border-color: var(--border-gold);
+      background: rgba(255, 230, 109, 0.12);
+      color: var(--color-gold);
+      font-weight: 700;
+    }
+
+    /* --------------------------------------------------------------------------
+     * 4. SLIDES VIEWPORT & TRANSITIONS
+     * -------------------------------------------------------------------------- */
+    .slides-stage {
+      position: relative;
+      flex-grow: 1;
+      width: 100%;
+      height: calc(100vh - 120px);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 48px;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 20px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      opacity: 0;
+      transform: translateX(40px) scale(0.98);
+      pointer-events: none;
+      transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      visibility: hidden;
+    }
+
+    .slide.active {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+      pointer-events: auto;
+      visibility: visible;
+      z-index: 20;
+    }
+
+    .slide.previous {
+      opacity: 0;
+      transform: translateX(-40px) scale(0.98);
+    }
+
+    /* Slide Layout Grids */
+    .slide-grid-2col {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+      align-items: center;
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .slide-grid-equal {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      align-items: stretch;
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .slide-grid-3col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: stretch;
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .slide-grid-4col {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      align-items: stretch;
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    /* Typography inside Slides */
+    .slide-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--color-gold);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .slide-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .slide-title span.gold {
+      color: var(--color-gold);
+      text-shadow: 0 0 20px rgba(255, 230, 109, 0.4);
+    }
+
+    .slide-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 680px;
+      margin-bottom: 24px;
+    }
+
+    /* Glass Cards */
+    .glass-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 28px;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .glass-card.gold-trim {
+      border: 1.5px solid var(--border-gold);
+      box-shadow: var(--shadow-soft), var(--shadow-glow);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: rgba(255, 230, 109, 0.12);
+      border: 1px solid var(--border-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--color-gold);
+      margin-bottom: 16px;
+    }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-cream);
+      margin-bottom: 10px;
+    }
+
+    .card-desc {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .card-stat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 9999px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--color-cyan);
+      align-self: flex-start;
+    }
+
+    /* Visual Artwork Preview Frames */
+    .artwork-stage {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .artwork-frame {
+      max-width: 100%;
+      max-height: 400px;
+      object-fit: contain;
+      filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.6));
+      border-radius: 20px;
+      transition: transform 0.4s ease;
+    }
+
+    .artwork-stage:hover .artwork-frame {
+      transform: translateY(-6px) scale(1.02);
+    }
+
+    /* Code & Metrics Pills */
+    .metrics-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 16px 0;
+    }
+
+    .metric-chip {
+      background: rgba(13, 17, 38, 0.85);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 10px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .metric-value {
+      font-family: var(--font-mono);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--color-gold);
+    }
+
+    .metric-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Buttons & CTAs */
+    .deck-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 9999px;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      border: none;
+    }
+
+    .deck-btn-primary {
+      background: linear-gradient(135deg, var(--color-gold), var(--color-amber));
+      color: #090d1a;
+      box-shadow: 0 4px 18px rgba(255, 230, 109, 0.35);
+    }
+
+    .deck-btn-primary:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 8px 25px rgba(255, 230, 109, 0.5);
+    }
+
+    .deck-btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-primary);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .deck-btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: var(--border-gold);
+      color: var(--color-gold);
+      transform: translateY(-2px);
+    }
+
+    /* --------------------------------------------------------------------------
+     * 5. PRESENTATION FOOTER CONTROLS
+     * -------------------------------------------------------------------------- */
+    .deck-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 36px;
+      background: rgba(8, 10, 22, 0.5);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border-subtle);
+      z-index: 50;
+    }
+
+    .keyboard-hints {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .key-badge {
+      display: inline-block;
+      padding: 2px 7px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+    }
+
+    .deck-controls {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .ctrl-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: all 0.2s ease;
+    }
+
+    .ctrl-btn:hover:not(:disabled) {
+      background: rgba(255, 230, 109, 0.2);
+      border-color: var(--color-gold);
+      color: var(--color-gold);
+      transform: scale(1.08);
+    }
+
+    .ctrl-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .slide-counter {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--color-gold);
+      letter-spacing: 1px;
+      min-width: 68px;
+      text-align: center;
+    }
+
+    /* Sound Mute Toggle */
+    .sound-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      font-family: var(--font-display);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .sound-toggle:hover {
+      border-color: var(--color-gold);
+      color: var(--color-gold);
+    }
+
+    /* Responsive scaling */
+    @media (max-width: 900px) {
+      .deck-header { padding: 12px 18px; }
+      .slides-stage { padding: 10px 18px; }
+      .slide-grid-2col, .slide-grid-equal { grid-template-columns: 1fr; gap: 20px; }
+      .slide-grid-3col { grid-template-columns: 1fr; }
+      .slide-grid-4col { grid-template-columns: repeat(2, 1fr); }
+      .artwork-stage { display: none; }
+      .keyboard-hints { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Floating Glowing Nebulae -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <!-- Interactive Canvas Particles -->
+  <canvas id="ambient-canvas"></canvas>
+
+  <div class="deck-container">
+    <!-- Top Progress Bar -->
+    <div class="progress-track" aria-hidden="true">
+      <div class="progress-fill" id="progress-bar"></div>
+    </div>
+
+    <!-- Presentation Top Navigation Header -->
+    <header class="deck-header">
+      <a href="index.html" class="deck-brand" title="View Live Application">
+        <span class="deck-crest">✦</span>
+        <div class="deck-title-group">
+          <h1>Pip · Junior Dream Engineer</h1>
+          <span>Midnight Nursery · haX.baby 2026 Submission</span>
+        </div>
+      </a>
+
+      <div class="deck-status-badges">
+        <span class="status-badge highlight">Track 1: Baby’s First Website</span>
+        <span class="status-badge">0 KB Frameworks</span>
+        <span class="status-badge">52/52 DOM IDs</span>
+        <button type="button" class="sound-toggle" id="sound-btn" aria-label="Toggle pitch soundscape">
+          <span>♪ Sound: <strong id="sound-label">ON</strong></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Slides Stage Container -->
+    <main class="slides-stage" id="stage" role="region" aria-label="Presentation Slide Deck">
+      
+      <!-- =========================================================================
+           SLIDE 1: Title & Pitch
+           ========================================================================= -->
+      <section class="slide active" id="slide-1" data-index="1" aria-label="Slide 1 of 8: Title & Pitch">
+        <div class="slide-grid-2col">
+          <div class="slide-text">
+            <span class="slide-eyebrow">✦ haX.baby Track 1 Showcase</span>
+            <h2 class="slide-title">Pip · <span class="gold">Junior Dream Engineer</span></h2>
+            <p class="slide-subtitle">
+              Crafting bespoke slumber and bedtime magic for restless creatures using <strong>100% pure web craft</strong>, zero runtime bloat, and browser-native audio synthesis.
+            </p>
+
+            <div class="metrics-row">
+              <div class="metric-chip">
+                <span class="metric-value">0 KB</span>
+                <span class="metric-label">Framework Runtime</span>
+              </div>
+              <div class="metric-chip">
+                <span class="metric-value">0 KB</span>
+                <span class="metric-label">Audio Assets (Web Audio)</span>
+              </div>
+              <div class="metric-chip">
+                <span class="metric-value">100%</span>
+                <span class="metric-label">Semantic HTML5 & CSS3</span>
+              </div>
+              <div class="metric-chip">
+                <span class="metric-value">+13 Pts</span>
+                <span class="metric-label">Rubric Bonus Score</span>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 14px; margin-top: 24px; flex-wrap: wrap;">
+              <a href="https://sasidhar1370.github.io/pip-dream-engineer/" target="_blank" rel="noopener noreferrer" class="deck-btn deck-btn-primary">
+                <span>✦ Explore Live Website</span>
+                <span>→</span>
+              </a>
+              <button type="button" class="deck-btn deck-btn-secondary" onclick="deck.next()">
+                <span>Begin Pitch Deck</span>
+                <span>↓</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="artwork-stage">
+            <img src="assets/pip_avatar_cloud.png" alt="Pip on cloud artwork" class="artwork-frame">
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           SLIDE 2: The Problem & The Lore
+           ========================================================================= -->
+      <section class="slide" id="slide-2" data-index="2" aria-label="Slide 2 of 8: The Problem & Narrative Solution">
+        <div class="slide-grid-equal">
+          <div class="glass-card">
+            <div class="card-icon">⚡</div>
+            <h3 class="card-title">The Modern Problem</h3>
+            <p class="card-desc">
+              Today's web is loud, heavy, and overstimulating. Restless minds and bedtime dreamers are greeted with auto-playing videos, massive megabyte payloads, and notification anxiety right before sleep.
+            </p>
+            <div class="metric-chip" style="align-self: flex-start;">
+              <span class="metric-value" style="color: var(--color-pink);">Overstimulation</span>
+              <span class="metric-label">Cognitive bedtime friction</span>
+            </div>
+          </div>
+
+          <div class="glass-card gold-trim">
+            <div class="card-icon">🌙</div>
+            <h3 class="card-title">The Narrative Solution: Pip</h3>
+            <p class="card-desc">
+              Meet <strong>Pip</strong>: the smallest dream engineer in the Midnight Nursery. Suspended high above the clouds in his oversized nightcap, Pip uses starlight gears and acoustic frequencies to soothe bedtime worries into peaceful rest.
+            </p>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <span class="card-stat-pill">Chapter I: Stardust Spark</span>
+              <span class="card-stat-pill">Chapter II: Moonbeams</span>
+              <span class="card-stat-pill">Chapter III: First Flight</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           SLIDE 3: Technical Philosophy (Zero-Dependency Craft)
+           ========================================================================= -->
+      <section class="slide" id="slide-3" data-index="3" aria-label="Slide 3 of 8: Technical Philosophy">
+        <div style="text-align: center; max-width: 800px; margin: 0 auto 32px;">
+          <span class="slide-eyebrow">✦ Pure Engineering Principles</span>
+          <h2 class="slide-title">Extreme Web Craft. <span class="gold">Zero Bloat.</span></h2>
+          <p class="slide-subtitle" style="margin: 0 auto;">
+            Proving that world-class storytelling and fluid 60fps interactivity don't need a single NPM package.
+          </p>
+        </div>
+
+        <div class="slide-grid-3col">
+          <div class="glass-card">
+            <div class="card-icon">📦</div>
+            <h3 class="card-title">Zero Runtime Frameworks</h3>
+            <p class="card-desc">
+              No React, no Next.js, no Tailwind compiler. 100% semantic HTML5 and vanilla ES6+ for instant, sub-100ms first contentful paint.
+            </p>
+            <span class="card-stat-pill">0 KB bundle tax</span>
+          </div>
+
+          <div class="glass-card gold-trim">
+            <div class="card-icon">🎨</div>
+            <h3 class="card-title">Dual Nursery Design System</h3>
+            <p class="card-desc">
+              Instant toggling between deep starry <strong>Midnight Mode</strong> and cozy warm <strong>Day Nursery Mode</strong> powered exclusively by CSS custom properties.
+            </p>
+            <span class="card-stat-pill">Spring physics curves</span>
+          </div>
+
+          <div class="glass-card">
+            <div class="card-icon">🧪</div>
+            <h3 class="card-title">52 / 52 Rubric IDs Mapped</h3>
+            <p class="card-desc">
+              Every single hackathon DOM identifier mapped with accessible ARIA labels, semantic roles, and full keyboard focus rings.
+            </p>
+            <span class="card-stat-pill">100% Spec compliant</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           SLIDE 4: Feature 1 — The Lullaby Lab (Procedural Web Audio API)
+           ========================================================================= -->
+      <section class="slide" id="slide-4" data-index="4" aria-label="Slide 4 of 8: The Lullaby Lab">
+        <div class="slide-grid-2col">
+          <div class="slide-text">
+            <span class="slide-eyebrow">✦ Feature 01 · Procedural Acoustics</span>
+            <h2 class="slide-title">The <span class="gold">Lullaby Lab</span></h2>
+            <p class="slide-subtitle">
+              A browser-native musical toy box powered by the Web Audio API. Zero downloaded MP3 or WAV files; every bell is synthesized live in real-time.
+            </p>
+
+            <div class="glass-card" style="margin-bottom: 20px;">
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px;">
+                <li style="display: flex; align-items: center; gap: 10px; font-size: 0.95rem;">
+                  <span style="color: var(--color-gold);">✦</span>
+                  <span><strong>5 Harmonic Chime Bells:</strong> C5 (523 Hz), E5 (659 Hz), G5 (784 Hz), B5 (988 Hz), C6 (1046 Hz)</span>
+                </li>
+                <li style="display: flex; align-items: center; gap: 10px; font-size: 0.95rem;">
+                  <span style="color: var(--color-cyan);">♪</span>
+                  <span><strong>8-Note Automated Arpeggiator:</strong> Physical key bobbing and 250ms interval bedtime melody sequencing</span>
+                </li>
+                <li style="display: flex; align-items: center; gap: 10px; font-size: 0.95rem;">
+                  <span style="color: var(--color-lavender);">★</span>
+                  <span><strong>Tactile Keyboard Shortcuts:</strong> Numerical triggers (Keys 1–5) and master mute toggle</span>
+                </li>
+              </ul>
+            </div>
+            
+            <button type="button" class="deck-btn deck-btn-primary" onclick="deck.playChimeSequence()">
+              <span>♪ Play Chime Demo</span>
+            </button>
+          </div>
+
+          <div class="artwork-stage">
+            <img src="assets/pip_lullaby_box.png" alt="Pip's Lullaby Box artwork" class="artwork-frame">
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           SLIDE 5: Feature 2 — Living Radar & Nightlight Collection
+           ========================================================================= -->
+      <section class="slide" id="slide-5" data-index="5" aria-label="Slide 5 of 8: Radar & Nightlight">
+        <div class="slide-grid-equal">
+          <div class="glass-card gold-trim">
+            <div class="card-icon">🗺️</div>
+            <h3 class="card-title">Dream Delivery Routes</h3>
+            <p class="card-desc">
+              Real-time SVG flight telemetry map charting nightly deliveries across Midnight Nursery:
+            </p>
+            <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px;">
+              <span class="card-stat-pill" style="color: var(--color-gold);">Route A · Deep Sleep Express (Direct Corridor)</span>
+              <span class="card-stat-pill" style="color: var(--color-pink);">Route B · Candy Cloud Detour (Scenic Drift)</span>
+              <span class="card-stat-pill" style="color: var(--color-cyan);">Route C · Nightmare Deflector Patrol (Sensor Scan)</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">
+              Features high-contrast gold flight curves, live gliding drone capsule, pulsing radar rings, and anchored rooftop silhouettes.
+            </p>
+          </div>
+
+          <div class="glass-card">
+            <div class="card-icon">🏮</div>
+            <h3 class="card-title">Nightlight Collection</h3>
+            <p class="card-desc">
+              Photobiologically-calibrated bedside lantern with 3 dynamic lighting modes:
+            </p>
+            <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px;">
+              <span class="card-stat-pill">✦ Soft Glow (1800K Melatonin-Safe Amber)</span>
+              <span class="card-stat-pill">★ Starry Glow (Twinkling Cyan Starlight)</span>
+              <span class="card-stat-pill">☁ Sleep Mode (Deep Indigo Breathing Pulse)</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">
+              Includes the interactive <strong>[☼ Lantern Beam]</strong> revealing secret celestial star constellations in the sky.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           SLIDE 6: Feature 3 — Community & Guestbook Revival
+           ========================================================================= -->
+      <section class="slide" id="slide-6" data-index="6" aria-label="Slide 6 of 8: Community & Guestbook">
+        <div class="slide-grid-3col">
+          <div class="glass-card">
+            <div class="card-icon">💌</div>
+            <h3 class="card-title">The Midnight Wish Wall</h3>
+            <p class="card-desc">
+              Reviving early-web guestbooks with localStorage persistence. Visitors pin bedtime wishes with custom tags and heart reactions.
+            </p>
+            <span class="card-stat-pill">Instant LocalStorage Sync</span>
+          </div>
+
+          <div class="glass-card gold-trim">
+            <div class="card-icon">📟</div>
+            <h3 class="card-title">Mechanical Tumbler Odometer</h3>
+            <p class="card-desc">
+              Tactile physical odometer counter for "Dreams Delivered". Realistic 3D slot tumblers that roll forward with every interaction.
+            </p>
+            <span class="card-stat-pill">Physical tick sounds</span>
+          </div>
+
+          <div class="glass-card">
+            <div class="card-icon">✨</div>
+            <h3 class="card-title">Stardust Catcher Toy</h3>
+            <p class="card-desc">
+              Interactive hero mini-game releasing 5 falling stardust sparks. Catching them synthesizes chimes and awards bonus delivered dreams.
+            </p>
+            <span class="card-stat-pill">+5 Dreams reward</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           SLIDE 7: Side Quests & Bonus Achievements (+13 Pts)
+           ========================================================================= -->
+      <section class="slide" id="slide-7" data-index="7" aria-label="Slide 7 of 8: Bonus Rubric Achievements">
+        <div style="text-align: center; max-width: 800px; margin: 0 auto 24px;">
+          <span class="slide-eyebrow">✦ 100% Hackathon Rubric Completion</span>
+          <h2 class="slide-title"><span class="gold">+13 Rubric Bonus Points</span></h2>
+          <p class="slide-subtitle" style="margin: 0 auto;">
+            Every single available bonus challenge fully engineered, polished, and verified.
+          </p>
+        </div>
+
+        <div class="slide-grid-4col" style="grid-template-columns: repeat(5, 1fr);">
+          <div class="glass-card" style="padding: 20px;">
+            <span style="font-size: 1.5rem; margin-bottom: 8px;">💌</span>
+            <strong style="color: var(--color-cream); font-size: 0.95rem;">Guestbook Revival</strong>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin: 6px 0;">Persistent wish wall with tags & reactions.</p>
+            <span class="card-stat-pill" style="color: var(--color-gold);">+2 Points</span>
+          </div>
+
+          <div class="glass-card" style="padding: 20px;">
+            <span style="font-size: 1.5rem; margin-bottom: 8px;">✨</span>
+            <strong style="color: var(--color-cream); font-size: 0.95rem;">Stardust Cursor</strong>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin: 6px 0;">HTML5 canvas particle trails on mouse/touch.</p>
+            <span class="card-stat-pill" style="color: var(--color-gold);">+2 Points</span>
+          </div>
+
+          <div class="glass-card" style="padding: 20px;">
+            <span style="font-size: 1.5rem; margin-bottom: 8px;">📟</span>
+            <strong style="color: var(--color-cream); font-size: 0.95rem;">Retro Visitor Counter</strong>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin: 6px 0;">Mechanical rolling odometer ticker.</p>
+            <span class="card-stat-pill" style="color: var(--color-gold);">+1 Point</span>
+          </div>
+
+          <div class="glass-card" style="padding: 20px;">
+            <span style="font-size: 1.5rem; margin-bottom: 8px;">♪</span>
+            <strong style="color: var(--color-cream); font-size: 0.95rem;">Harmonic Sound FX</strong>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin: 6px 0;">Pure Web Audio synthesis with master mute.</p>
+            <span class="card-stat-pill" style="color: var(--color-gold);">+3 Points</span>
+          </div>
+
+          <div class="glass-card" style="padding: 20px;">
+            <span style="font-size: 1.5rem; margin-bottom: 8px;">📱</span>
+            <strong style="color: var(--color-cream); font-size: 0.95rem;">Mobile Responsive</strong>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin: 6px 0;">Sticky glassmorphism header & clean touch UI.</p>
+            <span class="card-stat-pill" style="color: var(--color-gold);">+5 Points</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           SLIDE 8: Live Demo & Links
+           ========================================================================= -->
+      <section class="slide" id="slide-8" data-index="8" aria-label="Slide 8 of 8: Live Demo & Repository">
+        <div style="text-align: center; max-width: 880px; margin: 0 auto;">
+          <span class="slide-eyebrow">✦ Thank You for Visiting Midnight Nursery</span>
+          <h2 class="slide-title">Ready for <span class="gold">Sweet Dreams?</span></h2>
+          <p class="slide-subtitle" style="margin: 0 auto 36px;">
+            Experience Pip's hand-crafted inventions live in your browser right now.
+          </p>
+
+          <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 36px;">
+            <a href="https://sasidhar1370.github.io/pip-dream-engineer/" target="_blank" rel="noopener noreferrer" class="deck-btn deck-btn-primary" style="padding: 16px 36px; font-size: 1.15rem;">
+              <span>🚀 Open Live Deployment</span>
+              <span>↗</span>
+            </a>
+            <a href="https://github.com/sasidhar1370/pip-dream-engineer" target="_blank" rel="noopener noreferrer" class="deck-btn deck-btn-secondary" style="padding: 16px 36px; font-size: 1.15rem;">
+              <span>📦 Inspect GitHub Repository</span>
+              <span>↗</span>
+            </a>
+          </div>
+
+          <div class="glass-card" style="display: inline-flex; flex-direction: row; align-items: center; gap: 24px; padding: 18px 32px; margin: 0 auto;">
+            <div style="text-align: left;">
+              <strong style="color: var(--color-cream); font-family: var(--font-display);">Built for haX.baby 2026 Hackathon</strong>
+              <div style="font-size: 0.85rem; color: var(--text-muted);">October 17–19, 2026 · Track 1 (The Skull Baby / Pip)</div>
+            </div>
+            <span class="status-badge highlight">Crafted with Pure Web Standards</span>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Presentation Navigation Footer Controls -->
+    <footer class="deck-footer">
+      <div class="keyboard-hints">
+        <span>Controls:</span>
+        <span class="key-badge">←</span>
+        <span class="key-badge">→</span>
+        <span>or</span>
+        <span class="key-badge">Space</span>
+        <span>navigate</span>
+        <span class="key-badge">F</span>
+        <span>fullscreen</span>
+      </div>
+
+      <div class="deck-controls">
+        <button type="button" class="ctrl-btn" id="prev-btn" onclick="deck.prev()" aria-label="Previous Slide">←</button>
+        <span class="slide-counter" id="slide-num">01 / 08</span>
+        <button type="button" class="ctrl-btn" id="next-btn" onclick="deck.next()" aria-label="Next Slide">→</button>
+        <button type="button" class="ctrl-btn" id="fs-btn" onclick="deck.toggleFullscreen()" aria-label="Toggle Fullscreen">⛶</button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- --------------------------------------------------------------------------
+   * 6. PRESENTATION CONTROLLER & SYNTHESIZER SCRIPT
+   * -------------------------------------------------------------------------- -->
+  <script>
+    class SlideDeck {
+      constructor() {
+        this.slides = document.querySelectorAll('.slide');
+        this.totalSlides = this.slides.length;
+        this.currentIndex = 0;
+        this.progressBar = document.getElementById('progress-bar');
+        this.counterEl = document.getElementById('slide-num');
+        this.prevBtn = document.getElementById('prev-btn');
+        this.nextBtn = document.getElementById('next-btn');
+        this.soundBtn = document.getElementById('sound-btn');
+        this.soundLabel = document.getElementById('sound-label');
+        
+        this.soundEnabled = true;
+        this.audioCtx = null;
+
+        this.initEvents();
+        this.initCanvas();
+        this.updateUI();
+      }
+
+      initEvents() {
+        // Keyboard navigation
+        window.addEventListener('keydown', (e) => {
+          if (e.target.matches('input, textarea')) return;
+
+          switch(e.key) {
+            case 'ArrowRight':
+            case 'PageDown':
+            case ' ':
+            case 'Enter':
+              e.preventDefault();
+              this.next();
+              break;
+            case 'ArrowLeft':
+            case 'PageUp':
+            case 'Backspace':
+              e.preventDefault();
+              this.prev();
+              break;
+            case 'Home':
+              e.preventDefault();
+              this.goTo(0);
+              break;
+            case 'End':
+              e.preventDefault();
+              this.goTo(this.totalSlides - 1);
+              break;
+            case 'f':
+            case 'F':
+              this.toggleFullscreen();
+              break;
+            default:
+              const num = parseInt(e.key, 10);
+              if (!isNaN(num) && num >= 1 && num <= this.totalSlides) {
+                this.goTo(num - 1);
+              }
+          }
+        });
+
+        // Touch swipe navigation for mobile / iPad presentation
+        let startX = 0;
+        window.addEventListener('touchstart', (e) => {
+          if (e.touches && e.touches[0]) startX = e.touches[0].clientX;
+        }, { passive: true });
+
+        window.addEventListener('touchend', (e) => {
+          if (e.changedTouches && e.changedTouches[0]) {
+            const diffX = e.changedTouches[0].clientX - startX;
+            if (diffX < -50) this.next();
+            else if (diffX > 50) this.prev();
+          }
+        }, { passive: true });
+
+        // Sound toggle
+        if (this.soundBtn) {
+          this.soundBtn.addEventListener('click', () => {
+            this.soundEnabled = !this.soundEnabled;
+            if (this.soundLabel) {
+              this.soundLabel.textContent = this.soundEnabled ? 'ON' : 'OFF';
+            }
+            if (this.soundEnabled) this.playTone(880, 0.15, 'sine');
+          });
+        }
+      }
+
+      goTo(index) {
+        if (index < 0 || index >= this.totalSlides || index === this.currentIndex) return;
+        
+        const prevIndex = this.currentIndex;
+        this.slides[prevIndex].classList.remove('active');
+        this.slides[prevIndex].classList.add(index > prevIndex ? 'previous' : '');
+
+        this.currentIndex = index;
+        this.slides.forEach((s, idx) => {
+          s.classList.toggle('active', idx === this.currentIndex);
+          if (idx !== this.currentIndex && idx !== prevIndex) {
+            s.classList.remove('previous');
+          }
+        });
+
+        this.updateUI();
+        this.playSlideTone();
+      }
+
+      next() {
+        if (this.currentIndex < this.totalSlides - 1) {
+          this.goTo(this.currentIndex + 1);
+        }
+      }
+
+      prev() {
+        if (this.currentIndex > 0) {
+          this.goTo(this.currentIndex - 1);
+        }
+      }
+
+      updateUI() {
+        // Progress bar
+        const percent = ((this.currentIndex + 1) / this.totalSlides) * 100;
+        if (this.progressBar) this.progressBar.style.width = `${percent}%`;
+
+        // Counter
+        if (this.counterEl) {
+          const cur = String(this.currentIndex + 1).padStart(2, '0');
+          const tot = String(this.totalSlides).padStart(2, '0');
+          this.counterEl.textContent = `${cur} / ${tot}`;
+        }
+
+        // Button disabled states
+        if (this.prevBtn) this.prevBtn.disabled = this.currentIndex === 0;
+        if (this.nextBtn) this.nextBtn.disabled = this.currentIndex === this.totalSlides - 1;
+      }
+
+      toggleFullscreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(() => {});
+        } else {
+          document.exitFullscreen().catch(() => {});
+        }
+      }
+
+      /* ------------------------------------------------------------------------
+       * Procedural Audio Synthesis (Pure Web Audio API)
+       * ------------------------------------------------------------------------ */
+      initAudio() {
+        if (!this.audioCtx && (window.AudioContext || window.webkitAudioContext)) {
+          this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (this.audioCtx && this.audioCtx.state === 'suspended') {
+          this.audioCtx.resume();
+        }
+      }
+
+      playTone(freq, duration = 0.2, type = 'sine') {
+        if (!this.soundEnabled) return;
+        this.initAudio();
+        if (!this.audioCtx) return;
+
+        try {
+          const osc = this.audioCtx.createOscillator();
+          const gain = this.audioCtx.createGain();
+
+          osc.type = type;
+          osc.frequency.setValueAtTime(freq, this.audioCtx.currentTime);
+
+          gain.gain.setValueAtTime(0.08, this.audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, this.audioCtx.currentTime + duration);
+
+          osc.connect(gain);
+          gain.connect(this.audioCtx.destination);
+
+          osc.start();
+          osc.stop(this.audioCtx.currentTime + duration);
+        } catch(e) {}
+      }
+
+      playSlideTone() {
+        const frequencies = [523.25, 587.33, 659.25, 783.99, 880.00, 987.77, 1046.50, 1174.66];
+        const freq = frequencies[this.currentIndex] || 659.25;
+        this.playTone(freq, 0.25, 'triangle');
+      }
+
+      playChimeSequence() {
+        const arpeggio = [523.25, 659.25, 783.99, 987.77, 1046.50];
+        arpeggio.forEach((f, i) => {
+          setTimeout(() => this.playTone(f, 0.45, 'sine'), i * 160);
+        });
+      }
+
+      /* ------------------------------------------------------------------------
+       * Interactive Canvas Starlight Particles
+       * ------------------------------------------------------------------------ */
+      initCanvas() {
+        const canvas = document.getElementById('ambient-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+          width = canvas.width = window.innerWidth;
+          height = canvas.height = window.innerHeight;
+        });
+
+        const particles = Array.from({ length: 45 }, () => ({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          radius: Math.random() * 1.5 + 0.5,
+          color: Math.random() > 0.4 ? '#ffe66d' : '#c084fc',
+          speedY: Math.random() * 0.3 + 0.1,
+          alpha: Math.random() * 0.7 + 0.3
+        }));
+
+        const animate = () => {
+          ctx.clearRect(0, 0, width, height);
+          particles.forEach(p => {
+            p.y -= p.speedY;
+            if (p.y < -10) {
+              p.y = height + 10;
+              p.x = Math.random() * width;
+            }
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+            ctx.fillStyle = p.color;
+            ctx.globalAlpha = p.alpha;
+            ctx.shadowBlur = 8;
+            ctx.shadowColor = p.color;
+            ctx.fill();
+          });
+          requestAnimationFrame(animate);
+        };
+        animate();
+      }
+    }
+
+    // Initialize Deck
+    const deck = new SlideDeck();
+  </script>
+</body>
+</html>

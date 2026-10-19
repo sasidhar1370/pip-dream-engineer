@@ -599,28 +599,34 @@ body.day-mode .retro-ticker-bar .ticker-tag {
 }
 
 /* --- 5. SITE HEADER & NAVIGATION --- */
-.site-header {
-  position: sticky;
-  top: 0;
+header,
+.site-header,
+nav.navbar {
+  position: sticky !important;
+  top: 0 !important;
   left: 0;
   right: 0;
   width: 100%;
   max-width: 100vw;
   box-sizing: border-box;
-  overflow-x: hidden;
-  z-index: 100;
-  background: rgba(13, 17, 38, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
-  transition: all var(--transition-normal);
+  z-index: 1000 !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  background: rgba(13, 17, 38, 0.8) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35) !important;
 }
 
-[data-theme="day"] .site-header {
-  background: rgba(255, 255, 255, 0.88);
-  border-bottom: 1px solid rgba(168, 85, 247, 0.12);
-  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.06);
+[data-theme="day"] header,
+[data-theme="day"] .site-header,
+[data-theme="day"] nav.navbar,
+body.day-mode header,
+body.day-mode .site-header,
+body.day-mode nav.navbar {
+  background: rgba(251, 247, 238, 0.85) !important;
+  border-bottom: 1px solid rgba(232, 222, 203, 0.8) !important;
+  box-shadow: 0 4px 18px rgba(45, 35, 60, 0.06) !important;
 }
 
 .header-container,
@@ -5706,6 +5712,149 @@ body.day-mode .badge-netscape .badge-r {
     grid-template-columns: 1fr;
     gap: 28px;
     width: 100%;
+  }
+}
+
+/* --- MOBILE LAYOUT & NAVBAR OVERFLOW FIXES (@media (max-width: 600px)) --- */
+@media (max-width: 600px) {
+  /* Navbar Controls & Quick-Action Toggles */
+  nav.navbar,
+  .nav-container,
+  .header-container,
+  .navbar-container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 8px 12px !important;
+    gap: 8px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .nav-links,
+  .main-nav,
+  .nav-list {
+    display: none !important;
+  }
+
+  .mobile-menu-btn {
+    display: none !important;
+  }
+
+  .header-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .action-pill {
+    padding: 5px 8px !important;
+    font-size: 0.78rem !important;
+    gap: 0.35rem !important;
+    white-space: nowrap !important;
+  }
+
+  .brand-logo {
+    gap: 0.5rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  .brand-sub {
+    display: none !important;
+  }
+
+  .brand-title {
+    font-size: 1.05rem !important;
+  }
+
+  .brand-crest {
+    width: 34px !important;
+    height: 34px !important;
+  }
+
+  /* Hero CTA Buttons */
+  .hero-actions,
+  .hero-cta-group {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+    margin: 20px 0 !important;
+  }
+
+  .hero-btn,
+  .primary-btn,
+  .secondary-btn,
+  .chime-btn,
+  .hero-cta-group .btn,
+  #hero-cta-projects,
+  #hero-cta-wishes,
+  #hero-play-chime-btn {
+    width: auto !important;
+    min-width: 210px !important;
+    max-width: 270px !important;
+    padding: 11px 22px !important;
+    text-align: center !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Stardust Catcher Card */
+  .stardust-card .card-header,
+  .stardust-toy-card .toy-card-header,
+  #stardust-toy-card .toy-card-header,
+  .toy-card-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 8px !important;
+    flex-wrap: nowrap !important;
+  }
+
+  #stardust-card h3,
+  .stardust-card h3,
+  #stardust-toy-card .toy-title,
+  .stardust-toy-card .toy-title,
+  .toy-title {
+    font-size: 1.05rem !important;
+    white-space: nowrap !important;
+    margin: 0 !important;
+  }
+
+  .toy-title-wrap {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+
+  .toy-status-pill,
+  #stardust-status-pill {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    font-size: 0.78rem !important;
+    padding: 2px 8px !important;
+  }
+
+  /* Page Padding & Typography */
+  main,
+  section,
+  .hero-section,
+  .section-container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  h1,
+  .hero-title {
+    font-size: 2.1rem !important;
+    line-height: 1.2 !important;
   }
 }
 

@@ -84,7 +84,7 @@
 
 /* --- THEME 2: DAY NURSERY (Soft Morning Mist Cream & Deep Twilight Slate) --- */
 :root[data-theme="day"] {
-  --bg-primary: #faf6f0;
+  --bg-primary: #fbf7ee;
   --bg-secondary: #f4eee4;
   --bg-tertiary: #ede4d5;
 
@@ -92,37 +92,37 @@
   --surface-card: #ffffff;
   --surface-card-hover: #ffffff;
   --surface-glass: rgba(255, 255, 255, 0.9);
-  --surface-glass-border: #e8e1d5;
+  --surface-glass-border: #e5dcce;
 
-  --text-primary: #1e2238;
+  --text-primary: #1c2038;
   --text-secondary: #333852;
   --text-muted: #5e6482;
   --text-accent: #4338ca;
 
-  --border-subtle: #e8e1d5;
-  --border-glow: rgba(217, 119, 6, 0.3);
+  --border-subtle: #e5dcce;
+  --border-glow: rgba(200, 137, 66, 0.3);
 
   /* Soft Diffused Ambient Glow */
-  --shadow-soft: 0 10px 30px rgba(45, 35, 60, 0.07);
-  --shadow-float: 0 16px 36px rgba(45, 35, 60, 0.12);
-  --shadow-glow-gold: 0 0 20px rgba(217, 119, 6, 0.25);
+  --shadow-soft: 0 8px 24px rgba(28, 32, 56, 0.06);
+  --shadow-float: 0 16px 36px rgba(28, 32, 56, 0.1);
+  --shadow-glow-gold: 0 0 20px rgba(200, 137, 66, 0.25);
 
-  --sky-gradient: radial-gradient(circle at 50% 12%, #ffffff 0%, #faf6f0 55%, #f4eee4 100%);
-  --sky-nebula: radial-gradient(ellipse at 80% 15%, rgba(251, 191, 36, 0.12) 0%, transparent 60%);
+  --sky-gradient: radial-gradient(circle at 50% 12%, #ffffff 0%, #fbf7ee 55%, #f4eee4 100%);
+  --sky-nebula: radial-gradient(ellipse at 80% 15%, rgba(224, 169, 109, 0.12) 0%, transparent 60%);
   --cloud-tint: rgba(255, 255, 255, 0.95);
 
   --ticker-bg: #eee7dc;
   --ticker-border: #ddd3c4;
 
   --paper-slip-bg: #ffffff;
-  --paper-slip-border: #e8e1d5;
-  --paper-slip-shadow: 0 10px 30px rgba(45, 35, 60, 0.07);
+  --paper-slip-border: #e5dcce;
+  --paper-slip-shadow: 0 8px 24px rgba(28, 32, 56, 0.06);
 
   --svg-roof-fill: #1e2640;
   --svg-roof-trim: #2a3556;
   --svg-chimney: #192038;
 
-  --lantern-soft-glow: rgba(245, 158, 11, 0.38);
+  --lantern-soft-glow: rgba(200, 137, 66, 0.38);
   --lantern-starry-glow: rgba(14, 165, 233, 0.38);
   --lantern-sleep-glow: rgba(139, 92, 246, 0.38);
 
@@ -131,14 +131,25 @@
   --odometer-text: #8c531b;
 }
 
+/* Core Day Nursery Palette Base Canvas */
+body.day-mode,
+[data-theme="day"] body,
+html[data-theme="day"] body {
+  background: #fbf7ee !important;
+  color: #1c2038 !important;
+}
+
 /* --- 2. BASE RESET & GLOBAL STYLES --- */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html, body {
+html,
+body {
   overflow-x: hidden;
   max-width: 100vw;
 }
@@ -180,12 +191,24 @@ body {
 }
 
 /* Typography Hierarchy (Cozy Storybook Design System) */
-h1, h2, h3, h4, .btn, .nav-links, .nav-link, .badge, .counter-digits {
+h1,
+h2,
+h3,
+h4,
+.btn,
+.nav-links,
+.nav-link,
+.badge,
+.counter-digits {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
 }
 
-body, p, input, textarea, select {
+body,
+p,
+input,
+textarea,
+select {
   font-family: 'Nunito', sans-serif;
 }
 
@@ -203,7 +226,10 @@ img {
   display: block;
 }
 
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
   font: inherit;
   color: inherit;
 }
@@ -287,11 +313,13 @@ a {
     filter: hue-rotate(0deg) brightness(1);
     opacity: 0.75;
   }
+
   50% {
     transform: scale(1.06) translate(-10px, -8px);
     filter: hue-rotate(22deg) brightness(1.12);
     opacity: 0.9;
   }
+
   100% {
     transform: scale(1.03) translate(10px, 8px);
     filter: hue-rotate(-15deg) brightness(0.98);
@@ -316,8 +344,13 @@ a {
 }
 
 @keyframes star-drift {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-600px); }
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-600px);
+  }
 }
 
 .floating-cloud {
@@ -353,13 +386,23 @@ a {
 }
 
 @keyframes cloud-float-left {
-  0% { transform: translateX(0) translateY(0); }
-  100% { transform: translateX(70px) translateY(-25px); }
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+
+  100% {
+    transform: translateX(70px) translateY(-25px);
+  }
 }
 
 @keyframes cloud-float-right {
-  0% { transform: translateX(0) translateY(0); }
-  100% { transform: translateX(-80px) translateY(20px); }
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+
+  100% {
+    transform: translateX(-80px) translateY(20px);
+  }
 }
 
 /* --- 3B. TRUE LANTERN FLASHLIGHT BEAM MODE (Tier 2 Feature) --- */
@@ -414,8 +457,15 @@ body.lantern-beam-on .hidden-constellations-layer {
 }
 
 @keyframes star-glow-pulse {
-  0% { filter: drop-shadow(0 0 2px #ffd166); transform: scale(0.9); }
-  100% { filter: drop-shadow(0 0 8px #ffd166) drop-shadow(0 0 16px #38bdf8); transform: scale(1.15); }
+  0% {
+    filter: drop-shadow(0 0 2px #ffd166);
+    transform: scale(0.9);
+  }
+
+  100% {
+    filter: drop-shadow(0 0 8px #ffd166) drop-shadow(0 0 16px #38bdf8);
+    transform: scale(1.15);
+  }
 }
 
 .constellation-label {
@@ -432,8 +482,13 @@ body.lantern-beam-on .hidden-constellations-layer {
 }
 
 @keyframes doodle-float {
-  0% { transform: translateY(0px) scale(0.98); }
-  100% { transform: translateY(-8px) scale(1.02); }
+  0% {
+    transform: translateY(0px) scale(0.98);
+  }
+
+  100% {
+    transform: translateY(-8px) scale(1.02);
+  }
 }
 
 .doodle-label {
@@ -522,8 +577,13 @@ body.day-mode .retro-ticker-bar .ticker-tag {
 }
 
 @keyframes marquee-smooth {
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-50%, 0, 0); }
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 
 /* --- 5. SITE HEADER & NAVIGATION --- */
@@ -607,8 +667,13 @@ body.day-mode .retro-ticker-bar .ticker-tag {
 }
 
 @keyframes spin-slow {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .brand-text {
@@ -671,7 +736,8 @@ body.day-mode .retro-ticker-bar .ticker-tag {
   white-space: nowrap;
 }
 
-.nav-link:hover, .nav-link:focus-visible {
+.nav-link:hover,
+.nav-link:focus-visible {
   color: var(--color-gold);
   background: rgba(255, 255, 255, 0.08);
   transform: translateY(-2px);
@@ -743,13 +809,31 @@ body.day-mode .retro-ticker-bar .ticker-tag {
   border-radius: 1px;
 }
 
-.sound-waves .bar-1 { height: 40%; animation: wave-anim 1s ease-in-out infinite 0.1s; }
-.sound-waves .bar-2 { height: 80%; animation: wave-anim 1s ease-in-out infinite 0.25s; }
-.sound-waves .bar-3 { height: 60%; animation: wave-anim 1s ease-in-out infinite 0.4s; }
+.sound-waves .bar-1 {
+  height: 40%;
+  animation: wave-anim 1s ease-in-out infinite 0.1s;
+}
+
+.sound-waves .bar-2 {
+  height: 80%;
+  animation: wave-anim 1s ease-in-out infinite 0.25s;
+}
+
+.sound-waves .bar-3 {
+  height: 60%;
+  animation: wave-anim 1s ease-in-out infinite 0.4s;
+}
 
 @keyframes wave-anim {
-  0%, 100% { transform: scaleY(0.4); }
-  50% { transform: scaleY(1); }
+
+  0%,
+  100% {
+    transform: scaleY(0.4);
+  }
+
+  50% {
+    transform: scaleY(1);
+  }
 }
 
 .sound-pill.muted .sound-waves .wave {
@@ -774,10 +858,21 @@ body.day-mode .retro-ticker-bar .ticker-tag {
   color: var(--color-gold);
 }
 
-[data-theme="midnight"] .icon-day { display: none; }
-[data-theme="midnight"] .icon-midnight { display: inline-block; }
-[data-theme="day"] .icon-midnight { display: none; }
-[data-theme="day"] .icon-day { display: inline-block; }
+[data-theme="midnight"] .icon-day {
+  display: none;
+}
+
+[data-theme="midnight"] .icon-midnight {
+  display: inline-block;
+}
+
+[data-theme="day"] .icon-midnight {
+  display: none;
+}
+
+[data-theme="day"] .icon-day {
+  display: inline-block;
+}
 
 /* Lantern Beam Header Pill */
 .lantern-beam-pill {
@@ -813,8 +908,13 @@ body.day-mode .retro-ticker-bar .ticker-tag {
 }
 
 @keyframes beam-spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .mobile-menu-btn {
@@ -844,10 +944,10 @@ body.day-mode .retro-ticker-bar .ticker-tag {
 #projects .section-container,
 #story .section-container,
 #wishes .section-container,
-.bio-section > .section-container,
-.projects-section > .section-container,
-.story-section > .section-container,
-.wishes-section > .section-container {
+.bio-section>.section-container,
+.projects-section>.section-container,
+.story-section>.section-container,
+.wishes-section>.section-container {
   max-width: 1160px;
   margin: 0 auto;
   padding: 60px 24px;
@@ -1090,6 +1190,144 @@ body.day-mode .section-lead {
   color: inherit;
 }
 
+/* --- LIGHT MODE HIGH-CONTRAST BUTTONS --- */
+/* Primary CTA ([✦ Explore Dreamworks]) */
+[data-theme="day"] .hero-btn-primary,
+body.day-mode .hero-btn-primary,
+[data-theme="day"] #hero-cta-projects,
+body.day-mode #hero-cta-projects,
+[data-theme="day"] .btn-primary:not(#start-stardust-btn):not(.toy-launch-btn),
+body.day-mode .btn-primary:not(#start-stardust-btn):not(.toy-launch-btn) {
+  background: linear-gradient(135deg, #d97706, #b45309) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  border: none !important;
+  box-shadow: 0 4px 14px rgba(180, 83, 9, 0.28) !important;
+}
+
+[data-theme="day"] .hero-btn-primary *,
+body.day-mode .hero-btn-primary *,
+[data-theme="day"] #hero-cta-projects *,
+body.day-mode #hero-cta-projects *,
+[data-theme="day"] .btn-primary:not(#start-stardust-btn):not(.toy-launch-btn) *,
+body.day-mode .btn-primary:not(#start-stardust-btn):not(.toy-launch-btn) * {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="day"] .hero-btn-primary:hover,
+body.day-mode .hero-btn-primary:hover,
+[data-theme="day"] #hero-cta-projects:hover,
+body.day-mode #hero-cta-projects:hover,
+[data-theme="day"] .btn-primary:not(#start-stardust-btn):not(.toy-launch-btn):hover,
+body.day-mode .btn-primary:not(#start-stardust-btn):not(.toy-launch-btn):hover {
+  background: linear-gradient(135deg, #b45309, #92400e) !important;
+  box-shadow: 0 6px 18px rgba(180, 83, 9, 0.38) !important;
+  color: #ffffff !important;
+}
+
+/* Secondary / Action Buttons ([★ Leave a Wish], [♪ Play Chime], .btn-secondary) */
+[data-theme="day"] .btn-secondary,
+body.day-mode .btn-secondary,
+[data-theme="day"] #hero-cta-wishes,
+body.day-mode #hero-cta-wishes,
+[data-theme="day"] .btn-glass,
+body.day-mode .btn-glass,
+[data-theme="day"] #hero-play-chime-btn,
+body.day-mode #hero-play-chime-btn {
+  background: #ffffff !important;
+  color: #1e2238 !important;
+  border: 1.5px solid #dcd4c6 !important;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05) !important;
+  font-weight: 700 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+[data-theme="day"] .btn-secondary *,
+body.day-mode .btn-secondary *,
+[data-theme="day"] #hero-cta-wishes *,
+body.day-mode #hero-cta-wishes *,
+[data-theme="day"] .btn-glass *,
+body.day-mode .btn-glass *,
+[data-theme="day"] #hero-play-chime-btn *,
+body.day-mode #hero-play-chime-btn * {
+  color: #1e2238 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="day"] .btn-secondary:hover,
+body.day-mode .btn-secondary:hover,
+[data-theme="day"] #hero-cta-wishes:hover,
+body.day-mode #hero-cta-wishes:hover,
+[data-theme="day"] .btn-glass:hover,
+body.day-mode .btn-glass:hover,
+[data-theme="day"] #hero-play-chime-btn:hover,
+body.day-mode #hero-play-chime-btn:hover {
+  background: #fbf7ee !important;
+  border-color: #d97706 !important;
+  color: #b45309 !important;
+  box-shadow: 0 5px 14px rgba(180, 83, 9, 0.15) !important;
+}
+
+[data-theme="day"] .btn-secondary:hover *,
+body.day-mode .btn-secondary:hover *,
+[data-theme="day"] #hero-cta-wishes:hover *,
+body.day-mode #hero-cta-wishes:hover *,
+[data-theme="day"] .btn-glass:hover *,
+body.day-mode .btn-glass:hover *,
+[data-theme="day"] #hero-play-chime-btn:hover *,
+body.day-mode #hero-play-chime-btn:hover * {
+  color: #b45309 !important;
+}
+
+/* Ensure [♪ Play Chime] matches pill structure and padding */
+#hero-play-chime-btn,
+#hero-cta-wishes,
+#hero-cta-projects,
+.hero-cta-group .btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0.85rem 1.8rem !important;
+  border-radius: 9999px !important;
+  font-family: var(--font-display) !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  gap: 0.65rem !important;
+  box-sizing: border-box !important;
+}
+
+/* Stardust Catcher Action ([✦ Start Stardust Drift]) */
+[data-theme="day"] #start-stardust-btn,
+body.day-mode #start-stardust-btn,
+[data-theme="day"] .toy-launch-btn,
+body.day-mode .toy-launch-btn {
+  background: #e0a96d !important;
+  color: #ffffff !important;
+  border: none !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 12px rgba(224, 169, 109, 0.3) !important;
+}
+
+[data-theme="day"] #start-stardust-btn *,
+body.day-mode #start-stardust-btn *,
+[data-theme="day"] .toy-launch-btn *,
+body.day-mode .toy-launch-btn * {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="day"] #start-stardust-btn:hover,
+body.day-mode #start-stardust-btn:hover,
+[data-theme="day"] .toy-launch-btn:hover,
+body.day-mode .toy-launch-btn:hover {
+  background: #c88942 !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 16px rgba(200, 137, 66, 0.4) !important;
+}
+
 /* --- 7. HERO SECTION (2-Column Desktop Viewport Fit) --- */
 .hero-section {
   position: relative;
@@ -1140,6 +1378,41 @@ body.day-mode .section-lead {
   margin: 0;
 }
 
+/* Shift Active Pill in Light Mode */
+[data-theme="day"] .shift-pill,
+body.day-mode .shift-pill,
+[data-theme="day"] .hero-pill-badge,
+body.day-mode .hero-pill-badge,
+[data-theme="day"] .hero-status-pill,
+body.day-mode .hero-status-pill,
+[data-theme="day"] #hero-status-pill,
+body.day-mode #hero-status-pill {
+  background: #faebd7 !important;
+  color: #7c2d12 !important;
+  border: 1.5px solid #fed7aa !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="day"] .shift-pill span,
+body.day-mode .shift-pill span,
+[data-theme="day"] .hero-pill-badge span,
+body.day-mode .hero-pill-badge span,
+[data-theme="day"] .hero-status-pill span,
+body.day-mode .hero-status-pill span,
+[data-theme="day"] #hero-status-pill span,
+body.day-mode #hero-status-pill span {
+  color: #7c2d12 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="day"] .hero-pill-badge .badge-starlight-dot,
+body.day-mode .hero-pill-badge .badge-starlight-dot,
+[data-theme="day"] .shift-pill .badge-starlight-dot,
+body.day-mode .shift-pill .badge-starlight-dot {
+  background: #7c2d12 !important;
+  box-shadow: 0 0 8px rgba(124, 45, 18, 0.4) !important;
+}
+
 .badge-starlight-dot {
   width: 7px;
   height: 7px;
@@ -1150,9 +1423,20 @@ body.day-mode .section-lead {
 }
 
 @keyframes pulse-dot {
-  0% { transform: scale(0.9); opacity: 0.8; }
-  50% { transform: scale(1.3); opacity: 1; }
-  100% { transform: scale(0.9); opacity: 0.8; }
+  0% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: scale(1.3);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
 }
 
 .hero-title {
@@ -1314,15 +1598,28 @@ body.day-mode .hero-tagline {
 }
 
 @keyframes celestialBob {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  33% { transform: translateY(-7px) rotate(-0.8deg); }
-  66% { transform: translateY(-3px) rotate(0.8deg); }
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  33% {
+    transform: translateY(-7px) rotate(-0.8deg);
+  }
+
+  66% {
+    transform: translateY(-3px) rotate(0.8deg);
+  }
 }
 
 @keyframes gentleFloat {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-8px);
   }
@@ -1369,8 +1666,15 @@ body.day-mode .hero-tagline {
 }
 
 @keyframes aura-pulse {
-  0% { transform: scale(0.92); opacity: 0.6; }
-  100% { transform: scale(1.15); opacity: 0.95; }
+  0% {
+    transform: scale(0.92);
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: scale(1.15);
+    opacity: 0.95;
+  }
 }
 
 /* Secret Easter Egg Nightcap Hotspot */
@@ -1435,11 +1739,31 @@ body.day-mode .hero-tagline {
 }
 
 @keyframes giggle-bounce {
-  10%, 90% { transform: translate3d(-3px, -10px, 0) rotate(-6deg); }
-  20%, 80% { transform: translate3d(5px, -18px, 0) rotate(6deg); }
-  30%, 50%, 70% { transform: translate3d(-6px, -24px, 0) rotate(-4deg) scale(1.06); }
-  40%, 60% { transform: translate3d(6px, -20px, 0) rotate(4deg) scale(1.06); }
-  100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+
+  10%,
+  90% {
+    transform: translate3d(-3px, -10px, 0) rotate(-6deg);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(5px, -18px, 0) rotate(6deg);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-6px, -24px, 0) rotate(-4deg) scale(1.06);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(6px, -20px, 0) rotate(4deg) scale(1.06);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
 }
 
 .floating-whisper {
@@ -1450,13 +1774,36 @@ body.day-mode .hero-tagline {
   opacity: 0.7;
 }
 
-.whisper-1 { top: 22%; left: -10px; font-size: 1.3rem; animation: whisper-bob 4s infinite alternate; }
-.whisper-2 { top: 10%; right: 15px; font-size: 1.15rem; color: var(--color-lavender); animation: whisper-bob 3.2s infinite alternate 0.5s; }
-.whisper-3 { bottom: 25%; right: -10px; font-size: 1.05rem; animation: whisper-bob 4.5s infinite alternate 1s; }
+.whisper-1 {
+  top: 22%;
+  left: -10px;
+  font-size: 1.3rem;
+  animation: whisper-bob 4s infinite alternate;
+}
+
+.whisper-2 {
+  top: 10%;
+  right: 15px;
+  font-size: 1.15rem;
+  color: var(--color-lavender);
+  animation: whisper-bob 3.2s infinite alternate 0.5s;
+}
+
+.whisper-3 {
+  bottom: 25%;
+  right: -10px;
+  font-size: 1.05rem;
+  animation: whisper-bob 4.5s infinite alternate 1s;
+}
 
 @keyframes whisper-bob {
-  0% { transform: translateY(0) scale(0.9); }
-  100% { transform: translateY(-16px) scale(1.15); }
+  0% {
+    transform: translateY(0) scale(0.9);
+  }
+
+  100% {
+    transform: translateY(-16px) scale(1.15);
+  }
 }
 
 /* Cute Subtle Speech Bubble Badge beside Pip */
@@ -1502,8 +1849,13 @@ body.day-mode .hero-tagline {
 }
 
 @keyframes returning-glow {
-  0% { box-shadow: 0 0 12px rgba(255, 209, 102, 0.2); }
-  100% { box-shadow: 0 0 24px rgba(255, 209, 102, 0.45); }
+  0% {
+    box-shadow: 0 0 12px rgba(255, 209, 102, 0.2);
+  }
+
+  100% {
+    box-shadow: 0 0 24px rgba(255, 209, 102, 0.45);
+  }
 }
 
 /* Pip's Interactive Dialogue Widget (Tier 3 Legendary: Character Chats Back) */
@@ -1559,20 +1911,29 @@ body.day-mode .hero-tagline {
   transform: scale(1.02);
 }
 
+[data-theme="day"] .speech-bubble,
+body.day-mode .speech-bubble,
+[data-theme="day"] .welcome-bubble,
+body.day-mode .welcome-bubble,
 [data-theme="day"] .avatar-gesture-pill,
 body.day-mode .avatar-gesture-pill,
 [data-theme="day"] #avatar-gesture-pill,
 body.day-mode #avatar-gesture-pill {
   background: #ffffff !important;
   border: 2px solid #e2d9cc !important;
-  color: #232742 !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08) !important;
+  color: #1e2238 !important;
+  font-weight: 700 !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06) !important;
 }
 
-[data-theme="day"] .avatar-gesture-pill .gesture-text,
-body.day-mode .avatar-gesture-pill .gesture-text,
-[data-theme="day"] .avatar-gesture-pill .gesture-icon,
-body.day-mode .avatar-gesture-pill .gesture-icon {
+[data-theme="day"] .speech-bubble *,
+body.day-mode .speech-bubble *,
+[data-theme="day"] .welcome-bubble *,
+body.day-mode .welcome-bubble *,
+[data-theme="day"] .avatar-gesture-pill *,
+body.day-mode .avatar-gesture-pill *,
+[data-theme="day"] #avatar-gesture-pill *,
+body.day-mode #avatar-gesture-pill * {
   color: #1e2238 !important;
   font-weight: 700 !important;
 }
@@ -1580,22 +1941,42 @@ body.day-mode .avatar-gesture-pill .gesture-icon {
 [data-theme="day"] .dialogue-chip,
 body.day-mode .dialogue-chip {
   background: #ffffff !important;
-  border: 1.5px solid #dcd4c8 !important;
-  color: #4338ca !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+  border: 1.5px solid #c7d2fe !important;
+  color: #3730a3 !important;
+  font-weight: 700 !important;
+  box-shadow: 0 3px 8px rgba(67, 56, 202, 0.08) !important;
+  transition: all 0.2s ease !important;
+}
+
+[data-theme="day"] .dialogue-chip *,
+body.day-mode .dialogue-chip * {
+  color: #3730a3 !important;
+  font-weight: 700 !important;
 }
 
 [data-theme="day"] .dialogue-chip:hover,
 body.day-mode .dialogue-chip:hover {
-  background: #f5f3ff !important;
-  border-color: #818cf8 !important;
+  background: #e0e7ff !important;
+  color: #3730a3 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 5px 12px rgba(67, 56, 202, 0.12) !important;
+}
+
+[data-theme="day"] .dialogue-chip:hover *,
+body.day-mode .dialogue-chip:hover * {
   color: #3730a3 !important;
 }
 
 [data-theme="day"] .dialogue-chip.active,
 body.day-mode .dialogue-chip.active {
-  background: linear-gradient(135deg, #ffe66d, #fca311) !important;
-  color: #0d1126 !important;
+  background: linear-gradient(135deg, #d97706, #b45309) !important;
+  border-color: transparent !important;
+  color: #ffffff !important;
+}
+
+[data-theme="day"] .dialogue-chip.active *,
+body.day-mode .dialogue-chip.active * {
+  color: #ffffff !important;
 }
 
 .avatar-gesture-pill.typing {
@@ -1605,8 +1986,13 @@ body.day-mode .dialogue-chip.active {
 }
 
 @keyframes pulse-speech {
-  0% { transform: scale(0.99); }
-  100% { transform: scale(1.02); }
+  0% {
+    transform: scale(0.99);
+  }
+
+  100% {
+    transform: scale(1.02);
+  }
 }
 
 /* Tier 2 Mini-Toy: Pip's Stardust Catcher */
@@ -1628,10 +2014,11 @@ body.day-mode .dialogue-chip.active {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 20px rgba(247, 215, 148, 0.1);
 }
 
-[data-theme="day"] .stardust-toy-card {
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(124, 58, 237, 0.16);
-  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.06);
+[data-theme="day"] .stardust-toy-card,
+body.day-mode .stardust-toy-card {
+  background: #ffffff !important;
+  border: 1.5px solid #e8e0d2 !important;
+  box-shadow: 0 8px 24px rgba(30, 34, 56, 0.06) !important;
 }
 
 .toy-card-header {
@@ -1701,6 +2088,26 @@ body.day-mode .dialogue-chip.active {
   letter-spacing: 0.5px;
 }
 
+/* Drift Sparks Pill in Light Mode */
+[data-theme="day"] .toy-status-pill,
+body.day-mode .toy-status-pill,
+[data-theme="day"] #stardust-status-pill,
+body.day-mode #stardust-status-pill {
+  background: #fef3c7 !important;
+  color: #92400e !important;
+  border: 1px solid #fde68a !important;
+  font-weight: 700 !important;
+}
+
+/* Stardust Count in Light Mode */
+[data-theme="day"] #stardust-score-display,
+body.day-mode #stardust-score-display,
+[data-theme="day"] .toy-score,
+body.day-mode .toy-score {
+  color: #9a3412 !important;
+  font-weight: 800 !important;
+}
+
 /* Drifting Falling Stardust Particles */
 .falling-star-spark {
   position: fixed;
@@ -1725,12 +2132,15 @@ body.day-mode .dialogue-chip.active {
     top: -50px;
     opacity: 0;
   }
+
   8% {
     opacity: 1;
   }
+
   90% {
     opacity: 1;
   }
+
   100% {
     top: 105vh;
     opacity: 0;
@@ -1742,6 +2152,7 @@ body.day-mode .dialogue-chip.active {
     margin-left: -18px;
     transform: rotate(-15deg);
   }
+
   100% {
     margin-left: 18px;
     transform: rotate(15deg);
@@ -1765,48 +2176,71 @@ body.day-mode .dialogue-chip.active {
     transform: translateY(0) scale(0.8);
     opacity: 1;
   }
+
   100% {
     transform: translateY(-40px) scale(1.4);
     opacity: 0;
   }
 }
 
-/* Cards (Featured Dreamworks, Wish Wall, Bio, Stardust Toy, etc.) in Light Mode */
+/* Cards (Featured Dreamworks, Wish Wall, Bio, Gear, Stardust Toy, etc.) in Light Mode */
+[data-theme="day"] .card,
+body.day-mode .card,
 [data-theme="day"] .project-card,
 body.day-mode .project-card,
-[data-theme="day"] .bio-card-portrait,
-body.day-mode .bio-card-portrait,
-[data-theme="day"] .bio-card-narrative,
-body.day-mode .bio-card-narrative,
-[data-theme="day"] .bio-narrative-card,
-body.day-mode .bio-narrative-card,
-[data-theme="day"] .wish-card,
-body.day-mode .wish-card,
+[data-theme="day"] .gear-card,
+body.day-mode .gear-card,
+[data-theme="day"] .tool-chip,
+body.day-mode .tool-chip,
 [data-theme="day"] .wish-form-card,
 body.day-mode .wish-form-card,
 [data-theme="day"] .wishes-board-container,
 body.day-mode .wishes-board-container,
 [data-theme="day"] .wishes-board-header,
 body.day-mode .wishes-board-header,
+[data-theme="day"] .bio-card-portrait,
+body.day-mode .bio-card-portrait,
+[data-theme="day"] .bio-card-narrative,
+body.day-mode .bio-card-narrative,
+[data-theme="day"] .bio-narrative-card,
+body.day-mode .bio-narrative-card,
+[data-theme="day"] .recipe-card,
+body.day-mode .recipe-card,
+[data-theme="day"] .recipe-container,
+body.day-mode .recipe-container,
 [data-theme="day"] .stardust-toy-card,
 body.day-mode .stardust-toy-card,
 [data-theme="day"] .retro-odometer-box,
-body.day-mode .retro-odometer-box {
+body.day-mode .retro-odometer-box,
+[data-theme="day"] .quote-card,
+body.day-mode .quote-card,
+[data-theme="day"] .routes-card,
+body.day-mode .routes-card {
   background: #ffffff !important;
-  border: 1px solid #e8e1d5 !important;
-  box-shadow: 0 10px 30px rgba(45, 35, 60, 0.07) !important;
+  border: 1.5px solid #e5dcce !important;
+  box-shadow: 0 8px 24px rgba(28, 32, 56, 0.06) !important;
 }
 
+[data-theme="day"] .card:hover,
+body.day-mode .card:hover,
 [data-theme="day"] .project-card:hover,
 body.day-mode .project-card:hover,
+[data-theme="day"] .gear-card:hover,
+body.day-mode .gear-card:hover,
+[data-theme="day"] .tool-chip:hover,
+body.day-mode .tool-chip:hover,
 [data-theme="day"] .wish-card:hover,
 body.day-mode .wish-card:hover,
+[data-theme="day"] .recipe-card:hover,
+body.day-mode .recipe-card:hover,
+[data-theme="day"] .recipe-container:hover,
+body.day-mode .recipe-container:hover,
 [data-theme="day"] .stardust-toy-card:hover,
 body.day-mode .stardust-toy-card:hover,
 [data-theme="day"] .retro-odometer-box:hover,
 body.day-mode .retro-odometer-box:hover {
-  border-color: #d1c7b7 !important;
-  box-shadow: 0 16px 36px rgba(45, 35, 60, 0.12) !important;
+  border-color: #d8bf9f !important;
+  box-shadow: 0 12px 30px rgba(28, 32, 56, 0.1) !important;
 }
 
 /* --- 8. CHARACTER BIO & DOSSIER (#bio / #about) --- */
@@ -1834,6 +2268,7 @@ body.day-mode .retro-odometer-box:hover {
 }
 
 @media (min-width: 860px) {
+
   #bio .character-dossier-grid,
   #bio .bio-grid,
   .character-dossier-grid,
@@ -1849,6 +2284,7 @@ body.day-mode .retro-odometer-box:hover {
 }
 
 @media (max-width: 859px) {
+
   #bio .character-dossier-grid,
   #bio .bio-grid,
   .character-dossier-grid,
@@ -1889,9 +2325,10 @@ body.day-mode .retro-odometer-box:hover {
   box-shadow: 0 0 45px rgba(179, 136, 255, 0.3), 0 16px 40px rgba(0, 0, 0, 0.55);
 }
 
-[data-theme="day"] .portrait-frame {
-  border: 1.5px solid rgba(124, 58, 237, 0.2);
-  box-shadow: 0 0 35px rgba(124, 58, 237, 0.14);
+[data-theme="day"] .portrait-frame,
+body.day-mode .portrait-frame {
+  border: 1.5px solid #e5dcce !important;
+  box-shadow: 0 8px 24px rgba(28, 32, 56, 0.06) !important;
 }
 
 .portrait-img {
@@ -1923,10 +2360,11 @@ body.day-mode .retro-odometer-box:hover {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
-[data-theme="day"] .portrait-badge {
-  background: rgba(255, 255, 255, 0.92);
-  color: var(--text-primary);
-  border-color: rgba(124, 58, 237, 0.4);
+[data-theme="day"] .portrait-badge,
+body.day-mode .portrait-badge {
+  background: #ffffff !important;
+  color: #1c2038 !important;
+  border: 1px solid #d8bf9f !important;
 }
 
 .secret-badge-slot {
@@ -2003,10 +2441,11 @@ body.day-mode .retro-odometer-box:hover {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 20px rgba(247, 215, 148, 0.1);
 }
 
-[data-theme="day"] .bio-narrative-card {
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(124, 58, 237, 0.16);
-  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.06);
+[data-theme="day"] .bio-narrative-card,
+body.day-mode .bio-narrative-card {
+  background: #ffffff !important;
+  border: 1.5px solid #e5dcce !important;
+  box-shadow: 0 8px 24px rgba(28, 32, 56, 0.06) !important;
 }
 
 .bio-card-header {
@@ -2084,10 +2523,12 @@ body.day-mode .retro-odometer-box:hover {
 }
 
 [data-theme="day"] .recipe-card,
-[data-theme="day"] .recipe-container {
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(124, 58, 237, 0.16);
-  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.06);
+body.day-mode .recipe-card,
+[data-theme="day"] .recipe-container,
+body.day-mode .recipe-container {
+  background: #ffffff !important;
+  border: 1.5px solid #e5dcce !important;
+  box-shadow: 0 8px 24px rgba(28, 32, 56, 0.06) !important;
 }
 
 .recipe-title {
@@ -2135,7 +2576,7 @@ body.day-mode .retro-odometer-box:hover {
 [data-theme="day"] .recipe-bar-track,
 body.day-mode .recipe-bar-track {
   background: #ede6db !important;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
 .recipe-bar-fill,
@@ -2156,15 +2597,17 @@ body.day-mode .recipe-bar-fill.fill-moonbeam,
 body.day-mode .recipe-bar-fill.fill-mist,
 [data-theme="day"] .recipe-bar-fill.fill-lavender,
 body.day-mode .recipe-bar-fill.fill-lavender {
-  background: linear-gradient(90deg, #f59e0b, #d97706) !important;
+  background: linear-gradient(90deg, #d97706, #b45309) !important;
 }
 
 [data-theme="day"] .recipe-pct,
 body.day-mode .recipe-pct,
 [data-theme="day"] .recipe-meta,
-body.day-mode .recipe-meta {
+body.day-mode .recipe-meta,
+[data-theme="day"] .recipe-meta span,
+body.day-mode .recipe-meta span {
   color: #78350f !important;
-  font-weight: 700;
+  font-weight: 800 !important;
 }
 
 .gear-cards-grid,
@@ -2177,6 +2620,7 @@ body.day-mode .recipe-meta {
 }
 
 @media (max-width: 600px) {
+
   .gear-cards-grid,
   .toolkit-grid {
     grid-template-columns: 1fr;
@@ -2207,10 +2651,12 @@ body.day-mode .recipe-meta {
 }
 
 [data-theme="day"] .gear-card,
-[data-theme="day"] .tool-chip {
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(124, 58, 237, 0.16);
-  box-shadow: 0 6px 18px rgba(124, 58, 237, 0.06);
+body.day-mode .gear-card,
+[data-theme="day"] .tool-chip,
+body.day-mode .tool-chip {
+  background: #ffffff !important;
+  border: 1.5px solid #e5dcce !important;
+  box-shadow: 0 8px 24px rgba(28, 32, 56, 0.06) !important;
 }
 
 .tool-gem {
@@ -2263,11 +2709,13 @@ body.day-mode .recipe-meta {
 }
 
 [data-theme="day"] .quote-card,
-[data-theme="day"] .bio-quote {
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(124, 58, 237, 0.16);
-  border-left: 3px solid var(--color-gold);
-  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.06);
+body.day-mode .quote-card,
+[data-theme="day"] .bio-quote,
+body.day-mode .bio-quote {
+  background: #ffffff !important;
+  border: 1.5px solid #e5dcce !important;
+  border-left: 3px solid #e0a96d !important;
+  box-shadow: 0 8px 24px rgba(28, 32, 56, 0.06) !important;
 }
 
 /* --- 9. SHOWCASE PROJECTS GALLERY (#projects) --- */
@@ -2303,8 +2751,8 @@ body.day-mode .recipe-meta {
 [data-theme="day"] .project-card,
 body.day-mode .project-card {
   background: #ffffff !important;
-  border: 1px solid #e8e1d5 !important;
-  box-shadow: 0 10px 30px rgba(45, 35, 60, 0.07) !important;
+  border: 1.5px solid #e5dcce !important;
+  box-shadow: 0 8px 24px rgba(28, 32, 56, 0.06) !important;
 }
 
 .card-glass-header {
@@ -2388,7 +2836,8 @@ body.day-mode .project-card {
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-  background: #fdfbf7; /* Clean warm base that matches the asset background */
+  background: #fdfbf7;
+  /* Clean warm base that matches the asset background */
   display: block;
   margin: 0 auto 16px auto;
   max-width: 90%;
@@ -2486,6 +2935,7 @@ div:has(> .dot) {
     transform: translate(0, 0) scale(0.5) rotate(0deg);
     opacity: 1;
   }
+
   100% {
     transform: translate(var(--offset-x, 20px), -125px) scale(1.4) rotate(var(--rot, 25deg));
     opacity: 0;
@@ -2563,21 +3013,25 @@ div:has(> .dot),
   border-color: rgba(251, 113, 133, 0.45);
   color: #f472b6;
 }
+
 .key-e5 {
   background: linear-gradient(180deg, rgba(254, 249, 195, 0.25) 0%, rgba(250, 204, 21, 0.15) 100%);
   border-color: rgba(250, 204, 21, 0.45);
   color: #ffd166;
 }
+
 .key-g5 {
   background: linear-gradient(180deg, rgba(220, 252, 231, 0.25) 0%, rgba(74, 222, 128, 0.15) 100%);
   border-color: rgba(74, 222, 128, 0.45);
   color: #34d399;
 }
+
 .key-b5 {
   background: linear-gradient(180deg, rgba(224, 242, 254, 0.25) 0%, rgba(56, 189, 248, 0.15) 100%);
   border-color: rgba(56, 189, 248, 0.45);
   color: #38bdf8;
 }
+
 .key-c6 {
   background: linear-gradient(180deg, rgba(243, 232, 255, 0.25) 0%, rgba(192, 132, 252, 0.15) 100%);
   border-color: rgba(192, 132, 252, 0.45);
@@ -2590,7 +3044,8 @@ div:has(> .dot),
   filter: brightness(1.18);
 }
 
-.chime-key:active, .chime-key.key-active {
+.chime-key:active,
+.chime-key.key-active {
   transform: translateY(2px) scale(0.94);
   box-shadow: 0 0 16px currentColor;
   filter: brightness(1.35);
@@ -2618,6 +3073,96 @@ div:has(> .dot),
   font-size: 0.8rem;
   color: var(--text-muted);
   font-style: italic;
+}
+
+/* Chapter 01 (Music Box) Chime Keys in Light Mode */
+[data-theme="day"] .chime-key,
+body.day-mode .chime-key {
+  color: #1e2238 !important;
+  font-weight: 700 !important;
+  border: 1.5px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 4px 12px rgba(28, 32, 56, 0.08) !important;
+}
+
+[data-theme="day"] .chime-key *,
+body.day-mode .chime-key *,
+[data-theme="day"] .chime-key .note-letter,
+body.day-mode .chime-key .note-letter,
+[data-theme="day"] .chime-key .note-freq,
+body.day-mode .chime-key .note-freq,
+[data-theme="day"] .chime-key .key-stardust-rivet,
+body.day-mode .chime-key .key-stardust-rivet {
+  color: #1e2238 !important;
+  font-weight: 700 !important;
+  opacity: 1 !important;
+}
+
+/* Saturated Pastel Gradients & Crisp Borders for C5 to C6 */
+[data-theme="day"] .key-c5,
+body.day-mode .key-c5 {
+  background: linear-gradient(180deg, #ffe4e6 0%, #fecdd3 100%) !important;
+  border: 1.5px solid rgba(0, 0, 0, 0.1) !important;
+  color: #1e2238 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="day"] .key-e5,
+body.day-mode .key-e5 {
+  background: linear-gradient(180deg, #fef9c3 0%, #fef08a 100%) !important;
+  border: 1.5px solid rgba(0, 0, 0, 0.1) !important;
+  color: #1e2238 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="day"] .key-g5,
+body.day-mode .key-g5 {
+  background: linear-gradient(180deg, #dcfce7 0%, #bbf7d0 100%) !important;
+  border: 1.5px solid rgba(0, 0, 0, 0.1) !important;
+  color: #1e2238 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="day"] .key-b5,
+body.day-mode .key-b5 {
+  background: linear-gradient(180deg, #e0f2fe 0%, #bae6fd 100%) !important;
+  border: 1.5px solid rgba(0, 0, 0, 0.1) !important;
+  color: #1e2238 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="day"] .key-c6,
+body.day-mode .key-c6 {
+  background: linear-gradient(180deg, #f3e8ff 0%, #e9d5ff 100%) !important;
+  border: 1.5px solid rgba(0, 0, 0, 0.1) !important;
+  color: #1e2238 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="day"] .chime-key:hover,
+body.day-mode .chime-key:hover {
+  transform: translateY(-4px) scale(1.03) !important;
+  box-shadow: 0 8px 18px rgba(28, 32, 56, 0.12) !important;
+  filter: brightness(1.02) !important;
+}
+
+[data-theme="day"] .chime-key:active,
+body.day-mode .chime-key:active,
+[data-theme="day"] .chime-key.key-active,
+body.day-mode .chime-key.key-active {
+  transform: translateY(2px) scale(0.96) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) !important;
+  filter: brightness(0.95) !important;
+}
+
+[data-theme="day"] .chime-keyboard-title,
+body.day-mode .chime-keyboard-title {
+  color: #1c2038 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="day"] .chime-keyboard-hint,
+body.day-mode .chime-keyboard-hint {
+  color: #6b7280 !important;
 }
 
 /* --- PROJECT 2: NIGHTLIGHT COLLECTION (Ambient Room Illumination) --- */
@@ -2653,8 +3198,17 @@ div:has(> .dot),
 }
 
 @keyframes sleep-breath {
-  0%, 100% { opacity: 0.35; transform: scale(0.92); }
-  50% { opacity: 0.95; transform: scale(1.1); }
+
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.92);
+  }
+
+  50% {
+    opacity: 0.95;
+    transform: scale(1.1);
+  }
 }
 
 .lantern-container {
@@ -2684,19 +3238,19 @@ div:has(> .dot),
 }
 
 .mode-soft .lantern-core-bulb,
-.lantern-room-glow.mode-soft ~ .lantern-container .lantern-core-bulb {
+.lantern-room-glow.mode-soft~.lantern-container .lantern-core-bulb {
   background: #ffb703;
   box-shadow: 0 0 30px #fb8500;
 }
 
 .mode-starry .lantern-core-bulb,
-.lantern-room-glow.mode-starry ~ .lantern-container .lantern-core-bulb {
+.lantern-room-glow.mode-starry~.lantern-container .lantern-core-bulb {
   background: #38bdf8;
   box-shadow: 0 0 35px #a78bfa;
 }
 
 .mode-sleep .lantern-core-bulb,
-.lantern-room-glow.mode-sleep ~ .lantern-container .lantern-core-bulb {
+.lantern-room-glow.mode-sleep~.lantern-container .lantern-core-bulb {
   background: #c084fc;
   box-shadow: 0 0 30px #818cf8;
   animation: sleep-breath 6.5s ease-in-out infinite;
@@ -2782,9 +3336,20 @@ div:has(> .dot),
   transform: scale(1.2);
 }
 
-.glow-amber { background: #ffb703; box-shadow: 0 0 10px #ffb703; }
-.glow-starry { background: #38bdf8; box-shadow: 0 0 10px #38bdf8; }
-.glow-sleep { background: #c084fc; box-shadow: 0 0 10px #c084fc; }
+.glow-amber {
+  background: #ffb703;
+  box-shadow: 0 0 10px #ffb703;
+}
+
+.glow-starry {
+  background: #38bdf8;
+  box-shadow: 0 0 10px #38bdf8;
+}
+
+.glow-sleep {
+  background: #c084fc;
+  box-shadow: 0 0 10px #c084fc;
+}
 
 .mode-name {
   display: block;
@@ -2807,6 +3372,164 @@ div:has(> .dot),
   color: var(--text-muted);
   border-top: 1px solid var(--border-subtle);
   padding-top: 0.85rem;
+}
+
+/* --- CHAPTER 02 (NIGHTLIGHT COLLECTION) IN LIGHT MODE --- */
+
+/* 1. Status Pill under the Lamp */
+[data-theme="day"] .lantern-status-tag,
+body.day-mode .lantern-status-tag,
+[data-theme="day"] #lantern-status-tag,
+body.day-mode #lantern-status-tag,
+[data-theme="day"] .lamp-status-badge,
+body.day-mode .lamp-status-badge,
+[data-theme="day"] .nightlight-mode-indicator,
+body.day-mode .nightlight-mode-indicator,
+[data-theme="day"] .lamp-badge,
+body.day-mode .lamp-badge {
+  background: #fef3c7 !important;
+  color: #92400e !important;
+  border: 1px solid #fde68a !important;
+  box-shadow: 0 2px 6px rgba(180, 83, 9, 0.1) !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="day"] .lantern-status-tag *,
+body.day-mode .lantern-status-tag *,
+[data-theme="day"] #lantern-status-tag *,
+body.day-mode #lantern-status-tag *,
+[data-theme="day"] .lamp-status-badge *,
+body.day-mode .lamp-status-badge *,
+[data-theme="day"] .nightlight-mode-indicator *,
+body.day-mode .nightlight-mode-indicator *,
+[data-theme="day"] .lamp-badge *,
+body.day-mode .lamp-badge * {
+  color: #92400e !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="day"] .lantern-status-tag .mode-dot,
+body.day-mode .lantern-status-tag .mode-dot {
+  background: #d97706 !important;
+  box-shadow: 0 0 8px rgba(217, 119, 6, 0.4) !important;
+}
+
+/* 2. Seamless Lamp Showcase Pedestal */
+[data-theme="day"] .lantern-card .project-visual-wrapper,
+body.day-mode .lantern-card .project-visual-wrapper,
+[data-theme="day"] .lantern-visual-stage,
+body.day-mode .lantern-visual-stage,
+[data-theme="day"] .lantern-container,
+body.day-mode .lantern-container,
+[data-theme="day"] #lantern-display,
+body.day-mode #lantern-display {
+  background: #fdfbf7 !important;
+  border-radius: 20px;
+  border: 1.5px solid #ece4d8 !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05) !important;
+  padding: 12px;
+}
+
+[data-theme="day"] .lantern-img,
+body.day-mode .lantern-img,
+[data-theme="day"] #lantern-img,
+body.day-mode #lantern-img,
+[data-theme="day"] .lantern-card img,
+body.day-mode .lantern-card img {
+  filter: none !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04) !important;
+  border: 1px solid #ece4d8 !important;
+  background: #fdfbf7 !important;
+}
+
+[data-theme="day"] .project-card.lantern-card:hover img,
+body.day-mode .project-card.lantern-card:hover img,
+[data-theme="day"] .project-card:hover .lantern-img,
+body.day-mode .project-card:hover .lantern-img {
+  filter: none !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07) !important;
+}
+
+/* 3. Atmosphere Selector Buttons in Light Mode */
+[data-theme="day"] .glow-mode-btn,
+body.day-mode .glow-mode-btn,
+[data-theme="day"] .nightlight-option-btn,
+body.day-mode .nightlight-option-btn,
+[data-theme="day"] .lamp-btn,
+body.day-mode .lamp-btn {
+  background: #ffffff !important;
+  border: 1.5px solid #e2d9cc !important;
+  color: #1e2238 !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="day"] .glow-mode-btn .mode-name,
+body.day-mode .glow-mode-btn .mode-name,
+[data-theme="day"] .nightlight-option-btn .mode-name,
+body.day-mode .nightlight-option-btn .mode-name,
+[data-theme="day"] .lamp-btn .mode-name,
+body.day-mode .lamp-btn .mode-name {
+  color: #1e2238 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="day"] .glow-mode-btn .mode-sub,
+body.day-mode .glow-mode-btn .mode-sub,
+[data-theme="day"] .nightlight-option-btn .mode-sub,
+body.day-mode .nightlight-option-btn .mode-sub,
+[data-theme="day"] .lamp-btn .mode-sub,
+body.day-mode .lamp-btn .mode-sub {
+  color: #64748b !important;
+}
+
+[data-theme="day"] .glow-mode-btn:hover:not(.active),
+body.day-mode .glow-mode-btn:hover:not(.active),
+[data-theme="day"] .nightlight-option-btn:hover:not(.active),
+body.day-mode .nightlight-option-btn:hover:not(.active),
+[data-theme="day"] .lamp-btn:hover:not(.active),
+body.day-mode .lamp-btn:hover:not(.active) {
+  background: #fbf7ee !important;
+  border-color: #d8bf9f !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-theme="day"] .glow-mode-btn.active,
+body.day-mode .glow-mode-btn.active,
+[data-theme="day"] .nightlight-option-btn.active,
+body.day-mode .nightlight-option-btn.active,
+[data-theme="day"] .lamp-btn.active,
+body.day-mode .lamp-btn.active {
+  background: #fffbeb !important;
+  border: 2px solid #f59e0b !important;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2) !important;
+}
+
+[data-theme="day"] .glow-mode-btn.active .mode-name,
+body.day-mode .glow-mode-btn.active .mode-name,
+[data-theme="day"] .nightlight-option-btn.active .mode-name,
+body.day-mode .nightlight-option-btn.active .mode-name,
+[data-theme="day"] .lamp-btn.active .mode-name,
+body.day-mode .lamp-btn.active .mode-name {
+  color: #92400e !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="day"] .glow-modes-title,
+body.day-mode .glow-modes-title {
+  color: #1c2038 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="day"] .lantern-stats-footer,
+body.day-mode .lantern-stats-footer {
+  border-top-color: #e5dcce !important;
+  color: #5e6482 !important;
+}
+
+[data-theme="day"] .lantern-stats-footer .l-stat,
+body.day-mode .lantern-stats-footer .l-stat {
+  color: #5e6482 !important;
+  font-weight: 600 !important;
 }
 
 /* --- PROJECT 3: DREAM DELIVERY ROUTES (Living Radar Mission Control) --- */
@@ -2849,13 +3572,11 @@ body.day-mode .routes-map-stage {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: repeating-radial-gradient(
-    circle at 50% 85%,
-    transparent 0,
-    transparent 58px,
-    rgba(56, 189, 248, 0.04) 59px,
-    transparent 60px
-  );
+  background: repeating-radial-gradient(circle at 50% 85%,
+      transparent 0,
+      transparent 58px,
+      rgba(56, 189, 248, 0.04) 59px,
+      transparent 60px);
   opacity: 0.8;
   z-index: 1;
 }
@@ -3012,10 +3733,12 @@ body.day-mode .route-tab-btn.active {
     opacity: 0.55;
     filter: drop-shadow(0 0 4px rgba(255, 230, 109, 0.4));
   }
+
   50% {
     opacity: 0.95;
     filter: drop-shadow(0 0 10px rgba(255, 230, 109, 0.8));
   }
+
   100% {
     opacity: 0.7;
     filter: drop-shadow(0 0 6px rgba(255, 230, 109, 0.5));
@@ -3046,6 +3769,7 @@ body.day-mode .route-tab-btn.active {
     transform: scale(0.8);
     opacity: 0.8;
   }
+
   100% {
     transform: scale(2.2);
     opacity: 0;
@@ -3065,9 +3789,11 @@ body.day-mode .route-tab-btn.active {
     transform: scale(0.6);
     opacity: 1;
   }
+
   60% {
     opacity: 0.45;
   }
+
   100% {
     transform: scale(2.6);
     opacity: 0;
@@ -3101,8 +3827,15 @@ body.day-mode .route-tab-btn.active {
 }
 
 @keyframes chimney-smoke {
-  0% { transform: translateY(0) scale(0.6); opacity: 0.6; }
-  100% { transform: translateY(-16px) scale(1.6); opacity: 0; }
+  0% {
+    transform: translateY(0) scale(0.6);
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: translateY(-16px) scale(1.6);
+    opacity: 0;
+  }
 }
 
 .waypoint-tooltip {
@@ -3454,10 +4187,11 @@ body.day-mode .waypoint-tooltip {
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
 }
 
-[data-theme="day"] .wish-form-card {
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(124, 58, 237, 0.16);
-  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.06);
+[data-theme="day"] .wish-form-card,
+body.day-mode .wish-form-card {
+  background: #ffffff !important;
+  border: 1.5px solid #e5dcce !important;
+  box-shadow: 0 8px 24px rgba(28, 32, 56, 0.06) !important;
 }
 
 .card-pill {
@@ -3493,7 +4227,9 @@ body.day-mode .waypoint-tooltip {
   color: var(--text-secondary);
 }
 
-.form-input, .form-select, .form-textarea {
+.form-input,
+.form-select,
+.form-textarea {
   width: 100%;
   padding: 12px 16px;
   background: rgba(255, 255, 255, 0.04);
@@ -3505,7 +4241,9 @@ body.day-mode .waypoint-tooltip {
   transition: all var(--transition-fast);
 }
 
-.form-input:focus, .form-select:focus, .form-textarea:focus {
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
   outline: none;
   border-color: rgba(247, 215, 148, 0.45);
   box-shadow: 0 0 16px rgba(247, 215, 148, 0.2);
@@ -3513,11 +4251,14 @@ body.day-mode .waypoint-tooltip {
 }
 
 [data-theme="day"] .form-input,
+body.day-mode .form-input,
 [data-theme="day"] .form-select,
-[data-theme="day"] .form-textarea {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(124, 58, 237, 0.2);
-  color: #1e1b4b;
+body.day-mode .form-select,
+[data-theme="day"] .form-textarea,
+body.day-mode .form-textarea {
+  background: #ffffff !important;
+  border: 1.5px solid #d8cfbe !important;
+  color: #1c2038 !important;
 }
 
 .form-select option {
@@ -3558,10 +4299,11 @@ body.day-mode .waypoint-tooltip {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
-[data-theme="day"] .wishes-board-header {
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(124, 58, 237, 0.16);
-  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.06);
+[data-theme="day"] .wishes-board-header,
+body.day-mode .wishes-board-header {
+  background: #ffffff !important;
+  border: 1.5px solid #e5dcce !important;
+  box-shadow: 0 8px 24px rgba(28, 32, 56, 0.06) !important;
 }
 
 .board-title {
@@ -3625,8 +4367,15 @@ body.day-mode .waypoint-tooltip {
 }
 
 @keyframes wish-pop-in {
-  0% { transform: scale(0.8) rotate(0deg); opacity: 0; }
-  100% { transform: scale(1) rotate(var(--slip-rot, -1deg)); opacity: 1; }
+  0% {
+    transform: scale(0.8) rotate(0deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1) rotate(var(--slip-rot, -1deg));
+    opacity: 1;
+  }
 }
 
 .wish-card:hover {
@@ -3636,10 +4385,13 @@ body.day-mode .waypoint-tooltip {
   z-index: 5;
 }
 
-[data-theme="day"] .wish-card {
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid rgba(124, 58, 237, 0.25);
-  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.08);
+[data-theme="day"] .wish-card,
+body.day-mode .wish-card,
+[data-theme="day"] .paper-slip,
+body.day-mode .paper-slip {
+  background: #ffffff !important;
+  border: 1.5px solid #e6ded0 !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05) !important;
 }
 
 /* Golden Star Pin */
@@ -3661,11 +4413,12 @@ body.day-mode .waypoint-tooltip {
   border: 1.5px solid rgba(247, 215, 148, 0.6);
 }
 
-[data-theme="day"] .wish-pin {
-  background: #ffffff;
-  border-color: rgba(124, 58, 237, 0.6);
-  color: #7c3aed;
-  box-shadow: 0 0 10px rgba(124, 58, 237, 0.35);
+[data-theme="day"] .wish-pin,
+body.day-mode .wish-pin {
+  background: #ffffff !important;
+  border-color: #d8bf9f !important;
+  color: #c88942 !important;
+  box-shadow: 0 0 10px rgba(200, 137, 66, 0.25) !important;
 }
 
 .wish-card-header {
@@ -3755,8 +4508,13 @@ body.day-mode .waypoint-tooltip {
 }
 
 @keyframes modal-fade {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 .secret-modal-card,
@@ -3777,8 +4535,15 @@ body.day-mode .waypoint-tooltip {
 }
 
 @keyframes modal-pop {
-  0% { transform: scale(0.85) translateY(20px); opacity: 0; }
-  100% { transform: scale(1) translateY(0); opacity: 1; }
+  0% {
+    transform: scale(0.85) translateY(20px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
 }
 
 /* Top corner 'X' */
@@ -3968,6 +4733,7 @@ body.day-mode .waypoint-tooltip {
     transform: translate(0, -50px) rotate(0deg) scale(0.6);
     opacity: 1;
   }
+
   100% {
     transform: translate(var(--x-shift, 0px), 105vh) rotate(var(--rot, 360deg)) scale(1.4);
     opacity: 0;
@@ -4088,8 +4854,15 @@ body.day-mode .waypoint-tooltip {
 }
 
 @keyframes tumbler-roll {
-  0% { transform: translateY(-100%); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .digit-comma {
@@ -4137,10 +4910,25 @@ body.day-mode .waypoint-tooltip {
   font-weight: bold;
 }
 
-.badge-starlight .badge-r { background: #ffd166; color: #1e1b4b; }
-.badge-html5 .badge-r { background: #f97316; color: #ffffff; }
-.badge-clouds .badge-r { background: #38bdf8; color: #0f172a; }
-.badge-netscape .badge-r { background: #8b5cf6; color: #ffffff; }
+.badge-starlight .badge-r {
+  background: #ffd166;
+  color: #1e1b4b;
+}
+
+.badge-html5 .badge-r {
+  background: #f97316;
+  color: #ffffff;
+}
+
+.badge-clouds .badge-r {
+  background: #38bdf8;
+  color: #0f172a;
+}
+
+.badge-netscape .badge-r {
+  background: #8b5cf6;
+  color: #ffffff;
+}
 
 /* Soft Pastel Vintage Nursery Badges in Light Mode */
 [data-theme="day"] .retro-badge,
@@ -4236,6 +5024,7 @@ body.day-mode .badge-netscape .badge-r {
 }
 
 @media (max-width: 768px) {
+
   /* Navbar */
   .site-header {
     overflow-x: hidden;

@@ -24,12 +24,12 @@
 Pip isn't just any baby—Pip is the **Junior Dream Engineer at the Midnight Nursery**, floating peacefully atop a magical cloud high above the sleepy clouds. Wearing his oversized nightcap and cozy knit overalls, Pip's mission is weaving custom, heartwarming slumber for restless puppies, sleepy kittens, newborn star-calves, and cozy bedtime wanderers.
 
 ```
-       .---.            ✦
-      /  *  \    ★          .---.
-     |   Pip |             ( Cloud )
-      \_____/      ✦        `---'
+        .---.           ✦
+       /  *  \    ★          .---.
+      |  Pip  |             ( Cloud)
+       \_____/      ✦        `---'
        ( u u )   .-------.
-       (  -  )  ( Dream- )  ♪  ★
+       (  -  )  (  Dream- )  ♪  ★
        /|   |\   `-------'
       (_|   |_)
 ```

@@ -5894,3 +5894,25 @@ body.day-mode .badge-netscape .badge-r {
     max-width: none;
   }
 }
+
+/* --- SAFE STICKY HEADER FIX --- */
+html, body {
+  /* Using 'clip' stops horizontal overflow without breaking sticky position */
+  overflow-x: clip !important;
+  overflow-y: visible !important;
+}
+
+header,
+.site-header,
+.nav-header,
+nav.navbar,
+#dashboard-nav,
+.navbar-container {
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 9999 !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  background: rgba(11, 15, 35, 0.92) !important;
+}

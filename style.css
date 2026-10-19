@@ -3859,10 +3859,18 @@ body.day-mode .route-tab-btn.active {
 }
 
 /* 2. Living Flight Path & Gliding Dream Packet Animation */
+.flight-path,
+.route-line,
+path.route-arc,
+path.route-curve,
 .flight-path-line,
 .flight-route-path {
-  stroke-dasharray: 8 8;
-  animation: pathDash 2s linear infinite;
+  stroke: #ffe66d !important;
+  stroke-width: 3.5px !important;
+  stroke-dasharray: 6 6 !important;
+  opacity: 1 !important;
+  filter: drop-shadow(0 0 6px rgba(255, 230, 109, 0.8)) !important;
+  animation: pathDash 2s linear infinite !important;
   transition: opacity var(--transition-normal);
 }
 
@@ -3872,11 +3880,13 @@ body.day-mode .route-tab-btn.active {
   }
 }
 
-.flight-route-path.route-active {
+.flight-route-path.route-active,
+.flight-path.route-active {
+  stroke: #ffe66d !important;
+  stroke-width: 4px !important;
+  stroke-dasharray: 6 6 !important;
   opacity: 1 !important;
-  stroke-dasharray: 8 8;
-  animation: pathDash 2s linear infinite !important;
-  filter: drop-shadow(0 0 8px rgba(255, 209, 102, 0.6));
+  filter: drop-shadow(0 0 10px rgba(255, 230, 109, 0.95)) !important;
 }
 
 #flying-pip-drone {
@@ -3951,13 +3961,39 @@ body.day-mode .route-tab-btn.active {
 .map-waypoint:hover,
 .map-waypoint:focus-visible {
   transform: none !important;
-  filter: drop-shadow(0 0 12px rgba(255, 209, 102, 0.8));
+  filter: drop-shadow(0 0 12px rgba(255, 230, 109, 0.9));
 }
 
 /* Allow only the pulsing ripple ring to animate, not the coordinate position of the dot itself */
 .map-waypoint circle.waypoint-core,
 .map-waypoint circle:not(.pulse-ring) {
   transform: none !important;
+}
+
+/* High Contrast Waypoint Dots & Text */
+.map-waypoint circle {
+  r: 7 !important;
+  fill: #ffe66d !important;
+  stroke: #ffffff !important;
+  stroke-width: 2.5px !important;
+  filter: drop-shadow(0 0 8px rgba(255, 230, 109, 0.9)) !important;
+}
+
+.map-waypoint circle.pulse-ring {
+  r: 14 !important;
+  fill: rgba(255, 230, 109, 0.25) !important;
+  stroke: rgba(255, 230, 109, 0.7) !important;
+  stroke-width: 1.5px !important;
+  filter: none !important;
+}
+
+.map-waypoint text {
+  fill: #ffffff !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9) !important;
+  font-family: var(--font-ticker), monospace;
+  pointer-events: none;
 }
 
 .pulse-ring {
@@ -4002,26 +4038,32 @@ body.day-mode .route-tab-btn.active {
   }
 }
 
+.map-waypoint.selected circle.waypoint-core,
+.map-waypoint.active circle.waypoint-core,
 .map-waypoint.selected circle:nth-of-type(2),
 .map-waypoint.active circle:nth-of-type(2) {
-  filter: drop-shadow(0 0 12px rgba(255, 230, 109, 0.9)) !important;
-  stroke: #ffffff;
-  stroke-width: 2.5;
+  fill: #ffffff !important;
+  stroke: #ffe66d !important;
+  stroke-width: 3px !important;
+  filter: drop-shadow(0 0 12px rgba(255, 230, 109, 1)) !important;
 }
 
+.map-waypoint.selected text,
+.map-waypoint.active text,
 .map-waypoint.selected .waypoint-label,
 .map-waypoint.active .waypoint-label {
   fill: #ffe66d !important;
-  font-weight: 800;
-  filter: drop-shadow(0 0 6px rgba(255, 230, 109, 0.7));
+  font-weight: 800 !important;
+  filter: drop-shadow(0 0 6px rgba(255, 230, 109, 0.9)) !important;
 }
 
 .waypoint-label {
-  font-family: var(--font-ticker);
-  font-size: 13px;
-  fill: #f8fafc;
+  font-family: var(--font-ticker), monospace;
+  font-size: 11px !important;
+  fill: #ffffff !important;
   pointer-events: none;
-  font-weight: bold;
+  font-weight: 700 !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9) !important;
 }
 
 .svg-smoke {
@@ -4040,42 +4082,75 @@ body.day-mode .route-tab-btn.active {
   }
 }
 
-.waypoint-tooltip {
-  position: absolute;
-  top: 8px;
-  left: 10px;
-  right: 10px;
-  background: rgba(10, 14, 28, 0.88);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 230, 109, 0.3);
-  border-radius: var(--radius-sm);
-  padding: 0.45rem 0.8rem;
-  font-size: 0.78rem;
-  color: var(--text-secondary);
-  pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  z-index: 10;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+/* 1. Sleek Borderless Single-Line Waypoint Readout Outside Canvas */
+.waypoint-info,
+#waypoint-status,
+.map-tooltip,
+.waypoint-tooltip,
+#waypoint-tooltip {
+  position: static !important;
+  transform: none !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 8px 0 !important;
+  text-align: center !important;
+  color: #f6d365 !important;
+  font-size: 0.88rem !important;
+  font-weight: 700 !important;
+  width: 100% !important;
+  display: block !important;
+  opacity: 1 !important;
+  z-index: auto !important;
 }
 
+.waypoint-tooltip .tooltip-title,
+.waypoint-info .tooltip-title,
+.map-tooltip .tooltip-title {
+  display: inline !important;
+  font-family: var(--font-display);
+  font-weight: 800 !important;
+  color: #ffd166 !important;
+  margin-right: 4px;
+}
+
+.waypoint-tooltip .tooltip-desc,
+.waypoint-info .tooltip-desc,
+.map-tooltip .tooltip-desc {
+  display: inline !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  color: var(--text-secondary, #cbd5e1) !important;
+}
+
+[data-theme="day"] .waypoint-info,
+body.day-mode .waypoint-info,
+[data-theme="day"] #waypoint-status,
+body.day-mode #waypoint-status,
+[data-theme="day"] .map-tooltip,
+body.day-mode .map-tooltip,
 [data-theme="day"] .waypoint-tooltip,
 body.day-mode .waypoint-tooltip {
-  background: rgba(22, 28, 48, 0.92) !important;
-  border-color: rgba(255, 230, 109, 0.4) !important;
-  color: #f1f5f9 !important;
+  position: static !important;
+  transform: none !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #b45309 !important;
 }
 
-.tooltip-title {
-  display: block;
-  font-family: var(--font-display);
-  font-weight: 700;
-  color: var(--color-gold);
+[data-theme="day"] .waypoint-tooltip .tooltip-title,
+body.day-mode .waypoint-tooltip .tooltip-title,
+[data-theme="day"] .waypoint-info .tooltip-title,
+body.day-mode .waypoint-info .tooltip-title {
+  color: #b45309 !important;
 }
 
-.tooltip-desc {
-  display: block;
-  font-size: 0.75rem;
+[data-theme="day"] .waypoint-tooltip .tooltip-desc,
+body.day-mode .waypoint-tooltip .tooltip-desc,
+[data-theme="day"] .waypoint-info .tooltip-desc,
+body.day-mode .waypoint-info .tooltip-desc {
+  color: #475569 !important;
 }
 
 .flight-live-status {

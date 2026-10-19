@@ -594,7 +594,7 @@ body.day-mode .retro-ticker-bar .ticker-tag {
   }
 
   100% {
-    transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
   }
 }
 
@@ -5316,12 +5316,13 @@ body:not(.day-mode) .odometer-sub {
   margin-top: 12px !important;
 }
 
-/* Authentic Early-Web Vintage 88x31 Badges */
-.retro-badges-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.85rem;
+.retro-badges-row,
+.badge-row,
+.footer-badges {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  gap: 8px !important;
 }
 
 .retro-badge {

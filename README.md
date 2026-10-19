@@ -14,14 +14,14 @@
 
 - **🚀 Live Demo**: [https://sasidhar1370.github.io/pip-dream-engineer/](https://sasidhar1370.github.io/pip-dream-engineer/)
 - **📦 GitHub Repository**: [https://github.com/sasidhar1370/pip-dream-engineer](https://github.com/sasidhar1370/pip-dream-engineer)
-- **🏆 Hackathon**: haX.baby · *Baby's First Website Hackathon* (October 17–19, 2026)
+- **🏆 Hackathon**: haX.baby · *Baby’s First Website Hackathon* (October 17–19, 2026)
 - **🎯 Track**: Track 1 — *The Skull Baby (Pip)*
 
 ---
 
 ## 📖 Story & Canon Alignment
 
-Pip isn't just any baby—Pip is the **Junior Dream Engineer at the Midnight Nursery**, floating peacefully atop a magical cloud high above the sleepy clouds. Wearing his oversized nightcap and cozy knit overalls, Pip's mission is weaving custom, heartwarming slumber for restless puppies, sleepy kittens, newborn star-calves, and cozy bedtime wanderers.
+Pip isn't just any baby—Pip is the **Junior Dream Engineer at the Midnight Nursery**, floating peacefully atop a magical cloud high above the sleepy world. Wearing an oversized nightcap and cozy knit overalls, Pip's mission is weaving custom, heartwarming slumber for restless puppies, sleepy kittens, newborn star-calves, and cozy bedtime wanderers.
 
 ```
         .---.           ✦
@@ -38,7 +38,7 @@ Pip isn't just any baby—Pip is the **Junior Dream Engineer at the Midnight Nur
 
 | Chapter | Title | Canon Tale |
 | :--- | :--- | :--- |
-| **Chapter I** | **Spark in the Stardust** | Pip discovers that gentle pentatonic frequencies and floating stardust calm the most restless midnight cribs. |
+| **Chapter I** | **Spark in the Stardust** | Pip discovers that gentle harmonic frequencies and floating stardust calm the most restless midnight cribs. |
 | **Chapter II** | **Apprenticeship of the Moonbeams** | Under the guidance of Elder Moonbeam weavers, Pip learns cloud density calibration, lullaby synthesis, and nursery lantern craft. |
 | **Chapter III** | **First Flight on Cloud 9** | Pip takes flight as certified Junior Dream Engineer, dispatching bespoke dreams across the nursery sky with live telemetry. |
 
@@ -51,7 +51,7 @@ This project was built to meet every baseline requirement and go far beyond with
 ### 🥉 Tier 1: Baseline Craft (100% Implemented)
 
 - [x] **Fully Responsive Adaptive Layout**: Fluid grid and flexbox designed mobile-first, looking stunning on smartphones, tablets, laptops, and ultra-wide screens.
-- [x] **Dual Nursery Themes (Day & Midnight)**: Instant toggle between a deep starry Midnight Nursery sky (`#0a0e1c`) and a warm pastel Day Nursery morning glow (`#fdfcfb`) with CSS variables.
+- [x] **Dual Nursery Themes (Day & Midnight)**: Instant toggle between a deep starry Midnight Nursery sky (`#0d1126`) and a warm pastel Day Nursery morning glow (`#fbf7ee`) with CSS custom properties.
 - [x] **Interactive 3D Head & Card Tilt**: Realistic spring-physics perspective tilt following cursor movement on desktop and touch coordinates on mobile.
 - [x] **Secret Nightcap Easter Egg**: Tapping or clicking Pip's nightcap 3 times triggers an adorable giggle-bounce animation, floating sparkle particles, and a cheerful chime!
 
@@ -61,26 +61,26 @@ This project was built to meet every baseline requirement and go far beyond with
 
 #### 1. 🎵 The Lullaby Lab (Procedural Web Audio API Synthesizer)
 - Pure browser-native audio synthesis using `AudioContext`, dynamic oscillators (`sine`, `triangle`), and calibrated exponential decay envelopes.
-- **6 Interactive Pentatonic Chime Bells**:
-  - `C5` (523.25 Hz) · `D5` (587.33 Hz) · `E5` (659.25 Hz)
-  - `G5` (783.99 Hz) · `A5` (880.00 Hz) · `C6` (1046.50 Hz)
-- **8-Note Cozy Arpeggiator**: Sequences a soothing bedtime lullaby spaced at 250ms with automated note lighting.
-- **Mute Safety Switch**: Header and lab toggle button respecting audio preferences and honoring browser autoplay policies.
+- **5 Harmonic Chime Bells (Native Web Audio API Oscillators)**:
+  - `C5` (523 Hz) · `E5` (659 Hz) · `G5` (784 Hz) · `B5` (988 Hz) · `C6` (1046 Hz)
+- **Cozy 8-Note Bedtime Arpeggiator**: Sequences a soothing bedtime lullaby spaced at 250ms with automated note lighting and physical key bobbing.
+- **Tactile Key-Press Support (Keys 1–5)**: Full numerical keyboard shortcut triggers with spring physics and master mute safety toggle.
 
 #### 2. 🔦 Dream Lantern Beam (Interactive Nightlight Reveal)
-- Click `[🔦 Dream Lantern Beam]` to activate a radial light beam following the cursor.
+- Click `[☼ Lantern Beam]` to activate a celestial radial spotlight following the pointer.
 - Illuminates a hidden celestial constellations layer (`#hidden-constellations-layer`) featuring glowing star maps and secret nursery constellation sketches in the dark sky.
+- Three interactive illumination moods: **Soft Amber**, **Starry Cyan**, and **Sleep Indigo**.
 
-#### 3. 🗺️ Dream Delivery Telemetry (Live Route Dispatch)
+#### 3. 🗺️ Dream Delivery Routes (Live Flight Telemetry)
 - Interactive telemetry board mapping active delivery routes across Midnight Nursery:
-  - `Route Alpha`: Cloud 9 Nursery Ward (Sweet Slumber Dispatch)
-  - `Route Beta`: Stardust Fields (Golden Glow Delivery)
-  - `Route Gamma`: Lavender Meadows (Deep Dream Slumber)
-- Real-time status indicators, estimated arrival countdowns, and live dream status monitoring.
+  - `Route A · Deep Sleep Express`: Direct high-altitude REM corridor to the Lullaby Lighthouse.
+  - `Route B · Candy Cloud Detour`: Low-turbulence gentle detour through lavender sugar clouds.
+  - `Route C · Nightmare Deflector Patrol`: High-frequency sensor scan deflecting midnight worries.
+- High-contrast gold stardust flight paths, pulsing radar ping waypoints, rooftop skyline silhouettes, and a sleek borderless telemetry station readout outside the map canvas.
 
 #### 4. ✦ Pip's Stardust Catcher (Mini-Toy)
 - Click `[✦ Start Stardust Drift]` to release 5 gentle floating stardust motes descending across the hero screen.
-- Catching each stardust particle plays a sparkling pentatonic harmonic chime.
+- Catching each stardust particle plays a sparkling harmonic chime.
 - Catching all 5 particles triggers a celebratory burst and awards an extra **+5 to the Dreams Delivered odometer**!
 
 ---
@@ -99,6 +99,22 @@ This project was built to meet every baseline requirement and go far beyond with
 - Interactive wish cards with real-time reaction counters (tap `💜 Warm Heart` or `✦ Star Dust`).
 - Complete `localStorage` persistence — your submitted wishes remain safely pinned to the wall.
 
+#### 3. 💬 Pip Bedtime Dialogue Chips
+- Whimsical character dialogue widget featuring interactive lore prompts:
+  - *"☁ Why the nightcap?"* — Pip explains how it keeps dream-frequencies tuned.
+  - *"★ How do you catch nightmares?"* — Pip reveals the sugar-mesh dream catcher technique.
+  - *"♪ Secret lullaby recipe"* — Pip shares the warm milk and stardust harmonic formula.
+- Complete with typing indicator and animated speech responses.
+
+#### 4. 📖 Interactive Celestial Parchment Storybook
+- 3-Chapter chronicle styled as a vintage storybook manuscript with antique gold foil trim, book-spine shadow, and smooth chapter flip navigation (`#story-chapter-1`, `#story-chapter-2`, `#story-chapter-3`).
+- Custom serif typography (`Playfair Display`), decorative manuscript drop caps, and physical chapter selector tabs.
+
+#### 5. 🪟 Sticky Glassmorphism Header
+- Seamless navigation dashboard pinned on scroll with blurred backdrop filter (`backdrop-filter: blur(14px)`), maintaining instant access to Audio, Lantern Beam, and Day/Night Nursery modes.
+- Ambient broadcast marquee scrolls naturally in document flow above the pinned header.
+- Full responsive overflow support with zero clipping on mobile screens.
+
 ---
 
 ### 💎 All +13 Rubric Bonus Points
@@ -106,9 +122,9 @@ This project was built to meet every baseline requirement and go far beyond with
 | Bonus Item | Implementation Details | Status |
 | :--- | :--- | :---: |
 | **Full-Screen Sparkle Canvas** | Interactive HTML5 Canvas particle engine rendering stardust trails following pointer movement. | ✅ Active |
-| **Mechanical Tumbler Odometer** | Vintage physical tumbler counter for "Dreams Delivered" with realistic rolling slot animations. | ✅ Active |
+| **Mechanical Tumbler Odometer** | Vintage physical tumbler counter for "Dreams Delivered" with realistic rolling digit animations. | ✅ Active |
 | **Interactive Sound FX with Mute** | Tactile harmonic audio feedback on button clicks and theme toggles with instant master mute. | ✅ Active |
-| **Mobile-First Responsive Design** | Customized responsive layout with sticky touch-friendly floating controls and fluid typography. | ✅ Active |
+| **Mobile-First Responsive Design** | Customized responsive layout with sticky touch-friendly controls, clean gutters, and fluid typography. | ✅ Active |
 | **Persistent Browser Storage** | Wishes, visitor counts, and audio preferences preserved cleanly in browser `localStorage`. | ✅ Active |
 
 ---
@@ -123,8 +139,10 @@ pip-dream-engineer/
 ├── server.js         # Lightweight zero-dependency Node.js static server
 ├── package.json      # Project metadata & npm run dev scripts
 ├── assets/
-│   ├── pip_avatar_cloud.png   # High-resolution Pip artwork on cloud
-│   └── favicon.svg            # Custom SVG moon & star favicon
+│   ├── pip_avatar_cloud.png      # High-resolution Pip artwork on cloud
+│   ├── pip_lullaby_box.png       # Hand-crafted wooden lullaby box artwork
+│   ├── pip_dream_lantern.png     # Brass and starlight dream lantern artwork
+│   └── favicon.svg               # Custom SVG moon & star favicon
 └── README.md         # Comprehensive project documentation
 ```
 
@@ -184,8 +202,8 @@ All 52 required hackathon DOM identifiers are mapped and functional:
 
 - [x] `#ambient-sky`
 - [x] `#theme-toggle-btn`
-- [x] `#mute-toggle-btn`
-- [x] `#lantern-toggle-btn`
+- [x] `#sound-toggle-btn`
+- [x] `#lantern-beam-toggle-btn`
 - [x] `#hero-avatar-zone`
 - [x] `#hero-avatar-container`
 - [x] `#pip-avatar-img`
@@ -196,30 +214,31 @@ All 52 required hackathon DOM identifiers are mapped and functional:
 - [x] `#avatar-gesture-pill`
 - [x] `#start-stardust-btn`
 - [x] `#stardust-score-display`
-- [x] `#lullaby-lab`
+- [x] `#lullaby-box-trigger`
 - [x] `#chime-c5`
-- [x] `#chime-d5`
 - [x] `#chime-e5`
 - [x] `#chime-g5`
-- [x] `#chime-a5`
+- [x] `#chime-b5`
 - [x] `#chime-c6`
-- [x] `#play-arpeggio-btn`
-- [x] `#telemetry-section`
-- [x] `#telemetry-route-alpha`
-- [x] `#telemetry-route-beta`
-- [x] `#telemetry-route-gamma`
-- [x] `#odometer-counter`
-- [x] `#wish-wall`
-- [x] `#wish-form`
+- [x] `#play-full-arpeggio-btn`
+- [x] `#routes-map-stage`
+- [x] `#flight-path-a`
+- [x] `#flight-path-b`
+- [x] `#flight-path-c`
+- [x] `#flying-pip-drone`
+- [x] `#odometer-box`
+- [x] `#odometer-digits`
+- [x] `#wishes`
 - [x] `#wish-author-input`
-- [x] `#wish-content-input`
-- [x] `#wish-tag-select`
-- [x] `#wish-submit-btn`
-- [x] `#wishes-container`
+- [x] `#wish-message-input`
+- [x] `#wish-category-select`
+- [x] `#submit-wish-btn`
+- [x] `#wishes-wall-grid`
 - [x] `#sparkle-canvas`
 - [x] `#hidden-constellations-layer`
-- [x] `#lantern-cursor-glow`
-- [x] *(And all remaining structural section IDs: `#bio`, `#projects`, `#story`, `#wishes`, `#header`, `#footer`, etc.)*
+- [x] `#lantern-visual-stage`
+- [x] `#pip-chatbox`
+- [x] *(And all remaining structural section IDs: `#bio`, `#projects`, `#story`, `#wishes`, `#top-header`, `#site-footer`, etc.)*
 
 </details>
 
@@ -230,4 +249,3 @@ All 52 required hackathon DOM identifiers are mapped and functional:
 This project is open-source under the [MIT License](LICENSE). Built with 💜 for the **haX.baby 2026 Hackathon**.
 
 *Sweet dreams from Pip and the Midnight Nursery team!* 🌙✨
-

@@ -9,7 +9,7 @@
   --font-display: 'Quicksand', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-storybook: 'Playfair Display', Georgia, serif;
-  --font-ticker: 'Quicksand', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-ticker: 'Space Mono', 'Courier New', monospace;
 
   /* Rounded Curves */
   --radius-xs: 8px;
@@ -135,7 +135,7 @@
 body.day-mode,
 [data-theme="day"] body,
 html[data-theme="day"] body {
-  background: #fbf7ee !important;
+  background: #faf6ee !important;
   color: #1c2038 !important;
 }
 
@@ -195,17 +195,19 @@ h1,
 h2,
 h3,
 h4,
+.hero-btn,
+.nav-btn,
 .btn,
 .nav-links,
 .nav-link,
-.badge,
-.counter-digits {
+.badge {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
 }
 
 body,
 p,
+label,
 input,
 textarea,
 select {
@@ -218,6 +220,16 @@ select {
 .chronicle-page,
 #story .story-content-card {
   font-family: 'Playfair Display', Georgia, serif;
+}
+
+.counter-digits,
+.odometer-digits-track,
+.digit-tumbler,
+.digit-val,
+.digit-comma,
+.mechanical-ticker,
+.ticker-digit {
+  font-family: 'Space Mono', 'Courier New', monospace;
 }
 
 img {
@@ -1282,7 +1294,7 @@ body.day-mode #hero-play-chime-btn:hover * {
   color: #b45309 !important;
 }
 
-/* Ensure [♪ Play Chime] matches pill structure and padding */
+/* Ensure [♪ Play Chime], [✦ Explore Dreamworks], and [★ Leave a Wish] have unified pill structure and padding */
 #hero-play-chime-btn,
 #hero-cta-wishes,
 #hero-cta-projects,
@@ -1290,7 +1302,7 @@ body.day-mode #hero-play-chime-btn:hover * {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  padding: 0.85rem 1.8rem !important;
+  padding: 12px 22px !important;
   border-radius: 9999px !important;
   font-family: var(--font-display) !important;
   font-size: 1rem !important;
@@ -1920,10 +1932,10 @@ body.day-mode .avatar-gesture-pill,
 [data-theme="day"] #avatar-gesture-pill,
 body.day-mode #avatar-gesture-pill {
   background: #ffffff !important;
-  border: 2px solid #e2d9cc !important;
-  color: #1e2238 !important;
+  border: 2px solid #e0d6c3 !important;
+  color: #1a1e36 !important;
   font-weight: 700 !important;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06) !important;
 }
 
 [data-theme="day"] .speech-bubble *,
@@ -1934,16 +1946,18 @@ body.day-mode .welcome-bubble *,
 body.day-mode .avatar-gesture-pill *,
 [data-theme="day"] #avatar-gesture-pill *,
 body.day-mode #avatar-gesture-pill * {
-  color: #1e2238 !important;
+  color: #1a1e36 !important;
   font-weight: 700 !important;
 }
 
 [data-theme="day"] .dialogue-chip,
 body.day-mode .dialogue-chip {
   background: #ffffff !important;
-  border: 1.5px solid #c7d2fe !important;
+  border: 1.5px solid #d4c5b2 !important;
   color: #3730a3 !important;
   font-weight: 700 !important;
+  padding: 9px 16px !important;
+  border-radius: 9999px !important;
   box-shadow: 0 3px 8px rgba(67, 56, 202, 0.08) !important;
   transition: all 0.2s ease !important;
 }
@@ -1956,15 +1970,16 @@ body.day-mode .dialogue-chip * {
 
 [data-theme="day"] .dialogue-chip:hover,
 body.day-mode .dialogue-chip:hover {
-  background: #e0e7ff !important;
-  color: #3730a3 !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 5px 12px rgba(67, 56, 202, 0.12) !important;
+  background: #fdfaf6 !important;
+  border-color: #f59e0b !important;
+  color: #92400e !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 5px 12px rgba(245, 158, 11, 0.15) !important;
 }
 
 [data-theme="day"] .dialogue-chip:hover *,
 body.day-mode .dialogue-chip:hover * {
-  color: #3730a3 !important;
+  color: #92400e !important;
 }
 
 [data-theme="day"] .dialogue-chip.active,
@@ -1996,29 +2011,34 @@ body.day-mode .dialogue-chip.active * {
 }
 
 /* Tier 2 Mini-Toy: Pip's Stardust Catcher */
-.stardust-toy-card {
+.stardust-toy-card,
+.stardust-catcher-card {
   margin-top: 0.25rem;
   padding: 1.1rem 1.35rem;
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1.5px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
   border-radius: 20px;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
   max-width: 490px;
   transition: all var(--transition-normal);
 }
 
-.stardust-toy-card:hover {
+.stardust-toy-card:hover,
+.stardust-catcher-card:hover {
   border-color: rgba(247, 215, 148, 0.35);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 20px rgba(247, 215, 148, 0.1);
 }
 
 [data-theme="day"] .stardust-toy-card,
-body.day-mode .stardust-toy-card {
+body.day-mode .stardust-toy-card,
+[data-theme="day"] .stardust-catcher-card,
+body.day-mode .stardust-catcher-card {
   background: #ffffff !important;
-  border: 1.5px solid #e8e0d2 !important;
-  box-shadow: 0 8px 24px rgba(30, 34, 56, 0.06) !important;
+  border: 1.5px solid #e8decb !important;
+  box-shadow: 0 8px 24px rgba(28, 32, 56, 0.06) !important;
+  border-radius: 20px !important;
 }
 
 .toy-card-header {
@@ -2047,15 +2067,24 @@ body.day-mode .stardust-toy-card {
   color: var(--text-primary);
 }
 
-.toy-status-pill {
+.toy-status-pill,
+#stardust-status-pill {
   font-family: var(--font-ticker);
   font-size: 0.85rem;
   letter-spacing: 0.5px;
   color: var(--color-lavender);
   background: rgba(192, 132, 252, 0.12);
-  border: 1px solid rgba(192, 132, 252, 0.25);
-  padding: 2px 8px;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 3px 10px;
   border-radius: var(--radius-pill);
+}
+
+#stardust-drift-stage,
+.stardust-drift-stage {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
 }
 
 .toy-desc {
@@ -2080,12 +2109,17 @@ body.day-mode .stardust-toy-card {
   font-size: 0.88rem;
 }
 
-.toy-score {
+.toy-score,
+#stardust-score-display,
+.drift-count-display {
   font-family: var(--font-ticker);
   font-size: 1rem;
   font-weight: 600;
   color: var(--color-gold);
   letter-spacing: 0.5px;
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
 }
 
 /* Drift Sparks Pill in Light Mode */
@@ -2095,7 +2129,8 @@ body.day-mode .toy-status-pill,
 body.day-mode #stardust-status-pill {
   background: #fef3c7 !important;
   color: #92400e !important;
-  border: 1px solid #fde68a !important;
+  border: none !important;
+  box-shadow: none !important;
   font-weight: 700 !important;
 }
 
@@ -2103,9 +2138,13 @@ body.day-mode #stardust-status-pill {
 [data-theme="day"] #stardust-score-display,
 body.day-mode #stardust-score-display,
 [data-theme="day"] .toy-score,
-body.day-mode .toy-score {
+body.day-mode .toy-score,
+[data-theme="day"] .drift-count-display,
+body.day-mode .drift-count-display {
   color: #9a3412 !important;
   font-weight: 800 !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 /* Drifting Falling Stardust Particles */
@@ -2183,7 +2222,7 @@ body.day-mode .toy-score {
   }
 }
 
-/* Cards (Featured Dreamworks, Wish Wall, Bio, Gear, Stardust Toy, etc.) in Light Mode */
+/* Cards (Featured Dreamworks, Wish Wall, Gear, Stardust Toy, etc.) in Light Mode */
 [data-theme="day"] .card,
 body.day-mode .card,
 [data-theme="day"] .project-card,
@@ -2198,20 +2237,10 @@ body.day-mode .wish-form-card,
 body.day-mode .wishes-board-container,
 [data-theme="day"] .wishes-board-header,
 body.day-mode .wishes-board-header,
-[data-theme="day"] .bio-card-portrait,
-body.day-mode .bio-card-portrait,
-[data-theme="day"] .bio-card-narrative,
-body.day-mode .bio-card-narrative,
-[data-theme="day"] .bio-narrative-card,
-body.day-mode .bio-narrative-card,
-[data-theme="day"] .recipe-card,
-body.day-mode .recipe-card,
-[data-theme="day"] .recipe-container,
-body.day-mode .recipe-container,
 [data-theme="day"] .stardust-toy-card,
 body.day-mode .stardust-toy-card,
-[data-theme="day"] .retro-odometer-box,
-body.day-mode .retro-odometer-box,
+[data-theme="day"] .stardust-catcher-card,
+body.day-mode .stardust-catcher-card,
 [data-theme="day"] .quote-card,
 body.day-mode .quote-card,
 [data-theme="day"] .routes-card,
@@ -2231,40 +2260,98 @@ body.day-mode .gear-card:hover,
 body.day-mode .tool-chip:hover,
 [data-theme="day"] .wish-card:hover,
 body.day-mode .wish-card:hover,
-[data-theme="day"] .recipe-card:hover,
-body.day-mode .recipe-card:hover,
-[data-theme="day"] .recipe-container:hover,
-body.day-mode .recipe-container:hover,
 [data-theme="day"] .stardust-toy-card:hover,
 body.day-mode .stardust-toy-card:hover,
-[data-theme="day"] .retro-odometer-box:hover,
-body.day-mode .retro-odometer-box:hover {
+[data-theme="day"] .stardust-catcher-card:hover,
+body.day-mode .stardust-catcher-card:hover {
   border-color: #d8bf9f !important;
   box-shadow: 0 12px 30px rgba(28, 32, 56, 0.1) !important;
 }
 
 /* --- 8. CHARACTER BIO & DOSSIER (#bio / #about) --- */
+/* 1. Strip the Outer Redundant Layer */
 #bio,
 #about,
 .bio-section,
-.character-dossier-section {
+.character-dossier-section,
+.dossier-wrapper,
+#bio .section-container,
+.bio-section > .section-container {
   position: relative;
-  background: var(--surface-glass);
-  border-top: 1px solid var(--border-subtle);
-  border-bottom: 1px solid var(--border-subtle);
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 40px 0 !important;
 }
 
-.character-dossier-grid,
+#bio .section-header {
+  text-align: center !important;
+  margin-bottom: 2.5rem;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* 2. Keep Exactly ONE Clean Single Card Surface for the Profile */
+.dossier-card,
+.bio-card,
 .bio-grid,
-.character-dossier {
+.character-dossier-grid,
+#bio .card {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
   gap: 36px;
   align-items: start;
-  max-width: 1100px;
+  max-width: 1050px;
   margin: 0 auto;
-  padding: 0;
   box-sizing: border-box;
+}
+
+/* Day Nursery */
+[data-theme="day"] .dossier-card,
+body.day-mode .dossier-card,
+[data-theme="day"] .bio-card,
+body.day-mode .bio-card,
+[data-theme="day"] .bio-grid,
+body.day-mode .bio-grid,
+[data-theme="day"] .character-dossier-grid,
+body.day-mode .character-dossier-grid,
+[data-theme="day"] #bio .card,
+body.day-mode #bio .card {
+  background: #ffffff !important;
+  border: 1.5px solid #e8decb !important;
+  border-radius: 24px !important;
+  box-shadow: 0 10px 30px rgba(45, 35, 60, 0.06) !important;
+  padding: 36px 32px !important;
+  max-width: 1050px !important;
+  margin: 0 auto !important;
+}
+
+/* Midnight */
+:root[data-theme="midnight"] .dossier-card,
+body:not(.day-mode) .dossier-card,
+:root[data-theme="midnight"] .bio-card,
+body:not(.day-mode) .bio-card,
+:root[data-theme="midnight"] .bio-grid,
+body:not(.day-mode) .bio-grid,
+:root[data-theme="midnight"] .character-dossier-grid,
+body:not(.day-mode) .character-dossier-grid,
+:root[data-theme="midnight"] #bio .card,
+body:not(.day-mode) #bio .card,
+.dossier-card,
+.bio-card,
+.bio-grid,
+.character-dossier-grid {
+  background: rgba(255, 255, 255, 0.035) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 36px 32px !important;
+  max-width: 1050px !important;
+  margin: 0 auto !important;
 }
 
 @media (min-width: 860px) {
@@ -2273,13 +2360,15 @@ body.day-mode .retro-odometer-box:hover {
   #bio .bio-grid,
   .character-dossier-grid,
   .bio-grid,
-  .character-dossier {
+  .character-dossier,
+  .dossier-card,
+  .bio-card {
     display: grid;
     grid-template-columns: 0.9fr 1.1fr;
     gap: 36px;
     align-items: start;
-    max-width: 1100px;
-    margin: 0 auto;
+    max-width: 1050px !important;
+    margin: 0 auto !important;
   }
 }
 
@@ -2289,46 +2378,71 @@ body.day-mode .retro-odometer-box:hover {
   #bio .bio-grid,
   .character-dossier-grid,
   .bio-grid,
-  .character-dossier {
+  .character-dossier,
+  .dossier-card,
+  .bio-card {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 28px;
+    padding: 24px 20px !important;
   }
 }
 
+/* 3. Remove Inner Column Borders */
+.dossier-card .bio-left,
+.dossier-card .bio-right,
+.dossier-card .bio-text-block,
+.dossier-card .recipe-container,
+.bio-grid .bio-left,
+.bio-grid .bio-right,
+.bio-grid .bio-text-block,
+.bio-grid .recipe-container,
+.bio-left,
+.bio-right,
+.bio-text-block,
+.bio-content,
+.bio-profile,
+.bio-details,
+.bio-col-left,
+.bio-col-right,
 .bio-card-portrait,
-.bio-col-left {
+.bio-card-details,
+.bio-card-narrative,
+.dossier-grid,
+.recipe-container,
+.recipe-card {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
   width: 100%;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  padding: 0;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
 }
 
 .portrait-frame {
   position: relative;
-  background: transparent;
-  border-radius: 28px;
+  background: transparent !important;
+  border-radius: 20px;
   overflow: hidden;
-  border: 1.5px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 0 35px rgba(179, 136, 255, 0.2), 0 12px 32px rgba(0, 0, 0, 0.45);
+  border: none !important;
+  box-shadow: none !important;
   animation: gentleFloat 4s ease-in-out infinite;
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   width: 100%;
 }
 
 .portrait-frame:hover {
-  transform: translateY(-6px);
-  border-color: rgba(247, 215, 148, 0.4);
-  box-shadow: 0 0 45px rgba(179, 136, 255, 0.3), 0 16px 40px rgba(0, 0, 0, 0.55);
+  transform: translateY(-4px);
+  border: none !important;
+  box-shadow: none !important;
 }
 
 [data-theme="day"] .portrait-frame,
 body.day-mode .portrait-frame {
-  border: 1.5px solid #e5dcce !important;
-  box-shadow: 0 8px 24px rgba(28, 32, 56, 0.06) !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 .portrait-img {
@@ -2367,48 +2481,78 @@ body.day-mode .portrait-badge {
   border: 1px solid #d8bf9f !important;
 }
 
-.secret-badge-slot {
-  background: var(--surface-card);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px dashed var(--border-subtle);
-  border-radius: 18px;
-  padding: 1.1rem;
+/* Sleek Single Pill Secret Badge Slot - Zero Nested Double Borders */
+.secret-badge-slot,
+.secret-unlocked-box,
+.badge-inner-container {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: var(--radius-pill) !important;
+  padding: 0.65rem 1.15rem !important;
   transition: all var(--transition-normal);
 }
 
 .secret-badge-slot.locked {
-  opacity: 0.65;
+  opacity: 0.7;
 }
 
 .secret-badge-slot.unlocked {
-  background: linear-gradient(135deg, rgba(247, 215, 148, 0.12), rgba(179, 136, 255, 0.15));
-  border: 1.5px solid var(--color-gold);
-  box-shadow: var(--shadow-glow-gold);
+  background: rgba(245, 158, 11, 0.12) !important;
+  border: 1px solid rgba(245, 158, 11, 0.3) !important;
+  box-shadow: var(--shadow-glow-gold) !important;
   opacity: 1;
+}
+
+[data-theme="day"] .secret-badge-slot,
+body.day-mode .secret-badge-slot,
+[data-theme="day"] .secret-unlocked-box,
+body.day-mode .secret-unlocked-box,
+[data-theme="day"] .badge-inner-container,
+body.day-mode .badge-inner-container {
+  background: rgba(0, 0, 0, 0.03) !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+[data-theme="day"] .secret-badge-slot.unlocked,
+body.day-mode .secret-badge-slot.unlocked {
+  background: #fef3c7 !important;
+  border: 1px solid #fde68a !important;
 }
 
 .secret-badge-inner {
   display: flex;
   align-items: center;
-  gap: 0.95rem;
+  gap: 0.75rem;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
 }
 
 .secret-badge-icon {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   color: var(--color-gold);
+  flex-shrink: 0;
+}
+
+[data-theme="day"] .secret-badge-icon,
+body.day-mode .secret-badge-icon {
+  color: #b45309 !important;
 }
 
 .secret-badge-title {
   display: block;
   font-family: var(--font-display);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
+  font-weight: 700;
   color: var(--text-primary);
 }
 
 .secret-badge-desc {
   display: block;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   color: var(--text-muted);
 }
 
@@ -2418,34 +2562,34 @@ body.day-mode .portrait-badge {
   flex-direction: column;
   gap: 1.25rem;
   width: 100%;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  padding: 0;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
 }
 
+/* Bio Narrative Card - Clean Flat Container */
 .bio-narrative-card {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
-  padding: 1.5rem;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0;
+  padding: 0 !important;
+  box-shadow: none !important;
+  transition: none;
 }
 
 .bio-narrative-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(247, 215, 148, 0.35);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 20px rgba(247, 215, 148, 0.1);
+  transform: none;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 [data-theme="day"] .bio-narrative-card,
 body.day-mode .bio-narrative-card {
-  background: #ffffff !important;
-  border: 1.5px solid #e5dcce !important;
-  box-shadow: 0 8px 24px rgba(28, 32, 56, 0.06) !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
 }
 
 .bio-card-header {
@@ -2501,34 +2645,33 @@ body.day-mode .bio-narrative-card {
   margin-bottom: 0;
 }
 
-/* Storybook Glassmorphism Cards */
+/* Recipe Ingredient Meters - Clean Track Fills without Inner Box */
 .recipe-card,
 .recipe-container {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
-  padding: 1.4rem;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0;
+  padding: 0 !important;
   margin-bottom: 0;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: none !important;
+  transition: none;
 }
 
 .recipe-card:hover,
 .recipe-container:hover {
-  transform: translateY(-3px);
-  border-color: rgba(247, 215, 148, 0.35);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 20px rgba(247, 215, 148, 0.1);
+  transform: none;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 [data-theme="day"] .recipe-card,
 body.day-mode .recipe-card,
 [data-theme="day"] .recipe-container,
 body.day-mode .recipe-container {
-  background: #ffffff !important;
-  border: 1.5px solid #e5dcce !important;
-  box-shadow: 0 8px 24px rgba(28, 32, 56, 0.06) !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
 }
 
 .recipe-title {
@@ -2568,15 +2711,17 @@ body.day-mode .recipe-container {
   height: 8px;
   border-radius: 9999px;
   background: rgba(255, 255, 255, 0.08);
+  border: none !important;
+  box-shadow: none !important;
   overflow: hidden;
   margin-top: 6px;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 [data-theme="day"] .recipe-bar-track,
 body.day-mode .recipe-bar-track {
   background: #ede6db !important;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
+  border: none !important;
+  box-shadow: none !important;
 }
 
 .recipe-bar-fill,
@@ -2824,30 +2969,41 @@ body.day-mode .project-card {
   margin-bottom: 1.4rem;
 }
 
-/* --- STUDIO SHOWCASE PORTAL FOR PROJECT IMAGES --- */
+/* --- STUDIO SHOWCASE FOR PROJECT IMAGES (ZERO INNER FRAMING BORDERS) --- */
 .project-img,
 .project-card img,
 .lullaby-img,
-.lantern-img {
+#lullaby-img,
+.lantern-img,
+#lantern-img,
+.project-media,
+.lamp-image-frame {
   height: 240px;
   width: auto;
   object-fit: contain;
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-  background: #fdfbf7;
-  /* Clean warm base that matches the asset background */
+  border-radius: 16px;
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
   display: block;
   margin: 0 auto 16px auto;
   max-width: 90%;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
+}
+
+.lullaby-card .project-visual-wrapper,
+.lullaby-card .lullaby-box-interactive,
+.lullaby-box-interactive {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
 }
 
 .project-card:hover img,
 .project-card:hover .project-img {
   transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 14px 30px rgba(168, 85, 247, 0.2);
+  border: none !important;
+  box-shadow: none !important;
 }
 
 /* Hide unstyled broken carousel dots under the music box */
@@ -3256,7 +3412,9 @@ body.day-mode .chime-keyboard-hint {
   animation: sleep-breath 6.5s ease-in-out infinite;
 }
 
-.lantern-status-tag {
+.lantern-status-tag,
+.lamp-status-badge,
+.nightlight-indicator {
   position: absolute;
   bottom: 12px;
   display: inline-flex;
@@ -3265,7 +3423,8 @@ body.day-mode .chime-keyboard-hint {
   padding: 0.35rem 0.95rem;
   background: rgba(10, 14, 28, 0.78);
   backdrop-filter: blur(8px);
-  border: 1px solid var(--border-subtle);
+  border: none !important;
+  box-shadow: none !important;
   border-radius: var(--radius-pill);
   font-size: 0.8rem;
   font-weight: 600;
@@ -3305,22 +3464,22 @@ body.day-mode .chime-keyboard-hint {
   align-items: center;
   gap: 0.85rem;
   padding: 0.75rem 1rem;
-  background: var(--surface-glass);
-  border: 1.5px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid transparent;
   border-radius: 14px;
   text-align: left;
   transition: all var(--transition-fast);
 }
 
 .glow-mode-btn:hover {
-  background: var(--surface-card-hover);
-  border-color: var(--color-gold);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: transparent;
   transform: translateX(3px);
 }
 
 .glow-mode-btn.active {
   background: rgba(255, 209, 102, 0.12);
-  border-color: var(--color-gold);
+  border: 1.5px solid var(--color-gold);
   box-shadow: 0 0 16px rgba(255, 209, 102, 0.18);
 }
 
@@ -3383,14 +3542,16 @@ body.day-mode .lantern-status-tag,
 body.day-mode #lantern-status-tag,
 [data-theme="day"] .lamp-status-badge,
 body.day-mode .lamp-status-badge,
+[data-theme="day"] .nightlight-indicator,
+body.day-mode .nightlight-indicator,
 [data-theme="day"] .nightlight-mode-indicator,
 body.day-mode .nightlight-mode-indicator,
 [data-theme="day"] .lamp-badge,
 body.day-mode .lamp-badge {
-  background: #fef3c7 !important;
+  background: rgba(254, 243, 199, 0.7) !important;
   color: #92400e !important;
-  border: 1px solid #fde68a !important;
-  box-shadow: 0 2px 6px rgba(180, 83, 9, 0.1) !important;
+  border: none !important;
+  box-shadow: none !important;
   font-weight: 700 !important;
 }
 
@@ -3400,6 +3561,8 @@ body.day-mode .lantern-status-tag *,
 body.day-mode #lantern-status-tag *,
 [data-theme="day"] .lamp-status-badge *,
 body.day-mode .lamp-status-badge *,
+[data-theme="day"] .nightlight-indicator *,
+body.day-mode .nightlight-indicator *,
 [data-theme="day"] .nightlight-mode-indicator *,
 body.day-mode .nightlight-mode-indicator *,
 [data-theme="day"] .lamp-badge *,
@@ -3414,7 +3577,13 @@ body.day-mode .lantern-status-tag .mode-dot {
   box-shadow: 0 0 8px rgba(217, 119, 6, 0.4) !important;
 }
 
-/* 2. Seamless Lamp Showcase Pedestal */
+/* 2. Seamless Lamp Showcase Pedestal - Zero Framing Borders */
+.lantern-card .project-visual-wrapper,
+.lantern-visual-stage,
+.lantern-container,
+#lantern-display,
+.project-media,
+.lamp-image-frame,
 [data-theme="day"] .lantern-card .project-visual-wrapper,
 body.day-mode .lantern-card .project-visual-wrapper,
 [data-theme="day"] .lantern-visual-stage,
@@ -3422,14 +3591,21 @@ body.day-mode .lantern-visual-stage,
 [data-theme="day"] .lantern-container,
 body.day-mode .lantern-container,
 [data-theme="day"] #lantern-display,
-body.day-mode #lantern-display {
-  background: #fdfbf7 !important;
-  border-radius: 20px;
-  border: 1.5px solid #ece4d8 !important;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05) !important;
-  padding: 12px;
+body.day-mode #lantern-display,
+[data-theme="day"] .project-media,
+body.day-mode .project-media,
+[data-theme="day"] .lamp-image-frame,
+body.day-mode .lamp-image-frame {
+  background: transparent !important;
+  border-radius: 0;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
 }
 
+.lantern-img,
+#lantern-img,
+.lantern-card img,
 [data-theme="day"] .lantern-img,
 body.day-mode .lantern-img,
 [data-theme="day"] #lantern-img,
@@ -3437,9 +3613,9 @@ body.day-mode #lantern-img,
 [data-theme="day"] .lantern-card img,
 body.day-mode .lantern-card img {
   filter: none !important;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04) !important;
-  border: 1px solid #ece4d8 !important;
-  background: #fdfbf7 !important;
+  box-shadow: none !important;
+  border: none !important;
+  background: transparent !important;
 }
 
 [data-theme="day"] .project-card.lantern-card:hover img,
@@ -3447,7 +3623,8 @@ body.day-mode .project-card.lantern-card:hover img,
 [data-theme="day"] .project-card:hover .lantern-img,
 body.day-mode .project-card:hover .lantern-img {
   filter: none !important;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07) !important;
+  box-shadow: none !important;
+  border: none !important;
 }
 
 /* 3. Atmosphere Selector Buttons in Light Mode */
@@ -3457,10 +3634,10 @@ body.day-mode .glow-mode-btn,
 body.day-mode .nightlight-option-btn,
 [data-theme="day"] .lamp-btn,
 body.day-mode .lamp-btn {
-  background: #ffffff !important;
-  border: 1.5px solid #e2d9cc !important;
+  background: rgba(0, 0, 0, 0.03) !important;
+  border: 1px solid transparent !important;
   color: #1e2238 !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+  box-shadow: none !important;
 }
 
 [data-theme="day"] .glow-mode-btn .mode-name,
@@ -3488,9 +3665,9 @@ body.day-mode .glow-mode-btn:hover:not(.active),
 body.day-mode .nightlight-option-btn:hover:not(.active),
 [data-theme="day"] .lamp-btn:hover:not(.active),
 body.day-mode .lamp-btn:hover:not(.active) {
-  background: #fbf7ee !important;
-  border-color: #d8bf9f !important;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06) !important;
+  background: rgba(0, 0, 0, 0.06) !important;
+  border: 1px solid transparent !important;
+  box-shadow: none !important;
 }
 
 [data-theme="day"] .glow-mode-btn.active,
@@ -3500,8 +3677,8 @@ body.day-mode .nightlight-option-btn.active,
 [data-theme="day"] .lamp-btn.active,
 body.day-mode .lamp-btn.active {
   background: #fffbeb !important;
-  border: 2px solid #f59e0b !important;
-  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2) !important;
+  border: 1.5px solid #f59e0b !important;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15) !important;
 }
 
 [data-theme="day"] .glow-mode-btn.active .mode-name,
@@ -3544,26 +3721,35 @@ body.day-mode .lantern-stats-footer .l-stat {
   order: 1;
 }
 
-.routes-card .routes-map-stage {
+.routes-card .routes-map-stage,
+.routes-map-stage,
+#routes-svg-container {
   order: 2;
   position: relative;
-  background: radial-gradient(ellipse at 50% 60%, #101633 0%, #080c18 100%);
-  border-radius: 18px;
+  background: linear-gradient(180deg, #0e1329 0%, #060814 100%) !important;
+  border-radius: 18px !important;
   margin: 12px 18px 0 18px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.1) !important;
   box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.65), 0 10px 30px rgba(0, 0, 0, 0.35);
-  min-height: 200px;
-  max-height: 200px;
+  height: 220px !important;
+  min-height: 220px !important;
+  max-height: 220px !important;
 }
 
 [data-theme="day"] .routes-card .routes-map-stage,
 body.day-mode .routes-card .routes-map-stage,
 [data-theme="day"] .routes-map-stage,
-body.day-mode .routes-map-stage {
-  background: linear-gradient(180deg, #1e2640 0%, #0f1426 100%) !important;
-  border: 2px solid #e2d9cc !important;
+body.day-mode .routes-map-stage,
+[data-theme="day"] #routes-svg-container,
+body.day-mode #routes-svg-container {
+  background: linear-gradient(180deg, #0e1329 0%, #060814 100%) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 18px !important;
+  height: 220px !important;
+  min-height: 220px !important;
+  max-height: 220px !important;
+  overflow: hidden !important;
 }
 
 /* Subtle Radar Rings Sweep Overlay */
@@ -3591,7 +3777,7 @@ body.day-mode .routes-map-stage {
 
 .routes-card .project-body {
   order: 3;
-  padding: 16px 20px 20px 20px;
+  padding: 28px !important;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -3745,17 +3931,33 @@ body.day-mode .route-tab-btn.active {
   }
 }
 
-/* Waypoints & Radar Ping Rings */
+/* Waypoints & Radar Ping Rings (Stationary Anchors) */
+.routes-map-stage,
+.routes-map-stage svg,
+.map-waypoint {
+  transform: none !important;
+  transition: none !important;
+}
+
+.routes-card:hover {
+  transform: none !important;
+}
+
 .map-waypoint {
   cursor: pointer;
   outline: none;
-  transition: transform var(--transition-fast);
 }
 
 .map-waypoint:hover,
 .map-waypoint:focus-visible {
-  transform: scale(1.25);
+  transform: none !important;
   filter: drop-shadow(0 0 12px rgba(255, 209, 102, 0.8));
+}
+
+/* Allow only the pulsing ripple ring to animate, not the coordinate position of the dot itself */
+.map-waypoint circle.waypoint-core,
+.map-waypoint circle:not(.pulse-ring) {
+  transform: none !important;
 }
 
 .pulse-ring {
@@ -4356,7 +4558,7 @@ body.day-mode .wishes-board-header {
   border: 1px solid rgba(247, 215, 148, 0.2);
   border-radius: 18px;
   padding: 1.4rem 1.25rem 1.1rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -4379,9 +4581,9 @@ body.day-mode .wishes-board-header {
 }
 
 .wish-card:hover {
-  transform: translateY(-5px) rotate(0deg) scale(1.02);
+  transform: translateY(-4px) rotate(0deg) scale(1.01);
   border-color: rgba(247, 215, 148, 0.45);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(247, 215, 148, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   z-index: 5;
 }
 
@@ -4390,8 +4592,8 @@ body.day-mode .wish-card,
 [data-theme="day"] .paper-slip,
 body.day-mode .paper-slip {
   background: #ffffff !important;
-  border: 1.5px solid #e6ded0 !important;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05) !important;
+  border: 1px solid var(--border-subtle, #e6ded0) !important;
+  box-shadow: 0 4px 14px rgba(28, 32, 56, 0.05) !important;
 }
 
 /* Golden Star Pin */
@@ -4455,8 +4657,8 @@ body.day-mode .wish-pin {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid var(--border-subtle);
-  padding-top: 0.7rem;
+  border-top: none !important;
+  padding-top: 0.4rem;
   font-size: 0.76rem;
   color: var(--text-muted);
 }
@@ -4466,16 +4668,23 @@ body.day-mode .wish-pin {
   align-items: center;
   gap: 0.35rem;
   padding: 3px 9px;
-  background: var(--surface-glass);
-  border: 1px solid var(--border-subtle);
+  background: rgba(0, 0, 0, 0.03);
+  border: none !important;
+  box-shadow: none !important;
   border-radius: var(--radius-pill);
   font-size: 0.76rem;
   color: var(--text-secondary);
   transition: all var(--transition-fast);
 }
 
+:root[data-theme="midnight"] .wish-like-btn,
+body:not(.day-mode) .wish-like-btn {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: none !important;
+}
+
 .wish-like-btn:hover {
-  border-color: var(--color-rose);
+  border: none !important;
   color: var(--color-rose);
   transform: scale(1.08);
 }
@@ -4759,14 +4968,12 @@ body.day-mode .wish-pin {
   text-align: center;
 }
 
-.retro-odometer-box {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
-  padding: 1.4rem 2.25rem;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45), inset 0 2px 6px rgba(0, 0, 0, 0.4);
+/* Mechanical Ticker / Odometer Outer Container */
+.retro-odometer-box,
+#odometer-box,
+.ticker-card,
+.mechanical-ticker,
+#ticker-container {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
@@ -4774,6 +4981,44 @@ body.day-mode .wish-pin {
   cursor: pointer;
   user-select: none;
   transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  border-radius: 20px !important;
+  padding: 32px 24px !important;
+  text-align: center !important;
+}
+
+/* Day Nursery Theme */
+[data-theme="day"] .retro-odometer-box,
+body.day-mode .retro-odometer-box,
+[data-theme="day"] #odometer-box,
+body.day-mode #odometer-box,
+[data-theme="day"] .ticker-card,
+body.day-mode .ticker-card,
+[data-theme="day"] .mechanical-ticker,
+body.day-mode .mechanical-ticker,
+[data-theme="day"] #ticker-container,
+body.day-mode #ticker-container {
+  background: #ffffff !important;
+  border: 1.5px solid #e5dcce !important;
+  box-shadow: 0 12px 36px rgba(45, 35, 60, 0.08) !important;
+  border-radius: 20px !important;
+  padding: 32px 24px !important;
+  text-align: center !important;
+}
+
+/* Midnight Theme */
+:root[data-theme="midnight"] .retro-odometer-box,
+body:not(.day-mode) .retro-odometer-box,
+:root[data-theme="midnight"] #odometer-box,
+body:not(.day-mode) #odometer-box,
+.retro-odometer-box {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5) !important;
+  border-radius: 20px !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 32px 24px !important;
+  text-align: center !important;
 }
 
 .retro-odometer-box:hover {
@@ -4794,10 +5039,16 @@ body.day-mode .wish-pin {
 }
 
 .odometer-title {
-  font-family: var(--font-ticker);
-  font-size: 1.15rem;
+  font-family: 'Space Mono', 'Courier New', monospace;
+  font-size: 1.05rem;
   letter-spacing: 2px;
   color: #94a3b8;
+  font-weight: 700;
+}
+
+[data-theme="day"] .odometer-title,
+body.day-mode .odometer-title {
+  color: #78716c !important;
 }
 
 .odometer-display-row {
@@ -4808,44 +5059,131 @@ body.day-mode .wish-pin {
   justify-content: center;
 }
 
+/* "Dreams Delivered:" Text */
 .odometer-label {
-  font-family: var(--font-ticker);
-  font-size: 1.45rem;
-  letter-spacing: 1px;
-  color: #e2e8f0;
+  font-family: 'Quicksand', 'Space Mono', sans-serif;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+  font-weight: 800;
 }
 
+[data-theme="day"] .odometer-label,
+body.day-mode .odometer-label {
+  color: #1a1e36 !important;
+  font-weight: 800 !important;
+  font-size: 1.25rem !important;
+  letter-spacing: -0.01em !important;
+}
+
+:root[data-theme="midnight"] .odometer-label,
+body:not(.day-mode) .odometer-label,
+.odometer-label {
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  font-size: 1.25rem !important;
+  text-shadow: 0 0 12px rgba(255, 230, 109, 0.4);
+}
+
+/* Tumbler Digit Housing */
+/* Tumbler Digit Housing - Blends Naturally with Zero Competing Outer Outline */
 .odometer-digits-track {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  background: #030712;
-  padding: 6px 10px;
-  border-radius: var(--radius-xs);
-  border: 2px solid #1f2937;
+  gap: 6px;
+  border-radius: 12px;
+  padding: 8px 16px;
+  border: none !important;
+  box-shadow: none !important;
+  background: rgba(0, 0, 0, 0.04);
 }
 
-.digit-tumbler {
+[data-theme="day"] .odometer-digits-track,
+body.day-mode .odometer-digits-track {
+  background: rgba(0, 0, 0, 0.04) !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 12px !important;
+  padding: 8px 16px !important;
+  display: inline-flex !important;
+  gap: 6px !important;
+}
+
+:root[data-theme="midnight"] .odometer-digits-track,
+body:not(.day-mode) .odometer-digits-track,
+.odometer-digits-track {
+  background: rgba(0, 0, 0, 0.25) !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 12px !important;
+  padding: 8px 16px !important;
+  display: inline-flex !important;
+  gap: 6px !important;
+}
+
+/* Individual Tumbler Digits (.counter-digit, .ticker-digit, .digit-tumbler) */
+.digit-tumbler,
+.counter-digit,
+.ticker-digit {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 44px;
-  background: var(--odometer-tumbler-bg);
-  border-radius: 4px;
-  border: 1px solid #374151;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.7);
+  padding: 4px 10px;
+  border-radius: 6px;
   overflow: hidden;
   position: relative;
 }
 
+[data-theme="day"] .digit-tumbler,
+body.day-mode .digit-tumbler,
+[data-theme="day"] .counter-digit,
+body.day-mode .counter-digit,
+[data-theme="day"] .ticker-digit,
+body.day-mode .ticker-digit {
+  background: linear-gradient(180deg, #fffefb 0%, #f7f0df 100%) !important;
+  color: #161a30 !important;
+  border: 1px solid #dcd3be !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="day"] .digit-val,
+body.day-mode .digit-val,
+[data-theme="day"] .counter-digit,
+body.day-mode .counter-digit,
+[data-theme="day"] .ticker-digit,
+body.day-mode .ticker-digit {
+  color: #161a30 !important;
+  font-family: 'Space Mono', 'Courier New', monospace !important;
+  font-size: 1.7rem !important;
+  font-weight: 800 !important;
+  text-shadow: none !important;
+}
+
+[data-theme="day"] .digit-comma,
+body.day-mode .digit-comma {
+  color: #d4af37 !important;
+  font-family: 'Space Mono', 'Courier New', monospace !important;
+  font-size: 1.7rem !important;
+  font-weight: 800 !important;
+}
+
+:root[data-theme="midnight"] .digit-tumbler,
+body:not(.day-mode) .digit-tumbler,
+.digit-tumbler {
+  background: linear-gradient(180deg, #1b2038 0%, #0d1126 100%) !important;
+  color: #ffe66d !important;
+  border: 1px solid rgba(255, 230, 109, 0.3) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5) !important;
+}
+
+:root[data-theme="midnight"] .digit-val,
+body:not(.day-mode) .digit-val,
 .digit-val {
-  font-family: var(--font-ticker);
-  font-size: 2.2rem;
-  font-weight: bold;
-  color: var(--odometer-text);
+  color: #ffe66d !important;
+  font-family: 'Space Mono', 'Courier New', monospace !important;
+  font-size: 1.7rem !important;
+  font-weight: 800 !important;
   line-height: 1;
-  text-shadow: 0 0 10px currentColor;
+  text-shadow: 0 0 10px rgba(255, 230, 109, 0.5) !important;
   transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -4865,18 +5203,39 @@ body.day-mode .wish-pin {
   }
 }
 
+:root[data-theme="midnight"] .digit-comma,
+body:not(.day-mode) .digit-comma,
 .digit-comma {
-  font-family: var(--font-ticker);
-  font-size: 1.8rem;
-  color: var(--odometer-text);
+  color: #ffe66d !important;
+  font-family: 'Space Mono', 'Courier New', monospace !important;
+  font-size: 1.7rem !important;
+  font-weight: 800 !important;
   margin: 0 1px;
 }
 
+/* Counter Helper Subtext ("• Click counter to deliver a dream (+1) •") */
 .odometer-sub {
-  font-size: 0.78rem;
-  color: #94a3b8;
+  font-size: 0.85rem;
+  margin-top: 12px;
 }
 
+[data-theme="day"] .odometer-sub,
+body.day-mode .odometer-sub {
+  color: #92400e !important;
+  font-weight: 700 !important;
+  font-size: 0.85rem !important;
+  margin-top: 12px !important;
+}
+
+:root[data-theme="midnight"] .odometer-sub,
+body:not(.day-mode) .odometer-sub {
+  color: #ffe66d !important;
+  font-weight: 600 !important;
+  font-size: 0.85rem !important;
+  margin-top: 12px !important;
+}
+
+/* Authentic Early-Web Vintage 88x31 Badges */
 .retro-badges-row {
   display: flex;
   flex-wrap: wrap;
@@ -4887,27 +5246,34 @@ body.day-mode .wish-pin {
 .retro-badge {
   display: inline-flex;
   height: 31px;
-  border: 1px solid #475569;
-  border-radius: 2px;
+  border: 1.5px solid #475569;
+  border-radius: 3px;
   overflow: hidden;
   font-family: var(--font-ticker);
-  font-size: 0.95rem;
-  line-height: 29px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 28px;
   letter-spacing: 0.5px;
-  box-shadow: 1px 1px 0 #000;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
   user-select: none;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.retro-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 .badge-l {
   background: #1e293b;
-  color: #94a3b8;
-  padding: 0 7px;
-  border-right: 1px solid #475569;
+  color: #cbd5e1;
+  padding: 0 8px;
+  border-right: 1.5px solid #475569;
 }
 
 .badge-r {
-  padding: 0 7px;
-  font-weight: bold;
+  padding: 0 8px;
+  font-weight: 800;
 }
 
 .badge-starlight .badge-r {
@@ -4930,18 +5296,19 @@ body.day-mode .wish-pin {
   color: #ffffff;
 }
 
-/* Soft Pastel Vintage Nursery Badges in Light Mode */
+/* Vintage Badges in Day Nursery Light Mode */
 [data-theme="day"] .retro-badge,
 body.day-mode .retro-badge {
-  border-color: #d1c7b7 !important;
-  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.06) !important;
+  border: 1.5px solid #d4c5b2 !important;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.08) !important;
 }
 
 [data-theme="day"] .badge-l,
 body.day-mode .badge-l {
   background: #f5efe6 !important;
-  color: #64748b !important;
-  border-right: 1px solid #d1c7b7 !important;
+  color: #475569 !important;
+  border-right: 1.5px solid #d4c5b2 !important;
+  font-weight: 700;
 }
 
 [data-theme="day"] .badge-starlight .badge-r,
@@ -5150,13 +5517,15 @@ body.day-mode .badge-netscape .badge-r {
   #bio .bio-grid,
   .character-dossier-grid,
   .bio-grid,
-  .character-dossier {
+  .character-dossier,
+  .dossier-card,
+  .bio-card {
     grid-template-columns: 1fr !important;
     gap: 28px;
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
-    padding: 0;
+    padding: 24px 20px !important;
     box-sizing: border-box;
   }
 

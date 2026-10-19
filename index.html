@@ -8,10 +8,10 @@
   <meta name="keywords" content="Pip, Dream Engineer, Midnight Nursery, Lullaby Lab, Nightlight, Character Portfolio, haX.baby">
   <meta name="author" content="Pip & Midnight Nursery Canon">
 
-  <!-- Google Fonts: Whimsical display & sleek modern typography -->
+  <!-- Google Fonts: Storybook display, cozy body & retro mechanical monospace typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Quicksand:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,600&family=Quicksand:wght@600;700;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
   <!-- Favicon -->
@@ -770,22 +770,22 @@
                 <!-- Route A: Express Deep REM -->
                 <path
                   id="flight-path-a"
-                  class="flight-route-path route-active"
+                  class="flight-route-path flight-path route-line route-arc route-active"
                   d="M 75,185 C 130,110 160,110 215,150 C 270,190 310,70 357,110 C 400,150 450,50 490,90"
                   fill="none"
-                  stroke="url(#routeGradA)"
+                  stroke="#ffe66d"
                   stroke-width="3.5"
-                  stroke-dasharray="8 6"
+                  stroke-dasharray="6 6"
                 />
 
                 <!-- Route B: Candy Cloud Detour -->
                 <path
                   id="flight-path-b"
-                  class="flight-route-path"
+                  class="flight-route-path flight-path route-line route-arc"
                   d="M 75,185 C 100,80 180,60 215,150 C 240,220 330,220 357,110 C 380,40 450,130 490,90"
                   fill="none"
-                  stroke="url(#routeGradB)"
-                  stroke-width="3"
+                  stroke="#ffe66d"
+                  stroke-width="3.5"
                   stroke-dasharray="6 6"
                   opacity="0.3"
                 />
@@ -793,12 +793,12 @@
                 <!-- Route C: Nightmare Patrol -->
                 <path
                   id="flight-path-c"
-                  class="flight-route-path"
+                  class="flight-route-path flight-path route-line route-arc"
                   d="M 75,185 Q 140,50 215,150 Q 290,50 357,110 Q 420,50 490,90"
                   fill="none"
-                  stroke="url(#routeGradC)"
-                  stroke-width="3"
-                  stroke-dasharray="10 5"
+                  stroke="#ffe66d"
+                  stroke-width="3.5"
+                  stroke-dasharray="6 6"
                   opacity="0.3"
                 />
 
@@ -806,28 +806,28 @@
                 <!-- Waypoint 1 -->
                 <g class="map-waypoint" data-station="Cribs" transform="translate(75, 185)" tabindex="0" role="button" aria-label="Waypoint: Starlight Cribs">
                   <circle r="12" fill="rgba(255, 209, 102, 0.25)" class="pulse-ring" />
-                  <circle r="6" fill="#ffd166" stroke="#fff" stroke-width="2" />
+                  <circle r="6" fill="#ffd166" stroke="#fff" stroke-width="2" class="waypoint-core" />
                   <text y="-14" text-anchor="middle" class="waypoint-label">Cribs Hub</text>
                 </g>
 
                 <!-- Waypoint 2 -->
                 <g class="map-waypoint" data-station="Cloud9" transform="translate(215, 150)" tabindex="0" role="button" aria-label="Waypoint: Cloud 9 Station">
                   <circle r="12" fill="rgba(167, 139, 250, 0.25)" class="pulse-ring" />
-                  <circle r="6" fill="#c084fc" stroke="#fff" stroke-width="2" />
+                  <circle r="6" fill="#c084fc" stroke="#fff" stroke-width="2" class="waypoint-core" />
                   <text y="-14" text-anchor="middle" class="waypoint-label">Cloud 9</text>
                 </g>
 
                 <!-- Waypoint 3 -->
                 <g class="map-waypoint" data-station="Teddy" transform="translate(357, 110)" tabindex="0" role="button" aria-label="Waypoint: Teddy Tower">
                   <circle r="12" fill="rgba(56, 189, 248, 0.25)" class="pulse-ring" />
-                  <circle r="6" fill="#38bdf8" stroke="#fff" stroke-width="2" />
+                  <circle r="6" fill="#38bdf8" stroke="#fff" stroke-width="2" class="waypoint-core" />
                   <text y="-14" text-anchor="middle" class="waypoint-label">Teddy Tower</text>
                 </g>
 
                 <!-- Waypoint 4 -->
                 <g class="map-waypoint" data-station="Lighthouse" transform="translate(490, 90)" tabindex="0" role="button" aria-label="Waypoint: Lullaby Lighthouse">
                   <circle r="14" fill="rgba(255, 209, 102, 0.35)" class="pulse-ring" />
-                  <circle r="7" fill="#ffd166" stroke="#fff" stroke-width="2" filter="url(#glow-gold)" />
+                  <circle r="7" fill="#ffd166" stroke="#fff" stroke-width="2" filter="url(#glow-gold)" class="waypoint-core" />
                   <text y="-16" text-anchor="middle" class="waypoint-label">Lighthouse</text>
                 </g>
 
@@ -843,12 +843,6 @@
                   <circle cx="-24" cy="5" r="1.5" fill="#38bdf8" opacity="0.6" />
                 </g>
               </svg>
-
-              <!-- Waypoint Info Tooltip -->
-              <div class="waypoint-tooltip" id="waypoint-tooltip" aria-live="polite">
-                <span class="tooltip-title" id="tooltip-title">Starlight Cribs (Hub)</span>
-                <span class="tooltip-desc" id="tooltip-desc">Departure nest for midnight dream packets. Fluff level: 100%.</span>
-              </div>
             </div>
 
             <div class="project-body">
@@ -856,6 +850,12 @@
               <p class="project-desc">
                 Pip’s rooftop flight map charting nightly deliveries across Midnight Nursery. From Starlight Cribs to the Lullaby Lighthouse, each route is tailored for swift breezes, gentle landings, and zero turbulence.
               </p>
+
+              <!-- Sleek Borderless Single-Line Waypoint Readout -->
+              <div class="waypoint-info waypoint-tooltip map-tooltip" id="waypoint-tooltip" aria-live="polite">
+                <span class="tooltip-title" id="tooltip-title">Starlight Cribs (Hub)</span>:
+                <span class="tooltip-desc" id="tooltip-desc">Departure nest for midnight dream packets. Fluff level: 100%.</span>
+              </div>
 
               <!-- Route Selectors -->
               <div class="routes-control-container">

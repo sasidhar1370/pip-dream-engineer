@@ -851,17 +851,19 @@
         });
       });
 
-      // Waypoint clicks and hovers
+      // Waypoint clicks: Waypoint coordinates and map container remain completely stationary
+      // No mousemove or pointermove parallax/tilt listener is attached to .routes-map-stage, #routes-svg, or .map-waypoint
+      // Waypoint text updates on manual route click or when a waypoint is clicked
       this.waypoints.forEach((wp) => {
         const station = wp.getAttribute('data-station');
-        wp.addEventListener('mouseenter', () => {
-          this.showStationInfo(station);
-        });
         wp.addEventListener('click', () => {
           this.selectWaypoint(station);
           if (this.audio) {
             this.audio.playTone(880, 0.2, 'sine', 0, 0.15);
           }
+        });
+        wp.addEventListener('mouseenter', () => {
+          this.showStationInfo(station);
         });
       });
     }
@@ -915,14 +917,10 @@
     showStationInfo(stationKey) {
       const info = this.stationLore[stationKey];
       if (!info || !this.tooltip) return;
-      this.tooltip.style.opacity = '0';
-      this.tooltip.style.transform = 'translateY(-4px)';
-      setTimeout(() => {
-        this.tooltipTitle.textContent = info.title;
-        this.tooltipDesc.textContent = info.desc;
-        this.tooltip.style.opacity = '1';
-        this.tooltip.style.transform = 'translateY(0)';
-      }, 120);
+      if (this.tooltipTitle) this.tooltipTitle.textContent = info.title;
+      if (this.tooltipDesc) this.tooltipDesc.textContent = info.desc;
+      this.tooltip.style.opacity = '1';
+      this.tooltip.style.transform = 'translateY(0)';
     }
 
     animateDrone() {
